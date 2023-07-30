@@ -270,45 +270,84 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     <title>ticket</title>
 </head>
 <body>
+
+<header>
+    <h1>YOUR PRIVET AIRLINE!</h1>
+</header>
 <form method="post">
+<div class="border">
+    <!-- //////////////////////// -->
+    <div class="destination">
+    <div>
     <label for="from">From:</label>
     <select id="from" name="from">
         <?php foreach ($locations as $id => $destination): ?>
             <option value="<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($destination); ?></option>
         <?php endforeach; ?>
-    </select><br><br>
+    </select>
+    </div>
+
+<div>
     <label for="to">To:</label>
     <select id="to" name="to">
         <?php foreach ($locations as $id => $destination): ?>
             <option value="<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($destination); ?></option>
         <?php endforeach; ?>
-    </select><br><br>
+    </select>
+    </div>
+    </div>
+    <!-- /////////// -->
+
+    <div class="date">
+    <div>
+    <label for="trip">Trip:</label>
+    <select id="trip" name="trip">
+        <option value="one-way">One-way</option>
+        <option value="round-trip">Round-trip</option>
+    </select>
+    </div>
+    <div class="travel_date">
     <label for="date">Date:</label>
-    <input type="date" id="date" name="date"><br><br>
+    <input type="date" id="date" name="date">
+    </div>
+
+    <!-- Add return date input -->
+    <div id="return-date-input" style="display: none;">
+        <label for="return-date">Return Date:</label>
+        <input type="date" id="return-date" name="return-date"> 
+    </div>
+    </div>
+
+    <div class="seat">
+    <div class="quality">
     <label for="class">Class:</label>
     <select id="class" name="class">
         <option value="economy">Economy</option>
         <option value="business">Business</option>
         <option value="first">First</option>
-    </select><br><br>
-    <label for="trip">Trip:</label>
-    <select id="trip" name="trip">
-        <option value="one-way">One-way</option>
-        <option value="round-trip">Round-trip</option>
-    </select><br><br>
-    <!-- Add return date input -->
-    <div id="return-date-input" style="display: none;">
-        <label for="return-date">Return Date:</label>
-        <input type="date" id="return-date" name="return-date"><br><br>
+    </select> 
     </div>
-    <!-- Add email and phone inputs -->
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email"><br><br>
-    <label for="phone">Phone:</label>
-    <input type="tel" id="phone" name="phone"><br><br>
+    <div>
     <label for="passengers">Passengers:</label>
-    <input type="number" id="passengers" name="passengers"><br><br>
-    <input type="submit" name="submit" value="Submit">
+    <input type="number" id="passengers" name="passengers"> 
+    </div>
+    </div>
+
+    <!-- Add email and phone inputs -->
+    <div class="contact">
+    <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"> 
+    </div>
+
+    <div>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone">
+    </div>
+    </div>
+    </div>
+
+    <input class="submit" type="submit" name="submit" value="Submit">
 </form>
 
 <script>

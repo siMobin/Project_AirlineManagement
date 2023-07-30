@@ -22,6 +22,11 @@ ALTER TABLE bookings
 ALTER TABLE bookings
 --ADD cost FLOAT;
 
+
+
+SELECT * FROM bookings
+ORDER BY date ASC;
+
 select * from bookings
 
 CREATE TABLE locations (

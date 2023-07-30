@@ -1,3 +1,117 @@
-// body{
-//     background-color: black;
-// }
+@import "../root/root";
+// @import "./scss/phone";
+
+body {
+  color: $blue_white;
+  background-color: $bg;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 001)), url(../image/ticket_bg.jpg);
+  // background-image: linear-gradient(to top, rgba(0, 0, 255, 0.1), rgba(0, 0, 255, 0.1)), url(../image/ticket_bg.jpg);
+  background-position: bottom;
+  background-size: cover;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 60px;
+    color: $blue;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+  margin-top: -4em;
+
+  label {
+    // width: 200px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  * {
+    //   justify-content: space-around;
+    margin: 0.4em;
+  }
+
+  .destination {
+    display: flex;
+    gap: 2em;
+    background-color: $bg;
+    border-radius: 10px;
+    padding: 0 0.5em;
+
+    input,
+    select {
+      padding: 01em;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba($blue_light, 0.2);
+      box-shadow: 1px 0px 10px 1px rgba(0, 0, 0, 0.1);
+      border-radius: 0 10px;
+    }
+  }
+
+  .date {
+    display: flex;
+    gap: 3em;
+  }
+
+  .seat {
+    display: flex;
+    gap: 2em;
+  }
+
+  .contact {
+    display: flex;
+    gap: 3em;
+  }
+
+  input,
+  select {
+    padding: 0.5em;
+    background-color: $blue;
+    border: none;
+    border-radius: 0 5px;
+    font-weight: 500;
+    min-width: 280px;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .submit {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 1em;
+    margin-top: -2.3em;
+    border-radius: 10px;
+    z-index: 9999;
+  }
+
+  .border {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $bg;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 10px 10px;
+    padding-bottom: 3em;
+    backdrop-filter: blur(5px);
+  }
+}
