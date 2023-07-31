@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css";
 $blue_white: #d4e9f0;
-$blue: #1d91cc;
+$blue: #1d92ccd1;
 $blue_dark: #385a63;
 $blue_light: #b4d4d8;
 // $blue:;
@@ -8,9 +9,11 @@ $blue_light: #b4d4d8;
 // $blue:;
 $bg: #105274;
 
+@import "../partials/nav";
+
 * {
   font-family: "Poppins", sans-serif;
-  color: $blue_white;
+  // color: $blue_white;
   margin: 0;
   padding: 0;
 }

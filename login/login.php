@@ -11,16 +11,23 @@ if( $conn ) {
      die( print_r( sqlsrv_errors(), true));
 }
 
-//check if the user is already logged in
-session_start();
+//check if the user is already logged in sent him a logout options
+// session_start();
+// if(isset($_SESSION["username"])){
+//     echo "Welcome ".$_SESSION["username"]."<br />";
+//     echo "<a href='../index.php'>Logout</a>";
+//     exit;
+// }
+
+session_start();//check if the user is already logged in
 if(isset($_SESSION["username"])){
-    echo "Welcome ".$_SESSION["username"]."<br />";
-    echo "<a href='../index.php'>Logout</a>";
+    // User is logged in, redirect to the home page
+    header("Location: ../home.php");
     exit;
 }
 
 //check if the user submitted the login form
-if(isset($_POST["login"])){
+if(isset($_POST["login"])){ 
     //get the username and password from the form
     $username = $_POST["username"];
     $password = $_POST["password"];
