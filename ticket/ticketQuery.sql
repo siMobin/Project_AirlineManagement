@@ -11,16 +11,16 @@ CREATE TABLE bookings (
 
 
 
---ALTER TABLE bookings
---ADD email VARCHAR(255);
 ALTER TABLE bookings
---ADD phone VARCHAR(255);
+ADD email VARCHAR(255);
 ALTER TABLE bookings
---ADD trip VARCHAR(255);
+ADD phone VARCHAR(255);
 ALTER TABLE bookings
---ADD return_date DATE;
+ADD trip VARCHAR(255);
 ALTER TABLE bookings
---ADD cost FLOAT;
+ADD return_date DATE;
+ALTER TABLE bookings
+ADD cost FLOAT;
 
 
 

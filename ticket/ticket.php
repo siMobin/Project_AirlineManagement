@@ -88,12 +88,12 @@ if (isset($_POST['submit'])) {
                     $pdf = new FPDF('p','mm','A4');
                     $pdf->AddPage();
                     // ticket background
-                    $pdf->Image('../image/print_bg.jpg');
+                    $pdf->Image('../image/ticket.png',-10,-5,230);
                     $pdf->SetFont('Arial', 'BU', 24);
                     $pdf->Cell(71, 10, '',0,0);
                     $pdf->Cell(59, 5, 'Privet Jet!',0,0);
                     $pdf->Cell(59, 10, '',0,0);
-                    $pdf->Ln();
+                    // $pdf->Ln();
                     $pdf->SetFont('Arial', 'B', 12);
 
 // Display ID
@@ -214,7 +214,7 @@ if ($trip == 'round-trip') {
                 $pdf = new FPDF('p','mm','A4');
                 $pdf->AddPage();
                 // ticket background
-                $pdf->Image('../image/print_bg.jpg');
+                $pdf->Image('../image/ticket.png',-10,-5,230);
                 $pdf->SetFont('Arial', 'BU', 24);
                 $pdf->Cell(71, 10, '',0,0);
                 $pdf->Cell(59, 5, 'Privet Jet!',0,0);
