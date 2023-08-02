@@ -1,0 +1,62 @@
+@import "../root/root";
+body {
+  background-image: linear-gradient(rgba($blue_dark, 1), rgba($blue_dark, 0.2), rgba($blue_light, 0)), url(./login.jpg);
+  background-size: cover;
+  background-position: bottom;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+a {
+  font-size: 20px;
+  color: $blue_white;
+  padding: 1em;
+}
+
+#form {
+  display: flex;
+  position: absolute;
+  right: 3em;
+  bottom: 5em;
+  gap: 2em;
+  padding: 1em;
+  background-color: rgba($blue_light, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 5px rgba($blue_dark, 0.3);
+  h2,
+  h6 {
+    color: $blue_white;
+  }
+
+  form {
+    h6 {
+      font-weight: 500;
+      font-size: 14px;
+      padding-top: 0.5em;
+    }
+    input {
+      background-color: rgba($blue_light, 0.5);
+      outline: none;
+      border: none;
+      padding: 0.5em;
+      border-radius: 5px;
+      min-width: 250px;
+    }
+
+    .submit {
+      margin-top: 0.5em;
+      background-color: $blue;
+      color: $blue_white;
+      font-weight: 500;
+    }
+  }
+}
+
+.report {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  color: rgb(165, 0, 0);
+}
