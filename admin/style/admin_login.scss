@@ -1,0 +1,46 @@
+@import "./root";
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(./login_bg.png);
+  background-position: right bottom;
+  background-size: 130%;
+  backdrop-filter: blur(10px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba($blue_light, 0.3);
+  padding: 1em;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+
+  input {
+    border: none;
+    outline: none;
+    background-color: $blue_light;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    min-width: 250px;
+  }
+
+  .submit {
+    background-color: $blue;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 30px;
+    color: $blue_white;
+  }
+}
+
+.warning {
+  color: red;
+  position: absolute;
+  bottom: 42%;
+  right: 44.2%;
+  font-size: 12px;
+}

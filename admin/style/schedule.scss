@@ -1,0 +1,25 @@
+@import "./root";
+
+table {
+  border-collapse: collapse;
+
+  th {
+    background-color: $blue_dark;
+    color: $blue_white;
+  }
+
+  tr {
+    text-align: center;
+    font-size: 14px;
+
+    &:nth-child(odd) {
+      background-color: $blue_white;
+    }
+  }
+
+  th,
+  td {
+    padding: 0 0.5em;
+    border: 1px solid $blue_light;
+  }
+}
