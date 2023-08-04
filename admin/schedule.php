@@ -7,7 +7,7 @@ if ($conn === false) {
      die(print_r(sqlsrv_errors(), true));
 }
 
-$sql = "SELECT id, [from], [to], date, return_date, class, passengers, email, phone, trip, cost FROM bookings WHERE date > GETDATE() UNION ALL SELECT id, [from], [to], return_date as date, return_date, class, passengers, email, phone, trip, cost FROM bookings WHERE return_date > GETDATE() ORDER BY date";
+$sql = "SELECT id, [from], [to], date, return_date, class, passengers, email, phone, trip, cost FROM bookings WHERE date >= CONVERT(date, GETDATE()) UNION ALL SELECT id, [from], [to], return_date as date, return_date, class, passengers, email, phone, trip, cost FROM bookings WHERE return_date >= CONVERT(date, GETDATE()) ORDER BY date";
 $stmt = sqlsrv_query($conn, $sql);
 
 echo "<table>";
