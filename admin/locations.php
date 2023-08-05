@@ -1,6 +1,7 @@
+<?php include './nav.php'; ?>
 <?php
-$serverName = "DESKTOP-34HOJHD\SQLEXPRESS2";
-$connectionInfo = array("Database"=>"airTest");
+$serverName = "ACER_LAPTOP\SQLEXPRESS"; //DESKTOP-34HOJHD\SQLEXPRESS2,ACER_LAPTOP\SQLEXPRESS
+$connectionInfo = array("Database" => "airTest");
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
 if ($conn === false) {
@@ -42,26 +43,45 @@ if ($stmt === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-echo "<h2>Destinations:</h2>";
+echo "<h1>airport list/Destinations</h1>";
+echo "<div class='table'>";
 echo "<table>";
-echo "<tr><th>Destination</th><th>Latitude</th><th>Longitude</th><th></th></tr>";
+echo "<tr><th>Destination</th><th>Latitude</th><th>Longitude</th><th>Delete</th></tr>";
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     echo "<tr>";
     echo "<td>" . $row['destination'] . "</td>";
     echo "<td>" . $row['latitude'] . "</td>";
     echo "<td>" . $row['longitude'] . "</td>";
-    echo "<td><form method='post'><input type='hidden' name='id' value='" . $row['id'] . "'><input type='submit' name='delete' value='Delete'></form></td>";
+    // echo "<td><form method='post'><input type='hidden' name='id' value='" . $row['id'] . "'><input type='submit' name='delete' value='Delete'></form></td>";
+    echo "<td><form method='post'><input type='hidden' name='id' value='" . $row['id'] . "'><button class='delete' type='submit' name='delete'><i class='fa fa-trash'></i></button></form></td>";
+
     echo "</tr>";
 }
 echo "</table>";
+echo "</div>";
 ?>
 
-<form method="post">
-    <label for="destination">Destination:</label>
-    <input type="text" id="destination" name="destination" required><br><br>
-    <label for="latitude">Latitude:</label>
-    <input type="text" id="latitude" name="latitude" required><br><br>
-    <label for="longitude">Longitude:</label>
-    <input type="text" id="longitude" name="longitude" required><br><br>
-    <input type="submit" name="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/locations.css">
+    <title>Airport Management</title>
+</head>
+
+<body>
+    <h1>Add new airport</h1>
+    <form method="post">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" required placeholder="airport name">
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" required placeholder="d(N,S) + (m/60) + (s/3600)">
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" required placeholder="d(E,W) + (m/60) + (s/3600)">
+        <input class="submit" type="submit" name="submit" value="Submit">
+    </form>
+</body>
+
+</html>

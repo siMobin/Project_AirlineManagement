@@ -17,6 +17,27 @@ $bg: #105274;
   margin: 0;
   padding: 0;
 
+  .submit,
+  button,
+  a {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .submit {
+    font-weight: 500;
+    font-size: 16px;
+    color: $blue_white;
+    background-color: $blue;
+  }
+
+  input {
+    padding: 0.5em;
+    border: none;
+    outline: none;
+  }
+
   &::placeholder {
     font-style: italic;
   }
