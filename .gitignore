@@ -1,7 +1,7 @@
 doc
 tutorial
 FAQ.htm
-.htm
+*.htm
 faq.*
 FAQ.*
 *.txt
