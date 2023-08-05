@@ -1,6 +1,9 @@
 doc
 tutorial
 FAQ.htm
+*.htm
+faq.*
+FAQ.*
 *.txt
 *.css
 *.css.map

@@ -1,0 +1,57 @@
+@import "./root";
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $blue;
+  padding: 0.5em 1em;
+
+  .logo {
+    color: $blue_white;
+    font-size: 20px;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+
+    li {
+      list-style-type: none;
+
+      a {
+        text-align: center;
+        text-decoration: none;
+        color: $blue_white;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .active {
+        font-weight: 600;
+        text-decoration: underline;
+        background-color: $blue_white;
+        color: $blue;
+        padding: 0.2em 0.5em;
+        border-radius: 5px;
+      }
+    }
+
+    .logout {
+      border: 1px solid $blue_white;
+      padding: 0.2em 0.5em;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $blue_white;
+        a {
+          text-decoration: none;
+          color: $blue;
+        }
+      }
+    }
+  }
+}

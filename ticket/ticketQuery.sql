@@ -1,4 +1,5 @@
---create database airTest
+create database AirManagement;
+
 use airTest;
 CREATE TABLE bookings (
     id INT,
@@ -48,5 +49,18 @@ VALUES
 ('France - Paris-Charles de Gaulle Airport');
 
 -- add more locations as needed
+
+-- admin login
+-- Create the admin_login table
+CREATE TABLE admin_login (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    username NVARCHAR(255) NOT NULL,
+    password NVARCHAR(255) NOT NULL
+);
+
+-- Insert a row with the default username and password
+INSERT INTO admin_login (username, password)
+VALUES ('ADMIN', 'airAdmin');
+
 
 
