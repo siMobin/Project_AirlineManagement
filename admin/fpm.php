@@ -24,20 +24,9 @@ sqlsrv_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #barChart {
-            width: 300px;
-            height: 200px;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Include the Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Create a canvas element for the bar chart -->
     <canvas id="fpm"></canvas>
 
     <script>

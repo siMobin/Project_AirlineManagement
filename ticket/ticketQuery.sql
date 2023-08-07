@@ -14,7 +14,8 @@ CREATE TABLE bookings (
     email VARCHAR(255),
     phone VARCHAR(255),
     trip VARCHAR(255),
-    cost FLOAT
+    cost FLOAT,
+    confirm int
 );
 
 -- SELECT * FROM bookings

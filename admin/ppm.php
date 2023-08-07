@@ -28,10 +28,6 @@ sqlsrv_close($conn);
 </head>
 
 <body>
-    <!-- Include the Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Create a canvas element for the line chart -->
     <canvas id="ppm"></canvas>
     <script>
         // Call the createLineChart function with the PHP data

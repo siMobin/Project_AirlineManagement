@@ -59,3 +59,29 @@ function createBarChart(labels, data) {
     },
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  var ctx = document.getElementById("cpm").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: chartData.labels,
+      datasets: [
+        {
+          label: "Total Earnings",
+          data: chartData.data,
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+});
