@@ -1,0 +1,72 @@
+@import "./root";
+
+table {
+  border-collapse: collapse;
+  margin: 1em;
+
+  th {
+    background-color: $blue_dark;
+    color: $blue_white;
+    text-align: center;
+  }
+  .cancel_th,
+  .verify_th {
+    background-color: rgb(228, 246, 228);
+    color: $blue_dark;
+  }
+
+  tr {
+    font-size: 14px;
+    padding: 0.5em 0.5em;
+  }
+
+  td {
+    &:nth-child(1),
+    &:nth-child(4) {
+      background-color: $blue_white;
+    }
+  }
+
+  .cancel {
+    color: red;
+    border: none;
+    outline: none;
+  }
+  .verify {
+    color: green;
+  }
+
+  .empty {
+    display: none;
+  }
+
+  th,
+  td {
+    padding: 0.5em 0.5em;
+    border: 1px solid $blue_light;
+    text-align: center;
+  }
+  .button {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid $blue;
+    aspect-ratio: 1;
+    cursor: pointer;
+  }
+}
+
+.search {
+  margin: 3em 2em;
+  background-color: $blue_light;
+  padding: 1em;
+  border-radius: 10px;
+
+  label {
+    font-weight: 600;
+    font-size: 16px;
+    margin-right: 0.5em;
+  }
+}

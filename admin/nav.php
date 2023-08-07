@@ -38,6 +38,8 @@ function logout()
         <a class="logo" href="index.php"><i class="fa-solid fa-plane-lock"> private jet/Admin</i></a>
         <!-- The navigation links -->
         <ul>
+            <li><a href="./validation.php" <?php if (basename($_SERVER['PHP_SELF']) == 'validation.php') echo 'class="active"'; ?>>Validation</a></li>
+            <li><a href="./stats.php" <?php if (basename($_SERVER['PHP_SELF']) == 'stats.php') echo 'class="active"'; ?>>Stats</a></li>
             <li><a href="./schedule.php" <?php if (basename($_SERVER['PHP_SELF']) == 'schedule.php') echo 'class="active"'; ?>>Flight Schedule</a></li>
             <li><a href="./locations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'locations.php') echo 'class="active"'; ?>>Airport</a></li>
             <li><a href="page3.php" <?php if (basename($_SERVER['PHP_SELF']) == 'page3.php') echo 'class="active"'; ?>>Page 3</a></li>

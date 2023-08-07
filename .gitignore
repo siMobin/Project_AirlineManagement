@@ -1,4 +1,7 @@
 doc
+Documents
+*.pdf
+*.docx
 tutorial
 FAQ.htm
 *.htm
@@ -10,3 +13,4 @@ FAQ.*
 .vscode
 ticket.svg
 temp.*
+temp*.*
