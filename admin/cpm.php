@@ -1,11 +1,11 @@
 <?php require('./conn.php'); ?>
 <?php
-$sql = "SELECT YEAR(date) AS year, MONTH(date) AS month, SUM(cost) AS total
+//round trip validation
+$sql = "SELECT YEAR(date) AS year, MONTH(date) AS month, SUM(CASE WHEN trip = 'round-trip' THEN cost/2 ELSE cost END) AS total
 FROM bookings
 WHERE date >= DATEADD(month, -12, GETDATE())
 GROUP BY YEAR(date), MONTH(date)
-ORDER BY YEAR(date), MONTH(date);
-";
+ORDER BY YEAR(date), MONTH(date);";
 $stmt = sqlsrv_query($conn, $sql);
 
 if ($stmt === false) {
@@ -31,7 +31,6 @@ sqlsrv_close($conn);
 </head>
 
 <body>
-    <!-- Wrap the canvas element in a div container with id="chartContainer" -->
     <canvas id="cpm"></canvas>
 
     <script>
