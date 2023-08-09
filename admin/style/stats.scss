@@ -1,24 +1,83 @@
 @import "./root";
 
+body {
+  background-color: rgba($blue_white, 0.4);
+}
+
+@mixin newMorph($radius: 10px, $border_size: 1px) {
+  box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.1) inset, -5px 5px 10px rgb(255, 255, 255) inset;
+  border-radius: $radius;
+  border: $border_size solid rgba($blue_white, 1);
+}
+
+.blocks_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  margin: 2em 0;
+
+  .blocks {
+    @include newMorph;
+    text-align: center;
+    max-width: 200px;
+    flex: 1 0 calc(100% / 3);
+    position: relative;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    i {
+      @include newMorph($radius: 50%);
+      box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), inset 5px -5px 10px rgb(255, 255, 255), inset 2px -2px 10px rgba(0, 0, 0, 0.15);
+      height: 40px;
+      aspect-ratio: 1;
+      position: absolute;
+      top: -25px;
+      right: -25px;
+      font-size: 30px;
+      color: $blue;
+      padding: 0.4em;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-top: -10px;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: auto;
+      font-weight: 600;
+      font-style: oblique;
+    }
+  }
+}
+
 .chart {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 2em;
 
   .graph {
-    width: 40vw;
+    width: 45vw;
+    max-width: calc(50vw - 1em);
     max-height: 50vh;
     margin: 1em;
     padding: 0.5em;
     // background-color: $blue_white;
     border-radius: 20px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3), 0px 0px 100px rgba($blue_light, 0.4) inset;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 0px 100px rgba($blue_light, 0.4) inset;
   }
 
   .fba {
     display: flex;
     justify-content: center;
-    width: 100%;
+    @include newMorph;
+    min-width: calc(100vw - 5em) !important;
     min-height: 60vh !important;
   }
 }
