@@ -1,6 +1,12 @@
 create database AirManagement;
+use airTest
 
-use airTest;
+-- user login info
+create table users(
+username varchar(50) primary key not null,
+email varchar(50) not null,
+password char(60) not null
+);
 
 --create bookings table!
 CREATE TABLE bookings (

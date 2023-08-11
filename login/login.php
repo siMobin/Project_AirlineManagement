@@ -1,23 +1,5 @@
 <?php
-//connect to sql server using windows authentication
-$serverName = "ACER_LAPTOP\SQLEXPRESS"; //serverName\instanceName
-$connectionInfo = array("Database" => "airline");
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-
-if ($conn) {
-    // echo "Connection established.<br />";
-} else {
-    echo "Connection could not be established.<br />";
-    die(print_r(sqlsrv_errors(), true));
-}
-
-//check if the user is already logged in sent him a logout options
-// session_start();
-// if(isset($_SESSION["username"])){
-//     echo "Welcome ".$_SESSION["username"]."<br />";
-//     echo "<a href='../index.php'>Logout</a>";
-//     exit;
-// }
+require_once('../conn.php');
 
 session_start(); //check if the user is already logged in
 if (isset($_SESSION["username"])) {

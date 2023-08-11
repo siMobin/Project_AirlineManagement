@@ -1,0 +1,32 @@
+@import "../../root/root";
+
+h1 {
+  text-align: center;
+  text-decoration: underline 2px $blue dashed;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0.5em 0 1em 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background-color: $blue_dark;
+    color: $blue_white;
+  }
+
+  tr {
+    text-align: center;
+    &:nth-child(odd) {
+      background-color: $blue_white;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.3em 0.5em;
+    border: 1px solid $blue_light;
+  }
+}

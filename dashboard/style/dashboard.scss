@@ -1,0 +1,42 @@
+@import "../../root/root";
+.dashboard {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 1em 0.5em;
+  min-width: 50px;
+  max-width: 50px;
+  background-color: $blue_dark;
+
+  ul {
+    li {
+      list-style-type: none;
+      text-align: center;
+      padding: 1em 0;
+
+      a {
+        text-align: center;
+        text-decoration: none;
+        color: $blue_white;
+        font-size: 20px;
+      }
+
+      .active {
+        font-size: 40px;
+        color: $blue;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .logout {
+    font-size: 30px;
+    color: $blue_white;
+  }
+}
