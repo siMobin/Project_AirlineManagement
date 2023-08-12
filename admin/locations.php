@@ -82,6 +82,7 @@ echo "</div>";
         <input type="text" id="longitude" name="longitude" required placeholder="d(E,W) + (m/60) + (s/3600)">
         <input class="submit" type="submit" name="submit" value="Submit">
     </form>
+    <?php include './map.php'; ?>
 </body>
 
 </html>
