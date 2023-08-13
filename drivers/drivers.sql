@@ -5,7 +5,7 @@ CREATE TABLE driver_info (
     DID INT PRIMARY KEY NOT NULL,--random 5/6/8 digit
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    phone INT NOT NULL,
+    phone VARCHAR(255),
     roll VARCHAR(255) NOT NULL--pilot or hostess
 );
 -----temp value of driver
