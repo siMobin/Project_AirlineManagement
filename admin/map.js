@@ -16,16 +16,20 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 // Define the custom icon URL
-var iconUrl = "./image/plane_icon.webp"; // Customize this URL based on your icon's location
+var iconUrl = "./image/plane_icon.webp";
+var shadowUrl = "./image/plane_icon_shadow.webp";
 
-// Add markers for each location with the same custom icon
+// Add markers for each location with the same custom icon and shadow
 var markers = [];
 locations.forEach(function (location) {
   var markerIcon = L.icon({
     iconUrl: iconUrl,
+    shadowUrl: shadowUrl, // Add the path to your modified shadow image
     iconSize: [32, 32], // Customize the icon size if needed
-    iconAnchor: [16, 0], // Customize the icon anchor point
-    popupAnchor: [0, -32], // Customize the popup anchor point
+    iconAnchor: [16, 16], // Customize the icon anchor point
+    popupAnchor: [0, -16], // Customize the popup anchor point
+    shadowSize: [40, 40], // Customize the shadow size
+    shadowAnchor: [16, 8], // Customize the shadow anchor point
   });
 
   // Define the locations as an array of objects with latitude, longitude, and name
