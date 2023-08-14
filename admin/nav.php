@@ -39,10 +39,10 @@ function logout()
         <!-- The navigation links -->
         <ul>
             <li><a href="./validation.php" <?php if (basename($_SERVER['PHP_SELF']) == 'validation.php') echo 'class="active"'; ?>>Validation</a></li>
+            <li><a href="./flight_assign.php" <?php if (basename($_SERVER['PHP_SELF']) == 'flight_assign.php') echo 'class="active"'; ?>>Flight Assignment</a></li>
             <li><a href="./stats.php" <?php if (basename($_SERVER['PHP_SELF']) == 'stats.php') echo 'class="active"'; ?>>Stats</a></li>
             <li><a href="./schedule.php" <?php if (basename($_SERVER['PHP_SELF']) == 'schedule.php') echo 'class="active"'; ?>>Flight Schedule</a></li>
             <li><a href="./locations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'locations.php') echo 'class="active"'; ?>>Airport</a></li>
-            <li><a href="page3.php" <?php if (basename($_SERVER['PHP_SELF']) == 'page3.php') echo 'class="active"'; ?>>Page 3</a></li>
             <li class="logout"> <a method="GET" href="?action=logout">Logout</a></li>
         </ul>
     </nav>

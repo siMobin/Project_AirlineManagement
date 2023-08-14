@@ -1,0 +1,60 @@
+@import "./root";
+
+h2 {
+  text-align: center;
+  margin: 1em;
+  text-decoration: dashed underline 2px $blue;
+}
+
+form {
+  border: 1px solid $blue_light;
+  border-radius: 10px;
+  background-color: rgba($blue_light, 0.3);
+  display: flex;
+  margin: 1em;
+  justify-content: space-around;
+
+  label {
+    font-weight: 500;
+  }
+
+  &:has(:not(.info))select {
+    border: 1px solid $blue_light;
+    background-color: rgba($blue_light, 0.3);
+    padding: 0.3em;
+    border-radius: 5px;
+    font-style: italic;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .info {
+    align-self: center;
+
+    input {
+      background-color: rgba($blue_light, 0.015);
+      // hide calender
+      &[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+      }
+    }
+  }
+
+  .pilot,
+  .hostess {
+    align-self: center;
+
+    div {
+      margin: 1em 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .assign {
+    align-self: center;
+  }
+}
