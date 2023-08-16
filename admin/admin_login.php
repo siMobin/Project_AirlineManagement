@@ -1,12 +1,5 @@
 <?php
-// Connect to the database
-$serverName = "ACER_LAPTOP\SQLEXPRESS";
-$connectionInfo = array("Database" => "AirManagement");
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-
-if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
+require('./conn.php');
 
 // Check if the form has been submitted
 if (isset($_POST['submit'])) {

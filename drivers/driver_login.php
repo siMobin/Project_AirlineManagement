@@ -1,0 +1,146 @@
+<?php
+session_start(); // Start the session
+require('./conn.php');
+
+$insert_warning = "";
+$warning_name = ""; // Define warning variable for name not found
+$warning_pass = ""; // Define warning variable for invalid password
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["register"])) {
+        $did = $_POST["did"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+        // Check if DID, email, or phone match in driver_info table
+        $query = "SELECT DID, name FROM driver_info WHERE DID = ? AND (email = ? OR phone = ?)";
+        $params = array($did, $email, $phone);
+        $stmt = sqlsrv_query($conn, $query, $params);
+
+        if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
+        }
+
+        if (sqlsrv_has_rows($stmt)) {
+            $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+            $name = $row["name"];
+
+            // Insert new driver into driver table
+            $query = "INSERT INTO driver (DID, name, email, phone, password) VALUES (?, ?, ?, ?, ?)";
+            $params = array($did, $name, $email, $phone, $password);
+            $stmt = sqlsrv_query($conn, $query, $params);
+
+            if ($stmt === false) {
+                // die(print_r(sqlsrv_errors(), true));
+                $insert_warning = "Registration failed!/Server error";
+            }
+            echo "Registration successful!";
+            header("Location: ./profile.php");
+        } else {
+            $warning_name = "DID/Email/Phone not found!";
+        }
+    }
+
+
+    if (isset($_POST["login"])) {
+        $did = $_POST["did"];
+        $emailOrPhone = $_POST["email_phone"];
+        $password = $_POST["password"];
+
+        // Check if email, phone, or DID exists in driver table
+        $query = "SELECT DID, password FROM driver WHERE DID = ? and email = ? OR phone = ?";
+        $params = array($did, $emailOrPhone, (int)$emailOrPhone);
+        $stmt = sqlsrv_query($conn, $query, $params);
+
+        if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
+        }
+
+        if (sqlsrv_has_rows($stmt)) {
+            $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+            if (password_verify($password, $row["password"])) {
+                // Successful login, set driver ID in session and redirect to profile.php
+                $_SESSION["driver_id"] = $row["DID"];
+                header("Location: ./profile.php");
+                exit();
+            } else {
+                // echo "Login failed. Invalid password.";
+                $warning_pass = "Invalid password!";
+            }
+        } else {
+            // echo "Login failed. DID/Email/Phone not found.";
+            $warning_name = "DID/Email/Phone not found!";
+        }
+    }
+}
+sqlsrv_close($conn);
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Driver Login and Registration</title>
+    <link rel="stylesheet" href="./style/driver_login.css">
+</head>
+
+<body>
+    <div id="form">
+        <div class="login">
+            <h2>Login</h2>
+            <form method="post" action="">
+
+                <div>
+                    <h1>DID:</h1>
+                    <input type="text" name="did" required placeholder="DID">
+                </div>
+                <div>
+                    <h1>Email/Phone:</h1>
+                    <input type="text" name="email_phone" required placeholder="email or phone number">
+                </div>
+                <div class="warning"><?php echo $warning_name; ?></div>
+                <div>
+                    <h1>Password:</h1>
+                    <input type="password" name="password" required placeholder="password">
+                </div>
+                <div class="warning"><?php echo $warning_pass; ?></div>
+                <div>
+                    <input class="submit" type="submit" name="login" value="Login">
+                </div>
+            </form>
+        </div>
+
+        <hr>
+
+        <div class="reg">
+            <h2>Registration</h2>
+            <form method="post" action="">
+                <div class="warning"><?php echo $insert_warning; ?></div>
+                <div>
+                    <h1>DID:</h1>
+                    <input type="text" name="did" required placeholder="DID">
+                </div>
+                <div>
+                    <h1> Email:</h1>
+                    <input type="email" name="email" required placeholder="you@gmail.com">
+                </div>
+                <div>
+                    <h1>Phone:</h1>
+                    <input type="text" name="phone" required placeholder="phone">
+                </div>
+                <div class="warning"><?php echo $warning_name; ?></div>
+                <div>
+                    <h1>Password:</h1>
+                    <input type="password" name="password" required placeholder="password">
+                </div>
+                <div>
+                    <input class="submit" type="submit" name="register" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
