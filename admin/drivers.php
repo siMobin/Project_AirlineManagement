@@ -133,7 +133,7 @@ if ($stmtHostesses === false) {
     </div>
     <!-- driver stats -->
     <div class="chart">
-        <div class="graph fba"> <?php include './driver_stats.php'; ?></div>
+        <div class="graph driver"> <?php include './driver_stats.php'; ?></div>
     </div>
     <script src="./driver_stats.js"></script>
 </body>

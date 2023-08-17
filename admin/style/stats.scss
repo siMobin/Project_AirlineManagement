@@ -73,11 +73,22 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 0px 100px rgba($blue_light, 0.4) inset;
   }
 
-  .fba {
+  .fba,
+  .driver {
     display: flex;
     justify-content: center;
     @include newMorph;
     min-width: calc(100vw - 5em) !important;
     min-height: 60vh !important;
+
+    .can {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      justify-content: center;
+      .block {
+        min-width: calc((100vw - 5em - 2em) / 2);
+      }
+    }
   }
 }
