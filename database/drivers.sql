@@ -1,4 +1,4 @@
-use airTest
+use PrivetJet
 
 
 CREATE TABLE driver_info (
