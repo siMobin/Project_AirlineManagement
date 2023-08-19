@@ -1,13 +1,8 @@
-<?php include './nav.php'; ?>
 <?php
-$serverName = "ACER_LAPTOP\SQLEXPRESS"; //DESKTOP-34HOJHD\SQLEXPRESS2,ACER_LAPTOP\SQLEXPRESS
-$connectionInfo = array("Database" => "airTest");
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-
-if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
-
+include './nav.php';
+require './conn.php'
+?>
+<?php
 if (isset($_POST['submit'])) {
     $destination = $_POST['destination'];
     $latitude = $_POST['latitude'];
