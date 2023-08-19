@@ -39,7 +39,7 @@ function logout()
         <div class="profile">
           <a href="./dashboard.php"><i class="fa-sharp fa-solid fa-user-secret"></i></a>
           <div class="dropdown">
-            <a href="#">Dashboard</a>
+            <a href="./dashboard.php">Dashboard</a>
             <a method="GET" href="?action=logout">Logout</a>
           </div>
         </div>

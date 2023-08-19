@@ -20,7 +20,7 @@ if (isLoggedIn()) {
     // Now, retrieve booking information based on the email
     $getBookingSql = "SELECT b.id, b.[from], b.[to], b.date, b.return_date, b.class, b.passengers, b.trip, b.cost
                      FROM bookings AS b
-                     WHERE b.email = ?";
+                     WHERE b.email = ? order by date";
     $getBookingParams = array($email);
 
     $getBookingStmt = sqlsrv_query($conn, $getBookingSql, $getBookingParams);
