@@ -63,4 +63,8 @@ $bg: #105274;
   &::placeholder {
     font-style: italic;
   }
+
+  th {
+    white-space: nowrap;
+  }
 }

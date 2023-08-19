@@ -1,8 +1,16 @@
 @import "./root";
 
+h2 {
+  margin-left: 0.7em;
+}
+hr {
+  margin: 3em;
+}
+
 table {
   border-collapse: collapse;
   margin: 1em;
+  min-width: calc(100vw - 2em);
 
   th {
     background-color: $blue_dark;

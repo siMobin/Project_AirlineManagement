@@ -10,7 +10,7 @@ CREATE TABLE driver_info (
 );
 
 CREATE TABLE flight_assign (
-    id INT PRIMARY KEY NOT NULL,--from bookings
+    id INT NOT NULL,--from bookings
     pilot INT NOT NULL,--did
     co_pilot INT,--did
     hostess INT NOT NULL,--did
@@ -18,6 +18,18 @@ CREATE TABLE flight_assign (
     co_hostess_secondary INT,--did 
     date DATE, NOT NULL,--from bookings
 );
+
+/*
+in flight_assign table,
+    pilot INT NOT NULL,
+    co_pilot INT,
+    hostess INT NOT NULL,
+    co_hostess INT,
+    co_hostess_secondary INT,
+    did is the same DID that in driver_info and driver table's "DID".
+    and "id" in flight assign table and the "id" of bookings table are same
+    
+    */
 
 -- driver login info
 create table driver(
@@ -29,7 +41,7 @@ create table driver(
 );
 
 CREATE TABLE driver_schedules (
-   id INT PRIMARY KEY NOT NULL,--from bookings
+   id INT NOT NULL,--from bookings
    date DATE, NOT NULL,--from bookings
    [from] NVARCHAR(255),
    [to] NVARCHAR(255),

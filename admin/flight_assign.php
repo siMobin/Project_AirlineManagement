@@ -5,6 +5,7 @@ require('./conn.php');
 $inserted = false;
 $error = false;
 $bookingForms = array(); // Initialize the array
+$sleep = 6; //driver unavailable days
 
 if ($conn === false) {
     $error = true;
@@ -28,10 +29,9 @@ if ($conn === false) {
         $inserted = true;
     }
 } else {
-    $currentdate = date('Y-m-d');
-
+    // $currentdate = date('Y-m-d');
     // Retrieve default booking information
-    $defaultQuery = "SELECT id, date FROM bookings WHERE date > '$currentdate' ORDER BY date ASC";
+    $defaultQuery = "SELECT id, date FROM bookings WHERE date >= CONVERT(date, GETDATE()) UNION ALL SELECT id, return_date as date FROM bookings WHERE return_date >= CONVERT(date, GETDATE()) ORDER BY date ASC";
     $defaultResult = sqlsrv_query($conn, $defaultQuery);
 
     // Check query execution result
@@ -62,8 +62,8 @@ if ($conn === false) {
             continue; // Skip this booking
         }
 
-        // Check if any assigned driver's flight date is within the next 15 days from this booking's date
-        $driverAvailabilityQuery = "SELECT DISTINCT pilot, co_pilot, hostess, co_hostess, co_hostess_secondary, MAX(date) AS last_flight_date FROM flight_assign WHERE DATEDIFF(DAY, '$defaultFlightDate', date) <= 15 GROUP BY pilot, co_pilot, hostess, co_hostess, co_hostess_secondary";
+        // Check if any assigned driver's flight date is within the next $sleep days from this booking's date
+        $driverAvailabilityQuery = "SELECT DISTINCT pilot, co_pilot, hostess, co_hostess, co_hostess_secondary, MAX(date) AS last_flight_date FROM flight_assign WHERE DATEDIFF(DAY, '$defaultFlightDate', date) <= $sleep GROUP BY pilot, co_pilot, hostess, co_hostess, co_hostess_secondary";
         $driverAvailabilityResult = sqlsrv_query($conn, $driverAvailabilityQuery);
 
         // Check query execution result
@@ -76,7 +76,7 @@ if ($conn === false) {
             $lastFlightDate = $driverRow['last_flight_date']->format('Y-m-d');
             $daysDiff = date_diff(new DateTime($lastFlightDate), new DateTime($defaultFlightDate))->days;
 
-            if ($daysDiff <= 15) {
+            if ($daysDiff <= $sleep) {
                 $unavailableDriverIds[] = $driverRow['pilot'];
                 $unavailableDriverIds[] = $driverRow['co_pilot'];
                 $unavailableDriverIds[] = $driverRow['hostess'];
