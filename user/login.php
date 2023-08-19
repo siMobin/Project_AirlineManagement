@@ -1,10 +1,10 @@
 <?php
-require_once('../conn.php');
+require_once('./conn.php');
 
 session_start(); //check if the user is already logged in
 if (isset($_SESSION["username"])) {
     // User is logged in, redirect to the home page
-    header("Location: ../home.php");
+    header("Location: ./home.php");
     exit;
 }
 
@@ -33,7 +33,7 @@ if (isset($_POST["login"])) {
             if (password_verify($password, $row["password"])) {
                 //set the session variable and redirect to the home page
                 $_SESSION["username"] = $username;
-                header("Location: ../home.php");
+                header("Location: ./home.php");
                 exit;
             } else {
                 echo "<p class='report'>Incorrect password.</p> ";
@@ -86,7 +86,7 @@ if (isset($_POST["register"])) {
 
             //set the session variable and redirect to the home page
             $_SESSION["username"] = $username;
-            header("Location: index.php");
+            header("Location: ./home.php");
             exit;
         }
     }
@@ -101,7 +101,7 @@ if (isset($_POST["register"])) {
 </head>
 
 <body>
-    <a href="../home.php"><i class="fa-solid fa-plane-lock"> private jet</i></a>
+    <a href="./home.php"><i class="fa-solid fa-plane-lock"> private jet</i></a>
     <div id="form">
         <div class="login">
             <h2>Login</h2>

@@ -1,6 +1,6 @@
 <?php
-include '../partials/nav.php';
-require_once('../conn.php');
+require_once './nav.php';
+require_once('./conn.php');
 
 // Retrieve user information from the database
 $userInfo = array();
@@ -49,7 +49,7 @@ if (isset($_POST['delete'])) {
 
     // Log out user and redirect to login page
     session_destroy();
-    header("Location: ../login/login.php");
+    header("Location: ./login.php");
     exit;
 }
 ?>

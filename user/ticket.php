@@ -1,12 +1,9 @@
 <?php
-$serverName = "ACER_LAPTOP\SQLEXPRESS";
-$connectionInfo = array("Database" => "airTest");
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+require_once './nav.php';
+require_once './conn.php';
+?>
 
-if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
-
+<?php
 // Function to calculate the distance between two latitude and longitude points using Haversine formula
 function calculateDistance($lat1, $lon1, $lat2, $lon2)
 {
@@ -115,7 +112,7 @@ if (isset($_POST['submit'])) {
                         $pdf = new FPDF('p', 'mm', 'A4');
                         $pdf->AddPage();
                         // ticket background
-                        $pdf->Image('../image/ticket.png', -10, -5, 230);
+                        $pdf->Image('./image/ticket.png', -10, -5, 230);
                         $pdf->SetFont('Arial', 'BU', 24);
                         $pdf->Cell(71, 10, '', 0, 0);
                         $pdf->Cell(59, 5, 'Privet Jet!', 0, 0);
@@ -227,7 +224,7 @@ if (isset($_POST['submit'])) {
                     $pdf = new FPDF('p', 'mm', 'A4');
                     $pdf->AddPage();
                     // ticket background
-                    $pdf->Image('../image/ticket.png', -10, -5, 230);
+                    $pdf->Image('./image/ticket.png', -10, -5, 230);
                     $pdf->SetFont('Arial', 'BU', 24);
                     $pdf->Cell(71, 10, '', 0, 0);
                     $pdf->Cell(59, 5, 'Privet Jet!', 0, 0);
@@ -331,8 +328,6 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 </head>
 
 <body>
-    <!-- include nav bar!!!!! -->
-    <?php include '../partials/nav.php'; ?>
     <header>
         <div>
             <h1>YOUR PRIVET AIRLINE!</h1>

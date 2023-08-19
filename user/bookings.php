@@ -1,6 +1,6 @@
 <?php
-include '../partials/nav.php';
-require_once('../conn.php');
+require_once './nav.php';
+require_once('./conn.php');
 
 if (isLoggedIn()) {
     $username = $_SESSION["username"]; // Assuming you store username in the session

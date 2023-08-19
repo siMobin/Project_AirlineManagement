@@ -1,6 +1,6 @@
-@import "../root/root";
+@import "./root";
 body {
-  background-image: linear-gradient(rgba($blue_dark, 1), rgba($blue_dark, 0.2), rgba($blue_light, 0)), url(./login.jpg);
+  background-image: linear-gradient(rgba($blue_dark, 1), rgba($blue_dark, 0.2), rgba($blue_light, 0)), url(./image/login.jpg);
   background-size: cover;
   background-position: bottom;
   width: 100vw;
