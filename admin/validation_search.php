@@ -31,7 +31,7 @@
     ?>
 
         <div class="search-results">
-            <h2>Search Results</h2>
+            <h2>Flight</h2>
             <table>
                 <tr>
                     <th>SID</th>
@@ -108,27 +108,32 @@
                     $paramsDriverInfo = array($flightId);
                     $stmtDriverInfo = sqlsrv_query($conn, $sqlDriverInfo, $paramsDriverInfo);
 
-                    echo "<tr>";
+                    echo "<tr class='driver_row'>";
                     echo "<th colspan='2'>Pilot</th>";
                     echo "<th colspan='2'>co-Pilot</th>";
                     echo "<th colspan='2'>Hostess</th>";
                     echo "<th colspan='2'>co-Hostess</th>";
-                    echo "<th colspan='4'>co-Hostess-secondary</th>";
+                    echo "<th colspan='2'>co-Hostess-secondary</th>";
                     echo "</tr>";
 
-                    echo "<tr>";
+                    echo "<tr class='driver-info-row'>";
+                    $driverRoles = array('Pilot', 'co-Pilot', 'Hostess', 'co-Hostess', 'co-Hostess-secondary');
+                    $driverNames = array_fill(0, 5, 'Not assigned yet'); // Initialize with default text
+
                     while ($driverInfo = sqlsrv_fetch_array($stmtDriverInfo, SQLSRV_FETCH_ASSOC)) {
-                        if ($driverInfo['driver_role'] == 'Pilot') {
-                            echo "<td colspan='2'>" . $driverInfo['driver_name'] . "</td>";
-                        } elseif ($driverInfo['driver_role'] == 'co-Pilot') {
-                            echo "<td colspan='2'>" . $driverInfo['driver_name'] . "</td>";
-                        } elseif ($driverInfo['driver_role'] == 'Hostess') {
-                            echo "<td colspan='2'>" . $driverInfo['driver_name'] . "</td>";
-                        } elseif ($driverInfo['driver_role'] == 'co-Hostess') {
-                            echo "<td colspan='4'>" . $driverInfo['driver_name'] . "</td>";
-                        } elseif ($driverInfo['driver_role'] == 'co-Hostess-secondary') {
-                            echo "<td colspan='2'>" . $driverInfo['driver_name'] . "</td>";
+                        $driverRole = $driverInfo['driver_role'];
+                        $driverName = $driverInfo['driver_name'];
+
+                        $index = array_search($driverRole, $driverRoles);
+                        if ($index !== false) {
+                            $driverNames[$index] = $driverName;
                         }
+                    }
+
+                    foreach ($driverNames as $name) {
+                        // Add a CSS class 'not-assigned' to cells with 'Not assigned yet'
+                        $cssClass = ($name === 'Not assigned yet') ? 'not-assigned' : '';
+                        echo "<td colspan='2' class='$cssClass driver_row'>" . $name . "</td>";
                     }
                     echo "</tr>";
                 }

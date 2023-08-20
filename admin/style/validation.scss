@@ -34,6 +34,15 @@ table {
       background-color: $blue_white;
     }
   }
+  .driver_row {
+    background-color: $blue_white !important;
+  }
+  .not-assigned {
+    color: gray;
+    font-weight: 400;
+    font-size: 80%;
+    font-style: italic;
+  }
 
   .cancel {
     color: red;
