@@ -20,7 +20,8 @@ CREATE TABLE locations (
     id INT PRIMARY KEY IDENTITY(1,1),
     destination VARCHAR(255) NOT NULL,
     latitude float(53) not null,
-    longitude float(53) not null
+    longitude float(53) not null,
+    hotel varchar(255)
 );
 
 -----temp value of locations(only for test!!!)

@@ -31,6 +31,16 @@ in flight_assign table,
     
     */
 
+create table hotel_assign(
+    id int,
+    did int,
+    roll varchar(255),
+    checkin_date date not null,
+    checkout_date date not null,
+    room_no varchar(20),
+    hotel varchar(255)
+);
+
 -- driver login info
 create table driver(
     DID INT PRIMARY KEY NOT NULL,--random 5/6/8 digit from driver_info
