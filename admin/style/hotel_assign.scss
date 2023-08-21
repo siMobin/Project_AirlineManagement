@@ -1,0 +1,41 @@
+@import "./root";
+
+.block {
+  margin: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em 4em;
+
+  .wrap {
+    padding: 1em;
+    border-radius: 20px;
+    border: 1px dotted $blue;
+    background-color: rgba($blue_white, 0.5);
+
+    form {
+      p {
+        font-style: italic;
+        font-weight: 600;
+      }
+      label {
+        font-weight: 500;
+      }
+
+      input {
+        background-color: $blue_light;
+      }
+      .box {
+        display: flex;
+        justify-content: space-between;
+        margin: 1em;
+      }
+
+      .submit {
+        padding: 0.3em 2em;
+        border-radius: 20px;
+        border: none;
+        margin-left: 1em;
+      }
+    }
+  }
+}
