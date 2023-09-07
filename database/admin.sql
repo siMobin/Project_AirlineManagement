@@ -21,7 +21,8 @@ CREATE TABLE locations (
     destination VARCHAR(255) NOT NULL,
     latitude float(53) not null,
     longitude float(53) not null,
-    hotel varchar(255)
+    hotel varchar(255),
+    hotline varchar(255)
 );
 
 -----temp value of locations(only for test!!!)
