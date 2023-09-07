@@ -1,0 +1,81 @@
+@import "./root";
+
+body {
+  background-color: rgba($blue_white, 0.5);
+}
+
+header {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em 3em;
+  background-image: linear-gradient(150deg, rgba(255, 255, 255, 0.8) 30%, rgba(0, 212, 255, 0) 100%), url(../image/city_pan.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    padding: 1.5em 0;
+  }
+
+  a {
+    background-color: $blue;
+    max-width: 100px;
+    padding: 0.8em;
+    text-decoration: none;
+    text-align: center;
+    color: $blue_white;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: none;
+      font-weight: 600;
+    }
+  }
+}
+
+.safety_title {
+  margin: 2em 0 1em 2.5em;
+}
+
+.safety {
+  display: flex;
+  margin: 1em 5em;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5em;
+
+  div {
+    max-width: 45vw;
+
+    img {
+      width: 100%;
+      height: 50vh;
+      object-fit: cover;
+      background-position: bottom;
+    }
+
+    h3 {
+      font-weight: 500;
+      margin: 0.5em 0;
+    }
+
+    p {
+      opacity: 0.7;
+      text-align: justify;
+    }
+
+    h3,
+    p {
+      color: $blue_dark;
+    }
+  }
+}
