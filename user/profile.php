@@ -95,6 +95,9 @@ if (isset($_POST['delete'])) {
             </form>
         </div>
     </div>
+    <?php
+    include './footer.html';
+    ?>
 </body>
 
 </html>

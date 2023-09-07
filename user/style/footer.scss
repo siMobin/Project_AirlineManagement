@@ -1,0 +1,64 @@
+@import "./root";
+
+footer {
+  padding: 1em 2em;
+  background-color: $blue_dark;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+
+      h3 {
+        color: $blue_white;
+      }
+
+      a {
+        text-decoration: none;
+        text-align: left;
+        color: $blue_white;
+        font-weight: 500;
+        opacity: 0.7;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      p {
+        font-weight: 500;
+        color: $blue_light;
+        line-height: 2em;
+
+        strong {
+          color: $blue_white;
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  .social {
+    padding: 1em;
+    display: flex;
+    justify-content: space-around;
+    a {
+      text-align: center;
+      color: $blue_white;
+      padding: 0.5em;
+      width: 30px;
+      aspect-ratio: 1;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: rgba($blue_white, 0.2);
+      }
+    }
+  }
+}
