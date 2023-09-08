@@ -1,5 +1,5 @@
 doc
-Documents
+Documents/*.*
 *.pdf
 *.docx
 tutorial
@@ -14,3 +14,4 @@ FAQ.*
 ticket.svg
 temp.*
 temp*.*
+!Project Proposal_DSA II.pdf
