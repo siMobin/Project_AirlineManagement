@@ -6,11 +6,11 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $roll = $_POST['roll'];
+    $role = $_POST['role'];
     $did = rand(10000, 99999);
 
-    $sql = "INSERT INTO driver_info (DID, name, email, phone, roll) VALUES (?, ?, ?, ?, ?)";
-    $params = array($did, $name, $email, $phone, $roll);
+    $sql = "INSERT INTO driver_info (DID, name, email, phone, role) VALUES (?, ?, ?, ?, ?)";
+    $params = array($did, $name, $email, $phone, $role);
     $stmt = sqlsrv_query($conn, $sql, $params);
 
     if ($stmt === false) {
@@ -35,7 +35,7 @@ if (isset($_POST['delete'])) {
 }
 
 // Get data for pilots
-$sqlPilots = "SELECT * FROM driver_info WHERE roll = 'pilot' ORDER BY name";
+$sqlPilots = "SELECT * FROM driver_info WHERE role = 'pilot' ORDER BY name";
 $stmtPilots = sqlsrv_query($conn, $sqlPilots);
 
 if ($stmtPilots === false) {
@@ -43,7 +43,7 @@ if ($stmtPilots === false) {
 }
 
 // Get data for hostesses
-$sqlHostesses = "SELECT * FROM driver_info WHERE roll = 'hostess' ORDER BY name";
+$sqlHostesses = "SELECT * FROM driver_info WHERE role = 'hostess' ORDER BY name";
 $stmtHostesses = sqlsrv_query($conn, $sqlHostesses);
 
 if ($stmtHostesses === false) {
@@ -70,8 +70,8 @@ if ($stmtHostesses === false) {
         <input type="email" id="email" name="email" required placeholder="Email Address">
         <label for="phone">Phone:</label>
         <input type="tel" id="phone" name="phone" required placeholder="Phone Number">
-        <label for="roll">Role:</label>
-        <select id="roll" name="roll" required>
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
             <option value="pilot">Pilot</option>
             <option value="hostess">Hostess</option>
         </select>
@@ -89,7 +89,7 @@ if ($stmtHostesses === false) {
                 <th>Delete</th>
             </tr>
             <?php while ($row = sqlsrv_fetch_array($stmtPilots, SQLSRV_FETCH_ASSOC)) { ?>
-                <tr>
+                <tr class="driver_link" data-did="<?php echo $row['DID']; ?>" onclick="editDriver(<?php echo $row['DID']; ?>)">
                     <td><?php echo $row['DID']; ?></td>
                     <td><?php echo $row['name']; ?></td>
                     <td><?php echo $row['email']; ?></td>
@@ -116,7 +116,7 @@ if ($stmtHostesses === false) {
                 <th>Delete</th>
             </tr>
             <?php while ($row = sqlsrv_fetch_array($stmtHostesses, SQLSRV_FETCH_ASSOC)) { ?>
-                <tr>
+                <tr class="driver_link" data-did="<?php echo $row['DID']; ?>" onclick="editDriver(<?php echo $row['DID']; ?>)">
                     <td><?php echo $row['DID']; ?></td>
                     <td><?php echo $row['name']; ?></td>
                     <td><?php echo $row['email']; ?></td>
@@ -136,6 +136,12 @@ if ($stmtHostesses === false) {
         <div class="graph driver"> <?php include './driver_stats.php'; ?></div>
     </div>
     <script src="./driver_stats.js"></script>
+    <script>
+        // Function to redirect to the edit page with the DID parameter
+        function editDriver(did) {
+            window.location.href = 'update_drivers.php?did=' + did;
+        }
+    </script>
 </body>
 
 </html>
