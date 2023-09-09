@@ -6,7 +6,7 @@ CREATE TABLE driver_info (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255),
-    roll VARCHAR(255) NOT NULL--pilot or hostess
+    role VARCHAR(255) NOT NULL--pilot or hostess
 );
 
 CREATE TABLE flight_assign (
@@ -34,7 +34,7 @@ in flight_assign table,
 create table hotel_assign(
     id int,
     did int,
-    roll varchar(255),
+    role varchar(255),
     checkin_date date not null,
     checkout_date date not null,
     room_no varchar(20),
@@ -46,7 +46,7 @@ create table driver(
     DID INT PRIMARY KEY NOT NULL,--random 5/6/8 digit from driver_info
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    phone INT NOT NULL,
+    phone VARCHAR(255) NOT NULL,
     password char(60) not null--set
 );
 
@@ -59,7 +59,7 @@ CREATE TABLE driver_schedules (
 
 
 -----temp value of driver(only for test!!!)
--- INSERT INTO driver_info (DID, name, email, phone, roll)
+-- INSERT INTO driver_info (DID, name, email, phone, role)
 -- VALUES
 --     (12345, 'John Doe', 'johndoe@example.com', 1234567890, 'pilot'),
 --     (23456, 'Jane Smith', 'janesmith@example.com', 2345678901, 'hostess'),
