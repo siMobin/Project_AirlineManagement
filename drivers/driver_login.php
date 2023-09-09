@@ -3,8 +3,9 @@ session_start(); // Start the session
 require('./conn.php');
 
 $insert_warning = "";
-$warning_name = ""; // Define warning variable for name not found
-$warning_pass = ""; // Define warning variable for invalid password
+$warning_name_login = ""; // Define warning variable for name not found in login
+$warning_pass = ""; // Define warning variable for invalid password in login
+$warning_name_register = ""; // Define warning variable for name not found in registration
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["register"])) {
@@ -14,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
         // Check if DID, email, or phone match in driver_info table
-        $query = "SELECT DID, name FROM driver_info WHERE DID = ? AND (email = ? OR phone = ?)";
+        $query = "SELECT DID, name FROM driver_info WHERE DID = ? AND email = ? AND phone = ?";
         $params = array($did, $email, $phone);
         $stmt = sqlsrv_query($conn, $query, $params);
 
@@ -32,13 +33,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = sqlsrv_query($conn, $query, $params);
 
             if ($stmt === false) {
-                // die(print_r(sqlsrv_errors(), true));
+                die(print_r(sqlsrv_errors(), true));
                 $insert_warning = "Registration failed!/Server error";
+            } else {
+                // Get the newly inserted driver's DID
+                $query = "SELECT DID FROM driver WHERE email = ?";
+                $params = array($email);
+                $stmt = sqlsrv_query($conn, $query, $params);
+
+                if ($stmt === false) {
+                    die(print_r(sqlsrv_errors(), true));
+                    $insert_warning = "Registration failed!/Server error";
+                }
+
+                $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+                $driver_id = $row["DID"];
+
+                // Set the session variable
+                $_SESSION["driver_id"] = $driver_id;
+
+                // Registration successful - redirect to the profile page
+                header("Location: ./profile.php");
+                exit(); // Make sure to exit after redirection
             }
-            echo "Registration successful!";
-            header("Location: ./profile.php");
         } else {
-            $warning_name = "DID/Email/Phone not found!";
+            $warning_name_register = "DID/Email/Phone not found!";
         }
     }
 
@@ -49,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
 
         // Check if email, phone, or DID exists in driver table
-        $query = "SELECT DID, password FROM driver WHERE DID = ? and email = ? OR phone = ?";
-        $params = array($did, $emailOrPhone, (int)$emailOrPhone);
+        $query = "SELECT DID, password FROM driver WHERE DID = ? AND (email = ? OR phone = ?)";
+        $params = array($did, $emailOrPhone, $emailOrPhone);
         $stmt = sqlsrv_query($conn, $query, $params);
 
         if ($stmt === false) {
@@ -70,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // echo "Login failed. DID/Email/Phone not found.";
-            $warning_name = "DID/Email/Phone not found!";
+            $warning_name_login = "DID/Email or Phone not match!";
         }
     }
 }
@@ -99,7 +118,7 @@ sqlsrv_close($conn);
                     <h1>Email/Phone:</h1>
                     <input type="text" name="email_phone" required placeholder="email or phone number">
                 </div>
-                <div class="warning"><?php echo $warning_name; ?></div>
+                <div class="warning"><?php echo $warning_name_login; ?></div>
                 <div>
                     <h1>Password:</h1>
                     <input type="password" name="password" required placeholder="password">
@@ -129,7 +148,7 @@ sqlsrv_close($conn);
                     <h1>Phone:</h1>
                     <input type="text" name="phone" required placeholder="phone">
                 </div>
-                <div class="warning"><?php echo $warning_name; ?></div>
+                <div class="warning"><?php echo $warning_name_register; ?></div>
                 <div>
                     <h1>Password:</h1>
                     <input type="password" name="password" required placeholder="password">
@@ -139,7 +158,6 @@ sqlsrv_close($conn);
                 </div>
             </form>
         </div>
-    </div>
     </div>
 </body>
 
