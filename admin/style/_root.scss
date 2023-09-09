@@ -7,29 +7,31 @@ $blue_light: #b4d4d8;
 $bg: #105274;
 
 //////////////scrollbar//////////
-// width
-::-webkit-scrollbar {
-  width: 5px;
-  transition-property: width;
-  transition-duration: 3s;
+html {
+  // width
+  ::-webkit-scrollbar {
+    width: 5px;
+    transition-property: width;
+    transition-duration: 3s;
 
-  &:hover {
-    width: 10px;
+    &:hover {
+      width: 10px;
+    }
   }
-}
 
-// Track
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px $blue;
-}
+  // Track
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $blue;
+  }
 
-//  Handle
-::-webkit-scrollbar-thumb {
-  background: $blue;
-  border-radius: 10px;
+  //  Handle
+  ::-webkit-scrollbar-thumb {
+    background: $blue;
+    border-radius: 10px;
 
-  &:hover {
-    background: $blue_dark;
+    &:hover {
+      background: $blue_dark;
+    }
   }
 }
 
