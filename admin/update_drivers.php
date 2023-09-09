@@ -184,10 +184,10 @@ if ($stmtFlightHotel === false) {
         </tr>
         <?php while ($assignment = sqlsrv_fetch_array($stmtFlightHotel, SQLSRV_FETCH_ASSOC)) { ?>
             <tr>
-                <td><?php echo $assignment['flight_id'] ? $assignment['flight_id'] : 'N/A'; ?></td>
-                <td><?php echo $assignment['flight_date'] ? $assignment['flight_date']->format('Y-m-d') : 'N/A'; ?></td>
-                <td><?php echo $assignment['flight_from'] ? $assignment['flight_from'] : 'N/A'; ?></td>
-                <td><?php echo $assignment['flight_to'] ? $assignment['flight_to'] : 'N/A'; ?></td>
+                <td><?php echo $assignment['flight_id'] ? $assignment['flight_id'] : '<span class="null">Error!</span>'; ?></td>
+                <td><?php echo $assignment['flight_date'] ? $assignment['flight_date']->format('Y-m-d') : '<span class="null">Error!</span>'; ?></td>
+                <td><?php echo $assignment['flight_from'] ? $assignment['flight_from'] : '<span class="null">Error!</span>'; ?></td>
+                <td><?php echo $assignment['flight_to'] ? $assignment['flight_to'] : '<span class="null">Error!</span>'; ?></td>
                 <td>
                     <?php
                     // Determine the role based on assignment columns
@@ -203,12 +203,12 @@ if ($stmtFlightHotel === false) {
                     } elseif ($assignment['co_hostess_secondary_role'] == $didToUpdate) {
                         $role = 'Co-Hostess (Secondary)';
                     }
-                    echo $role ? $role : 'N/A';
+                    echo $role ? $role : '<span class="null">Error!</span>';
                     ?>
                 </td>
-                <td><?php echo $assignment['hotel_name'] ? $assignment['hotel_name'] : 'N/A'; ?></td>
-                <td><?php echo $assignment['hotel_room_no'] ? $assignment['hotel_room_no'] : 'N/A'; ?></td>
-                <td><?php echo $assignment['hotel_checkout_date'] ? $assignment['hotel_checkout_date']->format('Y-m-d') : 'N/A'; ?></td>
+                <td><?php echo $assignment['hotel_name'] ? $assignment['hotel_name'] : '<span class="null">Not Assigned Yet</span>'; ?></td>
+                <td><?php echo $assignment['hotel_room_no'] ? $assignment['hotel_room_no'] : '<span class="null">Not Assigned Yet</span>'; ?></td>
+                <td><?php echo $assignment['hotel_checkout_date'] ? $assignment['hotel_checkout_date']->format('Y-m-d') : '<span class="null">Not Assigned Yet</span>'; ?></td>
             </tr>
         <?php } ?>
     </table>

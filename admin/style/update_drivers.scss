@@ -57,6 +57,14 @@ table {
     &:nth-child(odd) {
       background-color: $blue_white;
     }
+
+    td {
+      .null {
+        font-style: italic;
+        font-size: 80%;
+        color: red;
+      }
+    }
   }
 
   th,
