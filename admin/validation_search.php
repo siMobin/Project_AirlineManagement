@@ -88,7 +88,7 @@
 
                     // Retrieve and display driver information from flight_assign
                     $flightId = $row['id'];
-                    $sqlDriverInfo = "SELECT di.roll AS driver_roll, 
+                    $sqlDriverInfo = "SELECT di.role AS driver_role, 
                                              CASE
                                                  WHEN fa.pilot = di.DID THEN 'Pilot'
                                                  WHEN fa.co_pilot = di.DID THEN 'co-Pilot'

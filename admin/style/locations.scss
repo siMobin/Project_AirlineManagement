@@ -22,6 +22,17 @@ table {
     text-align: center;
   }
 
+  &:has(.driver_link) td {
+    color: black;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      color: adjust-hue($blue, 30deg);
+    }
+  }
+
   tr {
     font-size: 14px;
     padding: 0.5em 1em;

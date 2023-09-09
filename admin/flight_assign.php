@@ -87,9 +87,9 @@ if ($conn === false) {
 
         // Retrieve pilot and hostess data for dropdown menus, excluding unavailable drivers
         if (!empty($unavailableDriverIds)) {
-            $driverQuery = "SELECT DID, name, roll FROM driver_info WHERE DID NOT IN (" . implode(",", $unavailableDriverIds) . ")";
+            $driverQuery = "SELECT DID, name, role FROM driver_info WHERE DID NOT IN (" . implode(",", $unavailableDriverIds) . ")";
         } else {
-            $driverQuery = "SELECT DID, name, roll FROM driver_info";
+            $driverQuery = "SELECT DID, name, role FROM driver_info";
         }
 
         $driverResult = sqlsrv_query($conn, $driverQuery);
@@ -105,13 +105,13 @@ if ($conn === false) {
         while ($driverRow = sqlsrv_fetch_array($driverResult, SQLSRV_FETCH_ASSOC)) {
             $driverId = $driverRow['DID'];
             $driverName = $driverRow['name'];
-            $driverRoll = $driverRow['roll'];
+            $driverrole = $driverRow['role'];
 
             $option = "<option value='$driverId'>$driverName</option>";
 
-            if ($driverRoll === 'pilot') {
+            if ($driverrole === 'pilot') {
                 $pilotOptions .= $option;
-            } elseif ($driverRoll === 'hostess') {
+            } elseif ($driverrole === 'hostess') {
                 $hostessOptions .= $option;
             }
         }

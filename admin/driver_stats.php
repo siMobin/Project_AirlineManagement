@@ -6,7 +6,7 @@ $pilotSql = "SELECT D.DID, D.name,
            SUM(CASE WHEN F.co_pilot = D.DID THEN 1 ELSE 0 END) AS co_pilot_count
     FROM driver_info D
     LEFT JOIN flight_assign F ON D.DID = F.pilot OR D.DID = F.co_pilot
-    WHERE D.roll IN ('pilot', 'co-pilot')
+    WHERE D.role IN ('pilot', 'co-pilot')
     GROUP BY D.DID, D.name";
 
 $pilotData = array();
@@ -35,7 +35,7 @@ $hostessSql = "SELECT D.DID, D.name,
            SUM(CASE WHEN F.co_hostess_secondary = D.DID THEN 1 ELSE 0 END) AS co_hostess_secondary_count
     FROM driver_info D
     LEFT JOIN flight_assign F ON D.DID = F.hostess OR D.DID = F.co_hostess OR D.DID = F.co_hostess_secondary
-    WHERE D.roll IN ('hostess', 'co-hostess', 'co-hostess-secondary')
+    WHERE D.role IN ('hostess', 'co-hostess', 'co-hostess-secondary')
     GROUP BY D.DID, D.name";
 
 $hostessData = array();

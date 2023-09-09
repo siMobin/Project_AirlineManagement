@@ -56,7 +56,7 @@
 
                     foreach ($roles as $role) {
                         $room_no = $_POST["{$role}_room_$id"];
-                        $sql = "INSERT INTO hotel_assign (id, did, roll, checkin_date, checkout_date, room_no, hotel)
+                        $sql = "INSERT INTO hotel_assign (id, did, role, checkin_date, checkout_date, room_no, hotel)
                             VALUES (?, ?, ?, ?, ?, ?, ?)";
                         $params = array(
                             $id,
