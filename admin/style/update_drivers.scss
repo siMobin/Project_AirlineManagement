@@ -1,0 +1,67 @@
+@import "./root";
+
+hr {
+  margin: 2em;
+}
+
+.name {
+  margin: 1em 1.7em;
+  font-weight: 600;
+  .driver_name {
+    color: $blue;
+  }
+}
+
+.about {
+  padding: 0 2em;
+  p {
+    margin: 0.5em 0;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+form {
+  div {
+    margin: 0.5em 2em;
+
+    label {
+      font-weight: 700;
+    }
+
+    input:not(.submit) {
+      background-color: $blue_light;
+      border-radius: 5px;
+      margin-right: 2em;
+      padding-right: 3em;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0.5em 2em;
+  width: calc(100vw - 4em);
+
+  th {
+    background-color: $blue_dark;
+    color: $blue_white;
+  }
+
+  tr {
+    text-align: center;
+    font-size: 15px;
+
+    &:nth-child(odd) {
+      background-color: $blue_white;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.3em 0.5em;
+    border: 1px solid $blue_light;
+  }
+}

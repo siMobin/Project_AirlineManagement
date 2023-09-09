@@ -1,6 +1,6 @@
 <?php
-include './nav.php';
-require './conn.php';
+require_once './nav.php';
+require_once './conn.php';
 
 // Check if a DID is provided in the URL
 if (isset($_GET['did'])) {
@@ -18,10 +18,13 @@ if (isset($_GET['did'])) {
     $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
     if (!$row) {
-        // Handle the case where the DID is not found
+        // Handle the case where the DID is found but not match
         echo "Driver not found.";
         exit;
     }
+    // Handle the case where the DID is not found
+} else {
+    header("Location: ./drivers.php");
 }
 
 // Check if the update form is submitted
@@ -70,6 +73,7 @@ if (isset($_POST['update'])) {
 }
 
 $sqlFlightHotelAssignments = "SELECT 
+    fa.id AS flight_id, 
     fa.date AS flight_date, 
     b.[from] AS flight_from, 
     b.[to] AS flight_to, 
@@ -87,6 +91,7 @@ LEFT JOIN bookings AS b ON fa.id = b.id
 WHERE (ha.did = ?)
 UNION
 SELECT 
+    fa.id AS flight_id, 
     fa.date AS flight_date, 
     b.[from] AS flight_from, 
     b.[to] AS flight_to, 
@@ -124,7 +129,6 @@ if ($stmtFlightHotel === false) {
 <html lang="en">
 
 <head>
-    <!-- Include necessary styles and scripts here -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/update_drivers.css">
@@ -132,34 +136,44 @@ if ($stmtFlightHotel === false) {
 </head>
 
 <body>
-    <h1>Edit Driver Information</h1>
+    <h3 class="name">About <span class="driver_name"><?php echo $row['name']; ?></span>
+    </h3>
     <!-- Display DID and Name -->
-    <div>
-        <p>DID: <?php echo $row['DID']; ?></p>
-        <p>Name: <?php echo $row['name']; ?></p>
-        <p>Role: <?php echo $row['role']; ?></p>
+    <div class="about">
+        <p><span>DID: </span><?php echo $row['DID']; ?></p>
+        <p><span>Phone: </span><?php echo $row['phone']; ?></p>
+        <p><span>E-mail: </span><?php echo $row['email']; ?></p>
+        <p><span>Role: </span><?php echo $row['role']; ?></p>
     </div>
+    <hr>
     <form method="post">
-        <input type="hidden" name="did" value="<?php echo $row['DID']; ?>">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required placeholder="Full Name" value="<?php echo $row['name']; ?>">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required placeholder="Email Address" value="<?php echo $row['email']; ?>">
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required placeholder="Phone Number" value="<?php echo $row['phone']; ?>">
-        <label for="role">Role:</label>
-        <select id="role" name="role" required>
-            <option value="pilot" <?php if ($row['role'] === 'pilot') echo 'selected'; ?>>Pilot</option>
-            <option value="hostess" <?php if ($row['role'] === 'hostess') echo 'selected'; ?>>Hostess</option>
-        </select>
+        <h3 class="name">Update <span class="driver_name"><?php echo $row['name']; ?></span>'s info</h3>
+        <div>
+            <input type="hidden" name="did" value="<?php echo $row['DID']; ?>">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Full Name" value="<?php echo $row['name']; ?>">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Email Address" value="<?php echo $row['email']; ?>">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Phone Number" value="<?php echo $row['phone']; ?>">
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="pilot" <?php if ($row['role'] === 'pilot') echo 'selected'; ?>>Pilot</option>
+                <option value="hostess" <?php if ($row['role'] === 'hostess') echo 'selected'; ?>>Hostess</option>
+            </select>
 
-        <input class="submit" type="submit" name="update" value="Update">
+            <input class="submit" type="submit" name="update" value="Update">
+        </div>
     </form>
 
+    <hr>
     <!-- Display Flight and Hotel Assignment Statistics -->
-    <h2>Flight and Hotel Assignment Statistics</h2>
+    <h3 class="name">Flight and Hotel Assignment Statistics of <span class="driver_name"><?php echo $row['name']; ?></span>
+    </h3>
+
     <table>
         <tr>
+            <th>Flight ID</th>
             <th>Flight Date</th>
             <th>Flight From</th>
             <th>Flight To</th>
@@ -170,6 +184,7 @@ if ($stmtFlightHotel === false) {
         </tr>
         <?php while ($assignment = sqlsrv_fetch_array($stmtFlightHotel, SQLSRV_FETCH_ASSOC)) { ?>
             <tr>
+                <td><?php echo $assignment['flight_id'] ? $assignment['flight_id'] : 'N/A'; ?></td>
                 <td><?php echo $assignment['flight_date'] ? $assignment['flight_date']->format('Y-m-d') : 'N/A'; ?></td>
                 <td><?php echo $assignment['flight_from'] ? $assignment['flight_from'] : 'N/A'; ?></td>
                 <td><?php echo $assignment['flight_to'] ? $assignment['flight_to'] : 'N/A'; ?></td>
