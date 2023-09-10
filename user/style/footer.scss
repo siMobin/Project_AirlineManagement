@@ -4,17 +4,35 @@ footer {
   padding: 1em 2em;
   background-color: $blue_dark;
 
+  @include max-width(768px) {
+    padding: 1em 1em;
+  }
+
   .wrapper {
     display: flex;
     justify-content: space-around;
+
+    @include max-width(768px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1em;
+    }
 
     .container {
       display: flex;
       flex-direction: column;
       gap: 0.7em;
 
+      @include max-width(768px) {
+        gap: 0em;
+      }
+
       h3 {
         color: $blue_white;
+
+        @include max-width(768px) {
+          font-size: 80%;
+        }
       }
 
       a {
@@ -23,6 +41,10 @@ footer {
         color: $blue_white;
         opacity: 0.7;
         transition: opacity 0.3s ease-in-out;
+
+        @include max-width(768px) {
+          font-size: 70%;
+        }
 
         &:hover {
           opacity: 1;
@@ -38,6 +60,11 @@ footer {
           color: $blue_white;
           font-style: italic;
           font-weight: 500;
+        }
+
+        @include max-width(768px) {
+          font-size: 70%;
+          line-height: 1.5em;
         }
       }
     }
@@ -56,6 +83,10 @@ footer {
       gap: 3em;
       justify-content: space-around;
 
+      @include max-width(768px) {
+        gap: 1em;
+      }
+
       a {
         text-align: center;
         color: $blue_white;
@@ -64,6 +95,10 @@ footer {
         aspect-ratio: 1;
         border-radius: 5px;
         transition: background-color 0.3s ease-in-out;
+        @include max-width(768px) {
+          width: 24px;
+          font-size: 70%;
+        }
 
         &:hover {
           background-color: rgba($blue_white, 0.2);
@@ -75,6 +110,10 @@ footer {
       display: flex;
       flex-direction: column;
       font-size: 10px;
+
+      @include max-width(768px) {
+        font-size: 8px;
+      }
 
       a {
         text-decoration: none;

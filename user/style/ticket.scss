@@ -1,11 +1,23 @@
 @import "./root";
 
+@mixin newMorph {
+  box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.1) inset, -5px 5px 10px rgba(255, 255, 255, 0.8) inset;
+}
+
 body {
   background-image: linear-gradient(120deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url(../image/a.jpg);
   background-size: cover;
   width: 100vw;
   height: 100vh;
   background-position: bottom;
+
+  @include max-width(768px) {
+    background-image: linear-gradient(to top, white, rgba(0, 0, 0, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), url(../image/a.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100vw 90vh;
+    background-attachment: fixed;
+  }
 }
 
 header {
@@ -13,26 +25,52 @@ header {
   display: flex;
   align-items: center;
 
+  @include max-width(768px) {
+    height: 40vh;
+  }
+
   h1 {
     color: $blue_white;
     margin: 0.5em;
     font-weight: 800;
     font-size: 50px;
+
+    @include max-width(768px) {
+      font-size: 30px;
+    }
   }
 
   p {
+    text-align: justify;
     margin: 0 1.5em;
     max-width: 33vw;
+
+    @include max-width(768px) {
+      max-width: 100%;
+    }
   }
 }
 
 form {
+  @media (max-width: 768px) {
+    padding: 1.5em 0;
+    margin: 2em;
+    background-color: rgba($blue_white, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
   .destination {
     display: flex;
     gap: 1em;
     justify-content: center;
     border-radius: 10px;
     border-radius: 10px;
+
+    @include max-width(768px) {
+      flex-wrap: wrap;
+    }
+
     select,
     input {
       // max-width: 200px;
@@ -47,9 +85,15 @@ form {
         border: none;
       }
     }
+
     .date {
       display: flex;
       gap: 1em;
+
+      @include max-width(768px) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
   }
 
@@ -65,6 +109,11 @@ form {
     border-radius: 10px;
     // align-items: center;
     color: $blue_dark;
+
+    @include max-width(768px) {
+      min-width: 70vw;
+      @include newMorph;
+    }
   }
 
   label {
@@ -78,20 +127,34 @@ form {
     align-items: center;
     // background-color: rgba($blue_light, 0.5);
 
+    @include max-width(768px) {
+      flex-wrap: wrap;
+      gap: 0em;
+    }
+
     .box_2 {
       margin: 1em;
       display: flex;
       flex-direction: column;
       min-height: 80px;
-      max-width: 200px;
-      min-width: 100px;
+      width: calc(60vw / 4);
       color: $blue_dark;
       justify-content: center;
       background-color: rgba($blue_light, 0.5);
       border-radius: 5px;
       padding: 0.5em 1em;
+
+      @media (max-width: 768px) {
+        min-width: 70vw;
+        margin: 0.5em;
+        @include newMorph;
+      }
+
       input,
       select {
+        border: none;
+        outline: none;
+        background-color: transparent;
         &:focus,
         &:active {
           border: none;
@@ -100,14 +163,16 @@ form {
     }
   }
 
-  .submit {
-    position: absolute;
-    bottom: 2em;
-    right: 50%;
-    width: 140px;
-    padding: 0.5em 1em;
-    outline: none;
-    border: none;
-    border-radius: 5px;
+  #submit {
+    display: flex;
+    justify-content: center;
+    .submit {
+      width: 140px;
+      margin: 0 0 2em 0;
+      padding: 0.5em 1em;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+    }
   }
 }

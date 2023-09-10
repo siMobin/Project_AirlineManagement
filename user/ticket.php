@@ -365,7 +365,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                     </div>
                     <div class="travel_date box">
                         <label for="date">Date:</label>
-                        <input type="date" id="date" name="date">
+                        <input type="date" id="date" name="date" required>
                     </div>
 
                     <!-- Add return date input -->
@@ -388,23 +388,24 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 
                 <div class="box_2">
                     <label for="passengers">Passengers:</label>
-                    <input type="number" id="passengers" name="passengers" required>
+                    <input type="number" id="passengers" name="passengers" required placeholder="maximum 12 passenger per flight">
                 </div>
 
                 <!-- Add email and phone inputs -->
                 <div class="box_2">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required placeholder="you@email.com">
                 </div>
 
                 <div class="box_2">
                     <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" required placeholder="Mobile no.">
                 </div>
             </div>
         </div>
-
-        <input class="submit" type="submit" name="submit" value="Submit">
+        <div id="submit">
+            <input class="submit" type="submit" name="submit" value="Submit">
+        </div>
     </form>
 
     <script>

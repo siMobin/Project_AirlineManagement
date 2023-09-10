@@ -9,6 +9,12 @@ $blue_light: #b4d4d8;
 // $blue:;
 $bg: #105274;
 
+@mixin max_width($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+} //responsive
+
 @import "./nav";
 
 * {

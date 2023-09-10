@@ -39,11 +39,31 @@ header {
       box-shadow: none;
       font-weight: 600;
     }
+
+    @include max-width(768px) {
+      font-size: 80%;
+      max-width: 80px;
+    }
+  }
+
+  @include max-width(768px) {
+    h1 {
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 70%;
+    }
   }
 }
 
 .safety_title {
   margin: 2em 0 1em 2.5em;
+
+  @include max-width(768px) {
+    margin: 0.5em;
+    font-size: 20px;
+  }
 }
 
 .safety {
@@ -52,22 +72,39 @@ header {
   margin: 1em 5em;
   gap: 5em;
 
+  @include max-width(768px) {
+    margin: 0.5em;
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+
   div {
     img {
       width: 100%;
       height: 50vh;
       object-fit: cover;
       background-position: bottom;
+
+      @include max-width(768px) {
+        height: 40vh;
+      }
     }
 
     h3 {
       font-weight: 500;
       margin: 0.5em 0;
+      @include max-width(768px) {
+        font-size: 90%;
+      }
     }
 
     p {
       opacity: 0.7;
       text-align: justify;
+
+      @include max-width(768px) {
+        font-size: 70%;
+      }
     }
 
     h3,
