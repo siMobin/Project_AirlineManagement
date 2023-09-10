@@ -1,6 +1,14 @@
 <?php
 require_once('./conn.php');
 
+// variable for handel error
+$report_empty_login_field = "";
+$report_email_taken = "";
+$report_user_name = "";
+$report_user_name_taken = "";
+$report_password = "";
+$report_empty = "";
+
 session_start(); //check if the user is already logged in
 if (isset($_SESSION["username"])) {
     // User is logged in, redirect to the home page
@@ -16,7 +24,7 @@ if (isset($_POST["login"])) {
 
     //validate the input
     if (empty($username) || empty($password)) {
-        echo "<p class='report'>Please enter both username and password.</p> ";
+        $report_empty_login_field = "<p class='report'>Please enter both username and password.</p>";
     } else {
         //prepare and execute the sql query to check if the user exists in the database
         $sql = "SELECT * FROM users WHERE username = ?";
@@ -36,10 +44,10 @@ if (isset($_POST["login"])) {
                 header("Location: ./home.php");
                 exit;
             } else {
-                echo "<p class='report'>Incorrect password.</p> ";
+                $report_password = "<p class='report'>Incorrect password.</p>";
             }
         } else {
-            echo "<p class='report'>User not found.</p> ";
+            $report_user_name = "<p class='report'>User not found</p>";
         }
     }
 }
@@ -53,7 +61,7 @@ if (isset($_POST["register"])) {
 
     //validate the input
     if (empty($username) || empty($email) || empty($password)) {
-        echo "<p class='report'>Please enter all the required fields.</p> ";
+        $report_empty = "<p class='report'>Please enter email, username and password.</p>";
     } else {
         //prepare and execute the sql query to check if the username or email already exists in the database
         $sql = "SELECT * FROM users WHERE username = ? OR email = ?";
@@ -68,9 +76,9 @@ if (isset($_POST["register"])) {
         if ($row) {
             //check which field is already taken
             if ($row["username"] == $username) {
-                echo "<p class='report'>Username already taken.</p> ";
+                $report_user_name_taken = "<p class='report'>Username already taken.</p>";
             } else {
-                echo "<p class='report'>Email already taken.</p> ";
+                $report_email_taken = "<p class='report'>Email already taken.</p>";
             }
         } else {
             //hash the password
@@ -108,23 +116,31 @@ if (isset($_POST["register"])) {
             <hr>
             <form method="post" action="login.php">
                 <h6>Username:</h6>
-                <input type="text" name="username" placeholder="User Name">
+                <input type="text" name="username" required placeholder="User Name">
+                <?php echo $report_user_name; ?>
                 <h6>Password:</h6>
-                <input type="password" name="password" placeholder="password"><br>
+                <input type="password" name="password" required placeholder="password">
+                <?php echo $report_password; ?>
+                <?php echo $report_empty_login_field; ?>
+                <br>
                 <input class="submit" type="submit" name="login" value="Login">
             </form>
         </div>
-        <hr>
+        <hr class="center_hr">
         <div class="reg">
             <h2>Register</h2>
             <hr>
             <form method="post" action="login.php">
                 <h6>Username:</h6>
-                <input type="text" name="username" placeholder="User Name"><br />
+                <input type="text" name="username" placeholder="User Name">
+                <?php echo $report_user_name_taken; ?>
                 <h6> Email:</h6>
                 <input type="email" name="email" placeholder="you@gmail.com"><br />
+                <?php echo $report_email_taken; ?>
                 <h6>Password:</h6>
-                <input type="password" name="password" placeholder="password"><br />
+                <input type="password" name="password" placeholder="password">
+                <?php echo $report_empty; ?>
+                <br>
                 <input class="submit" type="submit" name="register" value="Register">
             </form>
         </div>

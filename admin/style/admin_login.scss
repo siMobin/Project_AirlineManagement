@@ -31,12 +31,9 @@ form {
   .submit {
     border-radius: 30px;
   }
-}
 
-.warning {
-  color: red;
-  position: absolute;
-  bottom: 42%;
-  right: 44.2%;
-  font-size: 12px;
+  .warning {
+    color: red;
+    font-size: 10px;
+  }
 }

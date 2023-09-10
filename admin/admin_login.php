@@ -1,6 +1,8 @@
 <?php
 require('./conn.php');
 
+$warning = "";
+
 // Check if the form has been submitted
 if (isset($_POST['submit'])) {
     // Get the submitted username and password
@@ -23,7 +25,8 @@ if (isset($_POST['submit'])) {
         exit;
     } else {
         // Login failed, display an error message
-        echo "<p class='warning'>Invalid username or password</p>";
+        $warning = "<p class='warning'>Invalid username or password</p>";
+        // echo "<p class='warning'>Invalid username or password</p>";
     }
 }
 ?>
@@ -46,7 +49,7 @@ if (isset($_POST['submit'])) {
         <br>
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" placeholder="password" required>
-        <br>
+        <?php echo $warning; ?><br>
         <input class="submit" type="submit" name="submit" value="Login">
     </form>
 </body>
