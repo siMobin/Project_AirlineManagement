@@ -67,6 +67,19 @@ footer {
           line-height: 1.5em;
         }
       }
+
+      .warning {
+        color: red;
+        font-size: 10px;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        font-style: italic;
+      }
+
+      .default_location:not(:last-child) {
+        border-bottom: 1px solid rgba($blue_white, 0.2);
+      }
     }
   }
 

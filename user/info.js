@@ -43,20 +43,60 @@ function showPosition(position) {
 
 // Function to handle geolocation errors
 function showError(error) {
+  var locationInfoElement = document.getElementById("locationInfo");
+  var errorMessage = "";
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      document.getElementById("locationInfo").innerHTML = "User denied the request for Geolocation.";
+      errorMessage = "<div class='warning'>You denied the request for Geolocation!</div>";
       break;
     case error.POSITION_UNAVAILABLE:
-      document.getElementById("locationInfo").innerHTML = "Location information is unavailable.";
+      errorMessage = "<div class='warning'>Location information is unavailable!</div>";
       break;
     case error.TIMEOUT:
-      document.getElementById("locationInfo").innerHTML = "The request to get user location timed out.";
+      errorMessage = "<div class='warning'>The request to get user location timed out!</div>";
       break;
     case error.UNKNOWN_ERROR:
-      document.getElementById("locationInfo").innerHTML = "An unknown error occurred.";
+      errorMessage = "<div class='warning'>An unknown error occurred!</div>";
       break;
   }
+
+  // load data from json
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        var locations = JSON.parse(xhr.responseText);
+        var maxLocations = 3; // Maximum number of locations to display
+
+        // Generate random indices
+        var rand = [];
+        while (rand.length < maxLocations && rand.length < locations.length) {
+          var randomIndex = Math.floor(Math.random() * locations.length);
+          if (rand.indexOf(randomIndex) === -1) {
+            rand.push(randomIndex);
+          }
+        }
+
+        if (rand.length > 0) {
+          // errorMessage += "  Here are some random default locations:";
+          for (var i = 0; i < rand.length; i++) {
+            var index = rand[i];
+            errorMessage += "<p class='default_location'><strong>Office: </strong> " + locations[index].street_address + ", ";
+            errorMessage += locations[index].city + ", ";
+            errorMessage += locations[index].state + " - ";
+            errorMessage += locations[index].zip + ", ";
+            errorMessage += locations[index].country;
+            errorMessage += "<br><strong>Customer Support:</strong> " + locations[index].hotline + "</p>";
+          }
+        }
+        locationInfoElement.innerHTML = errorMessage;
+      } else {
+        locationInfoElement.innerHTML = errorMessage;
+      }
+    }
+  };
+  xhr.open("GET", "default_location.json", true);
+  xhr.send();
 }
 
 // Trigger location retrieval when the page loads

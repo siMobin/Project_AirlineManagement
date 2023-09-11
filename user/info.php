@@ -27,7 +27,7 @@ $response = "";
 
 while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
     $response .= "<p><strong>Nearest Airport:</strong> " . $row["destination"] . "<br>";
-    $response .= "<strong>Distance:</strong> " . $row["distance"] . " KM<br>";
+    $response .= "<strong>Distance:</strong> " . number_format($row["distance"], 2) . " KM<br>";
     $response .= "<strong>Lorem Ipsum Hotel:</strong> " . $row["hotel"] . "<br>";
     $response .= "<strong>Customer Support:</strong> " . $row["hotline"] . "</p>";
 }
@@ -35,3 +35,7 @@ sqlsrv_close($conn);
 
 // Return the HTML response
 echo $response;
+?>
+
+<!-- insert json data -->
+<script src="default_locations.json"></script>
