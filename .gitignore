@@ -10,8 +10,10 @@ FAQ.*
 *.txt
 *.css
 *.css.map
+!swiper.css
 .vscode
 ticket.svg
 temp.*
 temp*.*
+temp/*
 !Project Proposal_DSA II.pdf

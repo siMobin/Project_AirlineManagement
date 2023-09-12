@@ -20,6 +20,9 @@ sqlsrv_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style/home.css">
+    <script type="module" crossorigin src="./swiper_slider.js"></script>
+    <link rel="modulepreload" href="./swiper_vendor.js" />
+    <link rel="stylesheet" href="./style/swiper.css" />
 </head>
 
 <body>
@@ -41,6 +44,11 @@ sqlsrv_close($conn);
             <h3>Setting <?php echo $TotalAirport; ?> airport in motion</h3>
             <p>With Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, odit? Velit sed cumque odit dolorum, quibusdam placeat debitis sint assumenda voluptas eos perferendis quos deleniti?</p>
         </div>
+    </div>
+    <div class="sliders" style="height: 600px;">
+        <?php
+        include './slider.php';
+        ?>
     </div>
     <?php
     include './footer.html';
