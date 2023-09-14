@@ -45,17 +45,21 @@
       font-size: 16px;
       text-decoration: none;
       display: block;
-      padding: 15px 20px;
+      padding: 1em 0em 1em 1em;
 
       &:hover {
         background: rgba($blue_white, 0.3);
         transition: all 0.3s ease;
       }
 
+      i:not(.dropdown) {
+        padding-right: 0.5em;
+      }
+
       .dropdown {
         position: absolute;
-        right: 0;
-        margin: 20px;
+        right: 0.5em;
+        margin-left: 1em;
         transition: all 0.3s ease;
       }
     }

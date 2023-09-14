@@ -16,15 +16,15 @@
         <!-- The navigation links -->
 
         <div class="item">
-            <a href="./validation.php" <?php if (basename($_SERVER['PHP_SELF']) == 'validation.php') echo 'class="active"'; ?>>Validation</a>
+            <a href="./validation.php" <?php if (basename($_SERVER['PHP_SELF']) == 'validation.php') echo 'class="active"'; ?>><i class="fas fa-check-circle"></i>Validation</a>
         </div>
 
         <div class="item">
-            <a href="./schedule.php" <?php if (basename($_SERVER['PHP_SELF']) == 'schedule.php') echo 'class="active"'; ?>>Flight Schedule</a>
+            <a href="./schedule.php" <?php if (basename($_SERVER['PHP_SELF']) == 'schedule.php') echo 'class="active"'; ?>><i class="fas fa-clock"></i>Flight Schedule</a>
         </div>
 
         <div class="item"> <!-- assignment -->
-            <a class="sub-btn">Assignment<i class="fas fa-angle-right dropdown"></i></a>
+            <a class="sub-btn"><i class="fas fa-plane"></i>Assignment<i class="fas fa-angle-right dropdown"></i></a>
             <div class="sub-menu">
                 <a href="./flight_assign.php" <?php if (basename($_SERVER['PHP_SELF']) == 'flight_assign.php') echo 'class="active"'; ?>>Flight Assignment</a>
                 <a href="./hotel_assign.php" <?php if (basename($_SERVER['PHP_SELF']) == 'hotel_assign.php') echo 'class="active"'; ?>>Hotel Assignment</a>
@@ -32,7 +32,7 @@
         </div> <!-- end of assignment -->
 
         <div class="item"> <!-- driver and airport -->
-            <a class="sub-btn">Driver and airport<i class="fas fa-angle-right dropdown"></i></a>
+            <a class="sub-btn"><i class="fas fa-map-marker-alt"></i>Driver and airport<i class="fas fa-angle-right dropdown"></i></a>
             <div class="sub-menu">
                 <a href="./drivers.php" <?php if (basename($_SERVER['PHP_SELF']) == 'drivers.php') echo 'class="active"'; ?>>Drivers</a>
                 <a href="./locations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'locations.php') echo 'class="active"'; ?>>Airports</a>
@@ -40,7 +40,7 @@
         </div> <!-- end of driver and airport -->
 
         <div class="item">
-            <a href="./stats.php" <?php if (basename($_SERVER['PHP_SELF']) == 'stats.php') echo 'class="active"'; ?>>Stats</a>
+            <a href="./stats.php" <?php if (basename($_SERVER['PHP_SELF']) == 'stats.php') echo 'class="active"'; ?>><i class="fas fa-chart-bar"></i>Stats</a>
         </div>
 
 
