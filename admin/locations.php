@@ -1,6 +1,7 @@
 <?php
 include './nav.php';
-require './conn.php'
+include './side_bar.php';
+require './conn.php';
 ?>
 <?php
 if (isset($_POST['submit'])) {

@@ -1,4 +1,5 @@
 <?php include './nav.php'; ?>
+<?php include './side_bar.php' ?>
 <?php
 require('./conn.php');
 

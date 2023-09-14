@@ -1,5 +1,6 @@
 <?php
 require_once './nav.php';
+include './side_bar.php';
 require_once './conn.php';
 
 // Check if a DID is provided in the URL

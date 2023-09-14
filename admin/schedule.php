@@ -1,5 +1,6 @@
 <?php include './nav.php'; ?>
 <?php require_once('./conn.php'); ?>
+<?php include './side_bar.php' ?>
 <?php
 $sql = "SELECT id, [from], [to], date, return_date, class, passengers, email, phone, trip, cost FROM bookings WHERE date >= CONVERT(date, GETDATE()) UNION ALL SELECT id, [from], [to], return_date as date, return_date, class, passengers, email, phone, trip, cost FROM bookings WHERE return_date >= CONVERT(date, GETDATE()) ORDER BY date";
 $stmt = sqlsrv_query($conn, $sql);

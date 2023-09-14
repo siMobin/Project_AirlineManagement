@@ -1,5 +1,6 @@
 <?php require_once('./nav.php'); ?>
 <?php require_once('./conn.php'); ?>
+<?php include './side_bar.php' ?>
 <?php require_once('./validation_search.php'); ?>
 
 <!DOCTYPE html>
@@ -133,6 +134,7 @@
                 ?>
             </table>
         </div>
+
     <?php
     }
     ?>
@@ -168,6 +170,8 @@
         }
     }
     ?>
+
+
 </body>
 
 </html>

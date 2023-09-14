@@ -1,4 +1,5 @@
 <?php require_once('./nav.php'); ?>
+<?php include './side_bar.php' ?>
 <?php require('./conn.php'); ?>
 <?php
 // Query to get total number of bookings

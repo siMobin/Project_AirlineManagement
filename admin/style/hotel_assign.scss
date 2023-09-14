@@ -1,10 +1,10 @@
 @import "./root";
 
 .block {
-  margin: 2em;
+  margin: 0.5em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2em 4em;
+  gap: 2em;
 
   .wrap {
     padding: 1em;

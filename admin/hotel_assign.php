@@ -1,4 +1,5 @@
 <?php require_once('./nav.php'); ?>
+<?php include './side_bar.php' ?>
 <?php require_once('./conn.php'); ?>
 <!DOCTYPE html>
 <html lang="en">

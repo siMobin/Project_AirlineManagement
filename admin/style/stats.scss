@@ -15,7 +15,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2em;
-  margin: 2em 0;
+  margin: 2em 0.5em;
+  max-width: calc(100vw - 20vw);
 
   .blocks {
     @include newMorph;
@@ -60,17 +61,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 2em;
 
   .graph {
-    width: 45vw;
+    width: calc((100% - 8vw) / 2);
     max-width: calc(50vw - 1em);
     max-height: 50vh;
-    margin: 1em;
+    margin: 1em 0;
     padding: 0.5em;
     // background-color: $blue_white;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 0px 100px rgba($blue_light, 0.4) inset;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2), 0px 0px 100px rgba($blue_light, 0.2) inset, -2px 2px 10px rgba(0, 0, 0, 0.1), inset 5px -5px 10px rgb(255, 255, 255), inset 2px -2px 10px rgba(0, 0, 0, 0.15);
   }
 
   .fba,
@@ -78,7 +78,7 @@ body {
     display: flex;
     justify-content: center;
     @include newMorph;
-    min-width: calc(100vw - 5em) !important;
+    min-width: calc(100vw - 18vw) !important;
     min-height: 60vh !important;
 
     .can {
@@ -87,7 +87,7 @@ body {
       align-items: center;
       justify-content: center;
       .block {
-        min-width: calc((100vw - 5em - 2em) / 2);
+        min-width: calc((100vw - 18vw - 3em) / 2);
       }
     }
   }

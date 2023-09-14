@@ -9,8 +9,8 @@ hr {
 
 table {
   border-collapse: collapse;
-  margin: 1em;
-  min-width: calc(100vw - 2em);
+  margin: 0.5em;
+  // min-width: calc(100vw - 2em);
 
   th {
     background-color: $blue_dark;

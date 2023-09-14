@@ -42,8 +42,8 @@ form {
 
 table {
   border-collapse: collapse;
-  margin: 0.5em 2em;
-  width: calc(100vw - 4em);
+  margin: 0.5em 0.5em;
+  // width: calc(100vw - 4em);
 
   th {
     background-color: $blue_dark;
