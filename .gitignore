@@ -1,3 +1,4 @@
+node
 doc
 Documents/*.*
 *.pdf
@@ -11,8 +12,10 @@ FAQ.*
 *.css
 *.css.map
 !swiper.css
+!mobile.css
 .vscode
 ticket.svg
+temp
 temp.*
 temp*.*
 temp/*

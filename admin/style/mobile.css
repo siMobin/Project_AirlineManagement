@@ -1,0 +1,29 @@
+.logo,
+a {
+  color: #1d92ccd1;
+  padding: 1em 0;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+.text {
+  text-align: justify;
+}
+
+.text a {
+  font-size: 12px;
+}
+
+button {
+  padding: 0.2em 0.5em;
+  min-width: 60px;
+  font-weight: bold;
+  margin: 0.3em 0;
+  border: 1px solid #1d92ccd1;
+}
+
+button i {
+  padding: 0 0.3em;
+}

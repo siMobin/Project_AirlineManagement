@@ -1,3 +1,5 @@
+<?php require_once('./mobile.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

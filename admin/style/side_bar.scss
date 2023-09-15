@@ -2,11 +2,11 @@
 
 .sidebar {
   z-index: 9999;
-  max-height: 100vh;
+  height: 100vh;
   padding-bottom: 3.5em;
   overflow-y: scroll;
   width: 15vw;
-  max-width: 250px;
+  min-width: 220px;
   position: fixed;
   inset: 0;
   background-color: $blue;

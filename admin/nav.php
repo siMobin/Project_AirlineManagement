@@ -19,6 +19,8 @@ function logout()
     header("Location: ./admin_login.php");
     exit;
 }
+
+require_once('./mobile.php');
 ?>
 
 <!DOCTYPE html>
