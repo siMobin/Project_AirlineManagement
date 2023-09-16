@@ -29,7 +29,7 @@ sqlsrv_close($conn);
 ?>
 
 <script type="module" crossorigin src="./swiper_slider.js"></script>
-<link rel="modulepreload" href="./swiper_vendor.js" />
+<!-- <link rel="modulepreload" href="./swiper_vendor.js" /> -->
 <link rel="stylesheet" href="./style/swiper.css" />
 
 <div id="app">

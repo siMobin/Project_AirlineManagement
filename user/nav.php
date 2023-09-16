@@ -30,7 +30,7 @@ function logout()
 
 <body>
   <nav>
-    <div class="logo"> <a href="./home.php"><i class="fa-solid fa-plane-lock"> private jet</i></a></div>
+    <div class="logo"> <a href="./home?="><i class="fa-solid fa-plane-lock"> private jet</i></a></div>
     <div class="link">
       <a href="#">About</a>
       <a href="#">Contact</a>

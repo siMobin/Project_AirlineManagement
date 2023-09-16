@@ -1,5 +1,10 @@
 <?php
 session_start(); // Start the session
+if (isset($_SESSION["driver_id"])) {
+    // driver is logged in, redirect to the home page
+    header("Location: ./profile.php?");
+    exit;
+}
 require('./conn.php');
 
 $insert_warning = "";
@@ -53,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["driver_id"] = $driver_id;
 
                 // Registration successful - redirect to the profile page
-                header("Location: ./profile.php");
+                header("Location: ./profile.php?$email");
                 exit(); // Make sure to exit after redirection
             }
         } else {
@@ -81,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $row["password"])) {
                 // Successful login, set driver ID in session and redirect to profile.php
                 $_SESSION["driver_id"] = $row["DID"];
-                header("Location: ./profile.php");
+                header("Location: ./profile.php?$emailOrPhone");
                 exit();
             } else {
                 // echo "Login failed. Invalid password.";

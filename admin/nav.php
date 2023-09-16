@@ -1,9 +1,10 @@
 <?php
 session_start();
 // Check if the admin_name session variable is set
+$username = $_SESSION["username"];
 if (!isset($_SESSION['username'])) {
     // The admin is not logged in, redirect to the login page
-    header("Location: ./admin_login.php");
+    header("Location: ./?login");
     exit;
 }
 
@@ -16,7 +17,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 function logout()
 {
     session_destroy();
-    header("Location: ./admin_login.php");
+    header("Location: ./?login");
     exit;
 }
 

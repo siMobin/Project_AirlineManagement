@@ -1,6 +1,15 @@
 <?php
 require('./conn.php');
 
+session_start();
+// Check if the admin_name session variable is set
+// $username = $_SESSION["username"];
+if (isset($_SESSION['username'])) {
+    // The admin is not logged in, redirect to the login page
+    header("Location: ./schedule.php");
+    exit;
+}
+
 $warning = "";
 
 // Check if the form has been submitted

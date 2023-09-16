@@ -3,7 +3,7 @@ session_start();
 // Check if the admin_name session variable is set
 if (!isset($_SESSION['driver_id'])) {
     // The admin is not logged in, redirect to the login page
-    header("Location: ./driver_login.php");
+    header("Location: ./?login");
     exit;
 } else {
     $excluded_pages = array('profile.php'); //add all page to redirect profile!!!
@@ -21,7 +21,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 function logout()
 {
     session_destroy();
-    header("Location: ./driver_login.php");
+    header("Location: ./?login");
     exit;
 }
 ?>
