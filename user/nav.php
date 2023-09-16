@@ -13,8 +13,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 // Logout the user
 function logout()
 {
-  session_destroy();
-  header("Location: ./login.php");
+  // session_destroy();
+  unset($_SESSION['username']);
+  header("Location: ./logout=!?");
   exit;
 }
 ?>

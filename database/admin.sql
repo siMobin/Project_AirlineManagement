@@ -5,11 +5,11 @@ use PrivetJet;
 -- Create the admin_login table
 CREATE TABLE admin_login (
     id INT PRIMARY KEY IDENTITY(1,1),
-    username NVARCHAR(255) NOT NULL,
+    admin_name NVARCHAR(255) NOT NULL,
     password NVARCHAR(255) NOT NULL
 );
 
--- Insert a row with the default username and password
+-- Insert a row with the default admin_name and password
 INSERT INTO admin_login (username, password)
 VALUES ('ADMIN', 'airAdmin');
 
