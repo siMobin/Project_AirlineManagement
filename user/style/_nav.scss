@@ -1,5 +1,3 @@
-// @import "./root";
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -26,7 +24,26 @@ nav {
     }
   }
 
-  .login,
+  .login {
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid $blue_white;
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+    text-decoration: none;
+    color: $blue_white;
+    transition: background-color 0.3s;
+
+    &:hover {
+      color: $blue;
+      background-color: $blue_white;
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+
   .profile {
     position: relative;
     margin-left: 1em;

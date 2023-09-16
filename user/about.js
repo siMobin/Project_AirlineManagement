@@ -1,11 +1,11 @@
-const pdfFile = "../Documents/Project Proposal_DSA II.pdf"; // file
+const pdfFile = "./Project_Proposal.pdf"; // file
 
 function loadAndDisplayPDF(pdfFile) {
   const pdfContainer = document.getElementById("pdf-container");
 
   // Initialize PDF.js
   pdfjsLib.getDocument(pdfFile).promise.then(function (pdf) {
-    for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+    for (let pageNumber = 0; pageNumber <= pdf.numPages; pageNumber++) {
       pdf.getPage(pageNumber).then(function (page) {
         const viewport = page.getViewport({ scale: 1 });
         const canvas = document.createElement("canvas");

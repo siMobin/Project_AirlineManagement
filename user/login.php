@@ -10,8 +10,8 @@ $report_password = "";
 $report_empty = "";
 
 session_start(); //check if the user is already logged in
-$username = $_SESSION["username"];
 if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
     // User is logged in, redirect to the home page
     header("Location: ./home?$username");
     exit;

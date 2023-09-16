@@ -44,8 +44,8 @@ function logout()
           </div>
         </div>
       <?php else : ?>
-        <div class="login">
-          <a href="./login.php">Login</a>
+        <div>
+          <a class="login" href="./login.php">Login</a>
         </div>
       <?php endif; ?>
     </div>
