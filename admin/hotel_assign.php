@@ -179,25 +179,30 @@
                     <p>Airport Location: $to_location</p>
                     <p>Check-in Date: {$booking['date']}</p>";
 
+            // hotel name
+            echo "<div class='box'>
+                    <label for='hotel_name_$id'>Hotel Name:</label>
+                    <input type='text' name='hotel_name_$id' value='$hotel_name' required>
+            </div>";
+
+            // checkout date
+            echo "<div class='box'>
+                    <label for='checkout_date_$id'>Checkout Date:</label>
+                    <input type='date' name='checkout_date_$id' required>
+            </div>";
+
+            // room number
             $roles = array("pilot", "co_pilot", "hostess", "co_hostess", "co_hostess_secondary");
             foreach ($roles as $role) {
-                echo "<div class='box'>";
-                echo "<label for='{$role}_room_$id'>Room Number for $role:</label>
-                  <input type='text' name='{$role}_room_$id' placeholder='room no. for $role'>";
-                echo "</div>";
+                echo "<div class='box'>
+                        <label for='{$role}_room_$id'>Room Number for $role:</label>
+                        <input type='text' name='{$role}_room_$id' placeholder='room no. for $role'>
+                </div>";
             }
 
-            echo "<div class='box'>";
-            echo "<label for='hotel_name_$id'>Hotel Name:</label>
-             <input type='text' name='hotel_name_$id' value='$hotel_name' required>
-            </div>
-            <div class='box'>";
-            echo "<label for='checkout_date_$id'>Checkout Date:</label>
-              <input type='date' name='checkout_date_$id' required>
-            </div>
-            <button class='submit' type='submit' name='assign_$id'>Assign</button>
-            </form>";
-            echo "</div>";
+            // submit button
+            echo "<button class='submit' type='submit' name='assign_$id'>Assign</button>";
+            echo "</form></div>";
         }
         sqlsrv_close($conn);
         ?>
