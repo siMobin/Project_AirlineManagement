@@ -1,35 +1,40 @@
 <?php
+include './nav.php';
+
 // for better performance Check if the user is logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: ./login.php");
-    // exit;
-}
-
-$excluded_pages = array('bookings.php', 'profile.php'); //add all dashboard page!!!
-if (!in_array(basename($_SERVER['PHP_SELF']), $excluded_pages)) {
-    header("Location: ./bookings.php");
+    header("Location: ./login.php?=");
+    exit;
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="./style/dashboard.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/dashboard.css">
-</head>
+<div class="radio-tabs">
+    <input class="state" type="radio" title="Input1" name="input-state" id="radio1" checked />
+    <input class="state" type="radio" title="Input2" name="input-state" id="radio2" />
 
-<body>
-    <div class="content">
+    <div class="tabs">
+        <label for="radio1" id="first-tab" class="tab">
+            <div class="tab-label">Bookings</div>
+        </label>
 
-        <!-- The navigation links -->
-        <ul>
-            <li><a href="./bookings.php" <?php if (basename($_SERVER['PHP_SELF']) == 'bookings.php') echo 'class="active"'; ?>><i class="fa-solid fa-plane-circle-check fa-sm"></i></a></li>
-            <li><a href="./profile.php" <?php if (basename($_SERVER['PHP_SELF']) == 'profile.php') echo 'class="active"'; ?>><i class="fa-solid fa-user-secret"></i></a></li>
-        </ul>
-        <a class="logout" method="GET" href="?action=logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <label for="radio2" id="second-tab" class="tab">
+            <div class="tab-label">Profile</div>
+        </label>
     </div>
-</body>
 
-</html>
+    <!-- content! -->
+    <div class="panels">
+        <div id="first-panel" class="panel active animated slideInRight">
+            <?php include './bookings.php'; ?>
+        </div>
+
+        <div id="second-panel" class="panel animated slideInRight">
+            <?php require './conn.php'; ?>
+            <?php include './profile.php'; ?>
+        </div>
+    </div>
+</div>
+
+<?php include './footer.html'; ?>

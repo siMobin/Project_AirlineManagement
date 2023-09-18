@@ -18,6 +18,8 @@ function logout()
   header("Location: ./logout=!?");
   exit;
 }
+
+$username = $_SESSION["username"] ?? "UserNotFound";
 ?>
 
 <!DOCTYPE html>
@@ -26,21 +28,21 @@ function logout()
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Privet Jet</title>
 </head>
 
 <body>
   <nav>
-    <div class="logo"> <a href="./=?"><i class="fa-solid fa-plane-lock"> private jet</i></a></div>
+    <div class="logo"> <?php echo "<a href='./=$username'><i class='fa-solid fa-plane-lock'> private jet</i></a>"; ?></div>
     <div class="link">
       <a href="#">About</a>
       <a href="#">Contact</a>
 
       <?php if (isLoggedIn()) : ?>
         <div class="profile">
-          <a href="./dashboard.php"><i class="fa-sharp fa-solid fa-user-secret"></i></a>
+          <?php echo "<a href='./dashboard.php?=$username'><i class='fa-sharp fa-solid fa-user-secret'></i></a>"; ?>
           <div class="dropdown">
-            <a href="./dashboard.php">Dashboard</a>
+            <?php echo "<a href='./dashboard.php?=$username'>Dashboard</a>"; ?>
             <a method="GET" href="?action=logout">Logout</a>
           </div>
         </div>

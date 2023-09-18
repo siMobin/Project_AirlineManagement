@@ -1,5 +1,4 @@
 <?php
-require_once './nav.php';
 require_once('./conn.php');
 
 // Retrieve user information from the database
@@ -95,9 +94,6 @@ if (isset($_POST['delete'])) {
             </form>
         </div>
     </div>
-    <?php
-    include './footer.html';
-    ?>
 </body>
 
 </html>

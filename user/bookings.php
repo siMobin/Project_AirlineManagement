@@ -1,5 +1,4 @@
 <?php
-require_once './nav.php';
 require_once('./conn.php');
 
 if (isLoggedIn()) {
@@ -86,9 +85,6 @@ if (isLoggedIn()) {
         sqlsrv_close($conn);
         ?>
     </div>
-    <?php
-    include './footer.html';
-    ?>
 </body>
 
 </html>

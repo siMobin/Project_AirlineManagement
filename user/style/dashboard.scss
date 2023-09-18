@@ -1,42 +1,70 @@
 @import "./root";
-.dashboard {
-  display: flex;
-}
 
-.content {
+.radio-tabs {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 1em 0.5em;
-  min-width: 50px;
-  max-width: 50px;
-  background-color: $blue_dark;
+  margin-bottom: 1em;
 
-  ul {
-    li {
-      list-style-type: none;
-      text-align: center;
-      padding: 1em 0;
+  .state {
+    position: absolute;
+    left: -9999999px;
+  }
 
-      a {
-        text-align: center;
-        text-decoration: none;
-        color: $blue_white;
-        font-size: 20px;
-      }
+  .panels {
+    align-self: flex-end;
+    margin-left: 100px;
 
-      .active {
-        font-size: 40px;
-        color: $blue;
-        border-radius: 5px;
-      }
+    .panel {
+      display: none;
+      margin-left: 100px;
     }
   }
+}
 
-  .logout {
-    font-size: 30px;
-    color: $blue_white;
+.tabs {
+  position: absolute;
+  top: 3.5em;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+  width: 130px;
+  border-right: 1px solid $blue;
+  font-weight: 600;
+  text-align: center;
+
+  .tab {
+    flex: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    padding: 1em 0;
+    cursor: pointer;
+    border-bottom: 1px solid $blue;
+    border-radius: 0 0 10px 0;
+
+    &:hover {
+      color: $blue_white;
+      background-color: rgba($blue_dark, 0.8);
+    }
   }
+}
+
+#radio1:focus ~ .tabs #first-tab,
+#radio2:focus ~ .tabs #second-tab {
+  background-color: $blue;
+  color: $blue_white;
+}
+
+#radio1:checked ~ .tabs #first-tab,
+#radio2:checked ~ .tabs #second-tab {
+  background-color: $blue;
+  color: $blue_white;
+  cursor: default;
+}
+
+#radio1:checked ~ .panels #first-panel,
+#radio2:checked ~ .panels #second-panel {
+  display: block;
 }
