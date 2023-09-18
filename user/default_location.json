@@ -1,47 +1,46 @@
 [
-    {
-      "street_address": "123 Main Street",
-      "city": "Frisco",
-      "state": "Texas",
-      "zip": "75034",
-      "country": "USA",
-      "hotline": "469-268-5594"
-    },
+  {
+    "street_address": "123 Main Street",
+    "city": "Frisco",
+    "state": "Texas",
+    "zip": "75034",
+    "country": "USA",
+    "hotline": "469-268-5594"
+  },
 
-    {
-      "street_address": "456 Elm Street",
-      "city": "London",
-      "state": "England",
-      "zip": "SW1A 1AA",
-      "country": "UK",
-      "hotline": "+44 20 1234 5678"
-    },
+  {
+    "street_address": "456 Elm Street",
+    "city": "London",
+    "state": "England",
+    "zip": "SW1A 1AA",
+    "country": "UK",
+    "hotline": "+44 20 1234 5678"
+  },
 
-    {
-      "street_address": "789 Oak Avenue",
-      "city": "Paris",
-      "state": "Île-de-France",
-      "zip": "75001",
-      "country": "France",
-      "hotline": "+33 1 2345 6789"
-    },
+  {
+    "street_address": "789 Oak Avenue",
+    "city": "Paris",
+    "state": "Île-de-France",
+    "zip": "75001",
+    "country": "France",
+    "hotline": "+33 1 2345 6789"
+  },
 
-    {
-      "street_address": "1011 Maple Road",
-      "city": "Sydney",
-      "state": "New South Wales",
-      "zip": "2000",
-      "country": "Australia",
-      "hotline": "+61 2 9876 5432"
-    },
+  {
+    "street_address": "1011 Maple Road",
+    "city": "Sydney",
+    "state": "New South Wales",
+    "zip": "2000",
+    "country": "Australia",
+    "hotline": "+61 2 9876 5432"
+  },
 
-    {
-      "street_address": "1314 Cherry Lane",
-      "city": "Tokyo",
-      "state": "Tokyo",
-      "zip": "100-0001",
-      "country": "Japan",
-      "hotline": "+81 3 1234 5678"
-    }
-  ]
-  
+  {
+    "street_address": "1314 Cherry Lane",
+    "city": "Tokyo",
+    "state": "Tokyo",
+    "zip": "100-0001",
+    "country": "Japan",
+    "hotline": "+81 3 1234 5678"
+  }
+]

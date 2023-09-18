@@ -122,65 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ppc
-document.addEventListener("DOMContentLoaded", function () {
-  var ctx = document.getElementById("ppc").getContext("2d");
-  var lineChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: months,
-      datasets: [
-        {
-          label: "Economy",
-          data: economyData,
-          borderColor: "#A52A2A",
-          lineTension: 0.2,
-          borderWidth: 2,
-          // fill: true,
-        },
-        {
-          label: "Business",
-          data: businessData,
-          borderColor: "#008000",
-          lineTension: 0.2,
-          borderWidth: 2,
-          // fill: true,
-        },
-        {
-          label: "First",
-          data: firstData,
-          borderColor: "#1d92ccd1",
-          lineTension: 0.2,
-          // backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderWidth: 2,
-          // fill: true,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      bezierCurve: false,
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true,
-            text: "Month",
-          },
-        },
-        y: {
-          display: true,
-          title: {
-            display: true,
-            text: "Passengers",
-          },
-        },
-      },
-    },
-  });
-});
-
-//fba
+/////////////////ppc\\\\\\\\\\\\
+//asshole\\
+////////////////fba\\\\\\\\\\\\\
 document.addEventListener("DOMContentLoaded", function () {
   var ctx = document.getElementById("fba").getContext("2d");
   var myChart = new Chart(ctx, {

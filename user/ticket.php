@@ -376,13 +376,33 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                 </div>
             </div>
 
+            <?php
+            $jsonFilePath = './classes.json';
+            // Check if the JSON file exists
+            if (file_exists($jsonFilePath)) {
+                // Read the JSON file contents
+                $jsonData = file_get_contents($jsonFilePath);
+                // Decode the JSON data into a PHP array
+                $classesData = json_decode($jsonData, true);
+
+                // Check if decoding was successful
+                if (is_array($classesData) && isset($classesData['classes'])) {
+                    $classes = $classesData['classes'];
+                } else {
+                    $classes = array("server error"); // Default to an empty array if JSON decoding failed
+                }
+            } else {
+                $classes = array("server error"); // Default to an empty array if the JSON file doesn't exist
+            }
+            ?>
+
             <div class="more_info">
                 <div class="quality box_2">
                     <label for="class">Class:</label>
                     <select id="class" name="class">
-                        <option value="economy">Economy</option>
-                        <option value="business">Business</option>
-                        <option value="first">First</option>
+                        <?php foreach ($classes as $class) : ?>
+                            <option value="<?php echo htmlspecialchars(strtolower($class)); ?>"><?php echo htmlspecialchars($class); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 

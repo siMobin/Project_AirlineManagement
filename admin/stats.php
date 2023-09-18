@@ -168,11 +168,11 @@ sqlsrv_close($conn);
     <div class="chart">
         <div class="graph"><?php include './fpm.php'; ?></div>
 
+        <div class="graph"><?php include './ppc.php'; ?></div>
+
         <div class="graph"><?php include './ppm.php'; ?></div>
 
         <div class="graph"><?php include './cpm.php'; ?></div>
-
-        <div class="graph"><?php include './ppc.php'; ?></div>
 
         <div class="graph fba"><?php include './fba.php'; ?></div>
     </div>
