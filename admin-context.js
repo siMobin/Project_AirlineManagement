@@ -16,7 +16,7 @@
 function showContextMenu(event) {
   event.preventDefault();
 
-  // Check if a context menu is already displayed and remove it
+  // Check if a context menu is already displayed then remove it
   hideContextMenu();
 
   // Create the context menu element
@@ -31,9 +31,24 @@ function showContextMenu(event) {
   contextMenu.style.top = `${event.pageY}px`; // mouse position of pageY
   contextMenu.style.zIndex = "100000";
   contextMenu.style.minWidth = "260px";
+  contextMenu.style.fontSize = "14px";
+  contextMenu.style.fontWeight = "400";
+  contextMenu.style.padding = "0.5em 0";
 
   // Define the menu items & link
   const menuItems = [
+    // Add reload, cut, copy, paste, and select all functionality
+    { text: "🔄 Reload", shortcut: "Ctrl+R", action: () => reloadPage() },
+    { gap: "" },
+    { text: "✂️ Cut", shortcut: "Ctrl+X", action: () => cutText() },
+    { gap: "" },
+    { text: "📋 Copy", shortcut: "Ctrl+C", action: () => copyText() },
+    { gap: "" },
+    { text: "📄 Paste", shortcut: "Ctrl+V", action: () => pasteText() },
+    { gap: "" },
+    { text: "📑 Select All", shortcut: "Ctrl+A", action: () => selectAllText() },
+    { line: "" },
+    { gap: "" },
     // link list with keyboard shortcuts
     { text: "Validation", link: "http://localhost/admin/validation.php", shortcut: "Shift+V" },
     { gap: "" },
@@ -61,6 +76,58 @@ function showContextMenu(event) {
     { gap: "" },
     { text: "Help", link: "https://github.com/nativefier/nativefier", shortcut: " ", target: "_blank" },
   ];
+
+  ////////////////////// ctrl functions//////////////////
+  //   reload || Cut || Copy || Past || Select All   ///
+  /////////////////////////////////////////////////////
+
+  // Function to reload the current page
+  function reloadPage() {
+    location.reload();
+  }
+
+  // Function to cut selected text to the clipboard
+  function cutText() {
+    copyText(); // Copy the selected text
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      range.deleteContents();
+    }
+  }
+
+  // Function to copy selected text to the clipboard
+  function copyText() {
+    const selectedText = window.getSelection().toString();
+    if (selectedText) {
+      navigator.clipboard.writeText(selectedText);
+    }
+  }
+
+  // Function to paste text from the clipboard
+  function pasteText() {
+    navigator.clipboard.readText().then(text => {
+      const selection = window.getSelection();
+      if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(document.createTextNode(text));
+      }
+    });
+  }
+
+  // Function to select all text on the page
+  function selectAllText() {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(document.body);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
+  ////////////////////////////////////////
+  //         Shift functions           //
+  //////////////////////////////////////
 
   menuItems.forEach((menuItem, index) => {
     if (menuItem.line === "") {
@@ -95,9 +162,18 @@ function showContextMenu(event) {
         menuItemElement.appendChild(shortcut);
         // styles for the shortcut
         shortcut.style.float = "right";
-        shortcut.style.fontSize = "12px"; // Adjust the font size as needed
+        shortcut.style.fontSize = "10px"; // Adjust the font size as needed
         shortcut.style.color = "#777"; // Adjust the color as needed
         shortcut.style.margin = "2px 10px"; // Add some spacing between text and shortcut
+      }
+
+      // Add click event for custom actions
+      if (menuItem.action) {
+        menuItemElement.addEventListener("click", e => {
+          e.preventDefault();
+          menuItem.action();
+          hideContextMenu();
+        });
       }
 
       // Add hover effect
