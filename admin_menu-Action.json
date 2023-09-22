@@ -1,0 +1,62 @@
+{
+  "menuLabel": "&Actions",
+  "bookmarks": [
+    {
+      "title": "Validation",
+      "url": "http://localhost/admin/validation.php",
+      "type": "link",
+      "shortcut": "Shift+V"
+    },
+    {
+      "title": "Schedule",
+      "url": "http://localhost/admin/schedule.php",
+      "type": "link",
+      "shortcut": "Shift+S"
+    },
+    {
+      "title": "Flight assign",
+      "url": "http://localhost/admin/flight_assign.php",
+      "type": "link",
+      "shortcut": "Shift+F"
+    },
+    {
+      "title": "Hotel assign",
+      "url": "http://localhost/admin/hotel_assign.php",
+      "type": "link",
+      "shortcut": "Shift+H"
+    },
+    {
+      "title": "Drivers",
+      "url": "http://localhost/admin/drivers.php",
+      "type": "link",
+      "shortcut": "Shift+D"
+    },
+    {
+      "title": "Airports",
+      "url": "http://localhost/admin/locations.php",
+      "type": "link",
+      "shortcut": "Shift+A"
+    },
+    {
+      "title": "Stats",
+      "url": "http://localhost/admin/stats.php",
+      "type": "link",
+      "shortcut": "Shift+R"
+    },
+    {
+      "type": "separator"
+    },
+    {
+      "title": "Visit user site",
+      "url": "http://localhost/user/",
+      "type": "link",
+      "shortcut": "Alt+U"
+    },
+    {
+      "title": "Log out",
+      "url": "http://localhost/admin/action.php",
+      "type": "link",
+      "shortcut": "Alt+L"
+    }
+  ]
+}
