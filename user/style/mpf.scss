@@ -26,21 +26,26 @@ form {
 table {
   border-collapse: collapse;
 
-  tr:has(th) {
-    text-align: center;
-    background-color: $blue;
-    color: $blue_white;
+  tr {
+    &:has(th) {
+      text-align: center;
+      background-color: $blue;
+      color: $blue_white;
 
-    th {
-      padding: 0.3em 1em;
-      color: rgba(40, 180, 255, 0.3);
+      th {
+        padding: 0.2em 1em;
+      }
+    }
+
+    &:has(td) {
+      border-bottom: 1px solid rgba($blue, 0.2);
     }
   }
 
   td:not(th) {
     text-align: left;
     padding: 0.3em 0em;
-    color: $blue_bgk;
+    color: $blue_dark;
 
     &:not(:first-child) {
       padding-left: 2em;

@@ -57,7 +57,7 @@ echo "<tr>
 </tr>";
 
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    echo "<tr style='border-bottom: 1px solid rgba(35, 180, 255, 0.3);'>"; // it sucks
+    echo "<tr>";
     echo "<td>" . $row['from'] . "</td>";
     echo "<td>" . $row['to'] . "</td>";
     echo "<td>" . number_format($row['average_cost'], 2) . "</td>";
