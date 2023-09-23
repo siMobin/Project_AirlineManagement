@@ -31,6 +31,12 @@ sqlsrv_close($conn);
         <p>A platform for managing Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, minima!</p>
         <a class=".submit" href="./ticket.php">Book Ticket</a>
     </header>
+
+    <!-- Include "Most popular Flights" -->
+    <div class="mpf_wrapper">
+        <div class="mpf"> <?php include("./mpf.php"); ?></div>
+    </div>
+
     <h1 class="safety_title">Focused on safety, wherever you go!</h1>
     <div class="safety">
         <div>

@@ -1,0 +1,53 @@
+@import "./root";
+
+// watch mpf line 60
+// from home.scss
+
+form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1em 0;
+
+  label {
+    font-size: 24px;
+    font-weight: 600;
+    color: $blue;
+  }
+
+  #class_select {
+    border-radius: 20px;
+    min-width: max-content;
+    padding: 0.3em 0.5em;
+    border: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  tr:has(th) {
+    text-align: center;
+    background-color: $blue;
+    color: $blue_white;
+
+    th {
+      padding: 0.3em 1em;
+      color: rgba(40, 180, 255, 0.3);
+    }
+  }
+
+  td:not(th) {
+    text-align: left;
+    padding: 0.3em 0em;
+    color: $blue_bgk;
+
+    &:not(:first-child) {
+      padding-left: 2em;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
