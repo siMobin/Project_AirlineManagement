@@ -4,11 +4,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
   background-image: url(./login_bg.png);
-  background-position: right bottom;
-  background-size: 130%;
-  backdrop-filter: blur(10px);
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(7px);
 }
 
 form {
@@ -16,8 +21,9 @@ form {
   flex-direction: column;
   background-color: rgba($blue_light, 0.3);
   padding: 1em;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 
   input {
     border: none;
