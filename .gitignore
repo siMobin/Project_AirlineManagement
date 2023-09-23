@@ -1,4 +1,17 @@
+########### build #######
 node
+node_modules
+*x64
+icon.ico
+package.json
+*lock.json
+#########################
+#########################
+action.php
+*.iss
+*.exe
+#########################
+
 doc
 Documents
 *.pdf
