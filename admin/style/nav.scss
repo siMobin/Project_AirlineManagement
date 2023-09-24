@@ -5,7 +5,13 @@ nav {
   justify-content: flex-end;
   align-items: center;
   background-color: $blue;
-  padding: 0.5em 1em;
+  padding: 0.5em 1em 0.5em 0;
+
+  // nav_marquee.php
+  .scroll {
+    margin-right: 2em;
+    color: $blue_white;
+  }
 
   .logout {
     font-weight: 600;

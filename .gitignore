@@ -2,7 +2,7 @@
 node
 node_modules
 *x64
-icon.ico
+# icon.ico
 package.json
 *lock.json
 #########################
@@ -31,5 +31,6 @@ ticket.svg
 temp
 temp.*
 temp*.*
+*temp*
 temp/*
 !Project_Proposal.pdf
