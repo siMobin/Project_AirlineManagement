@@ -50,19 +50,19 @@ function showContextMenu(event) {
     { line: "" },
     { gap: "" },
     // link list with keyboard shortcuts
-    { text: "Validation", link: "http://localhost/admin/validation.php", shortcut: "Shift+V" },
+    { text: "Validation", link: "http://localhost/admin/validation.php", shortcut: "Alt+Shift+V" },
     { gap: "" },
-    { text: "Hotel Assign", link: "http://localhost/admin/hotel_assign.php", shortcut: "Shift+H" },
+    { text: "Hotel Assign", link: "http://localhost/admin/hotel_assign.php", shortcut: "Alt+Shift+H" },
     { gap: "" },
-    { text: "Flight Assign", link: "http://localhost/admin/flight_assign.php", shortcut: "Shift+F" },
+    { text: "Flight Assign", link: "http://localhost/admin/flight_assign.php", shortcut: "Alt+Shift+F" },
     { gap: "" },
-    { text: "Locations", link: "http://localhost/admin/locations.php", shortcut: "Shift+A" },
+    { text: "Locations", link: "http://localhost/admin/locations.php", shortcut: "Alt+Shift+A" },
     { gap: "" },
-    { text: "Drivers", link: "http://localhost/admin/drivers.php", shortcut: "Shift+D" },
+    { text: "Drivers", link: "http://localhost/admin/drivers.php", shortcut: "Alt+Shift+D" },
     { gap: "" },
-    { text: "Schedule", link: "http://localhost/admin/schedule.php", shortcut: "Shift+S" },
+    { text: "Schedule", link: "http://localhost/admin/schedule.php", shortcut: "Alt+Shift+S" },
     { gap: "" },
-    { text: "Stats", link: "http://localhost/admin/stats.php", shortcut: "Shift+R" },
+    { text: "Stats", link: "http://localhost/admin/stats.php", shortcut: "Alt+Shift+R" },
 
     // extra link
     { line: "" }, // Add a line separator

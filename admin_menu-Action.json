@@ -5,43 +5,43 @@
       "title": "Validation",
       "url": "http://localhost/admin/validation.php",
       "type": "link",
-      "shortcut": "Shift+V"
+      "shortcut": "Alt+Shift+V"
     },
     {
       "title": "Schedule",
       "url": "http://localhost/admin/schedule.php",
       "type": "link",
-      "shortcut": "Shift+S"
+      "shortcut": "Alt+Shift+S"
     },
     {
       "title": "Flight assign",
       "url": "http://localhost/admin/flight_assign.php",
       "type": "link",
-      "shortcut": "Shift+F"
+      "shortcut": "Alt+Shift+F"
     },
     {
       "title": "Hotel assign",
       "url": "http://localhost/admin/hotel_assign.php",
       "type": "link",
-      "shortcut": "Shift+H"
+      "shortcut": "Alt+Shift+H"
     },
     {
       "title": "Drivers",
       "url": "http://localhost/admin/drivers.php",
       "type": "link",
-      "shortcut": "Shift+D"
+      "shortcut": "Alt+Shift+D"
     },
     {
       "title": "Airports",
       "url": "http://localhost/admin/locations.php",
       "type": "link",
-      "shortcut": "Shift+A"
+      "shortcut": "Alt+Shift+A"
     },
     {
       "title": "Stats",
       "url": "http://localhost/admin/stats.php",
       "type": "link",
-      "shortcut": "Shift+R"
+      "shortcut": "Alt+Shift+R"
     },
     {
       "type": "separator"
