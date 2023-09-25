@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="./style/footer.css" />
+<head>
+  <style></style>
+</head>
 
 <footer>
   <div class="wrapper">
@@ -6,14 +9,23 @@
       <h3>Airline</h3>
       <a href="./about.html">About</a>
       <a href="#">Newsroom</a>
-      <a href="#">Investors</a>
-      <a href="#">Careers</a>
+
+      <!-- portal -->
+      <div class="portal" onclick="onClick()">
+        <a>Portal <i id="i" class="fa-solid fa-angle-down"></i></a>
+        <div id="sub-links" class="sub-links">
+          <a href="../drivers/index.php" target="_blank">Drivers</a>
+          <a href="../admin/index.php" target="_blank">Admin</a>
+        </div>
+      </div>
+      <!-- portal end -->
     </div>
 
     <div class="container">
       <h3>Global citizenship</h3>
       <a href="#">Safety</a>
-      <a href="#">Diversity and Inclusion</a>
+      <a href="#">Investors</a>
+      <a href="#">Careers</a>
       <a href="#">Sustainability</a>
     </div>
 
@@ -38,4 +50,5 @@
   </div>
 </footer>
 
+<script src="./footer.js"></script>
 <script src="./info.js"></script>

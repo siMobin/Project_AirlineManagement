@@ -80,6 +80,33 @@ footer {
       .default_location:not(:last-child) {
         border-bottom: 1px solid rgba($blue_white, 0.2);
       }
+
+      .portal {
+        position: relative;
+        display: inline-block;
+
+        #i {
+          transition: transform 0.3s ease; /* Add a transition for a smooth rotation animation */
+        }
+
+        .sub-links {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+
+          a {
+            padding: 0.5em 1em;
+            font-size: 80%;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease-out;
+
+            &:hover {
+              background-color: rgba($blue_white, 0.2);
+            }
+          }
+        }
+      }
     }
   }
 
