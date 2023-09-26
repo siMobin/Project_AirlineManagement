@@ -2,10 +2,33 @@
 
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   background-color: $blue;
-  padding: 0.5em 1em 0.5em 0;
+  padding: 0.5em 1em;
+
+  .icon {
+    cursor: pointer;
+    padding-right: 1em;
+    display: flex;
+    gap: 1em;
+    white-space: nowrap;
+    font-size: 20px;
+    color: $blue_white;
+
+    .burger {
+      padding: 0 0.5em;
+
+      &:hover {
+        // font-size: 24px;
+        scale: 1.2;
+      }
+    }
+
+    a {
+      color: $blue_white;
+    }
+  }
 
   // nav_marquee.php
   .scroll {

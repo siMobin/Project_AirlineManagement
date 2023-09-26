@@ -37,10 +37,19 @@ require_once('./mobile.php');
 
 <body>
     <nav>
+        <div class="icon">
+            <i class="fa-solid fa-burger burger" id="burger"></i>
+            <!-- The logo -->
+            <a class="logo logo-hidden" href="./schedule.php" <?php if (basename($_SERVER['PHP_SELF']) == 'schedule.php') echo 'class="active"'; ?>><i class="fa-solid fa-plane-lock"> private jet/Admin</i></a>
+        </div>
+
         <div class="scroll">
             <?php include "nav_marquee.php"; ?>
         </div>
-        <a class="logout" method="GET" href="?action=logout">Logout</a>
+
+        <div>
+            <a class="logout" method="GET" href="?action=logout">Logout</a>
+        </div>
     </nav>
 </body>
 

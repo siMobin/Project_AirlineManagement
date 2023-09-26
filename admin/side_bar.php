@@ -46,7 +46,7 @@
         </div>
 
 
-        <footer>
+        <footer class="footer">
             <div class="marker">
                 <a href="#">DSA ii Project</a>
                 <a href="#">siMobin<span> · </span>Rahul</a>
