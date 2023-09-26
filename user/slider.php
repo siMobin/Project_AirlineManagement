@@ -64,12 +64,14 @@ sqlsrv_close($conn);
                     $imageURL = "https://source.unsplash.com/1600x900/?$randomCategory $destination&category=visitingSpot&orientation=landscape";
                     echo "
                         <div class='swiper-slide'>
-                        <img src='{$imageURL}' class='travel-slider-bg-image' />
+                        <img src='{$imageURL}' class='travel-slider-bg-image' loading='lazy'/>
                         <div class='travel-slider-content'>
                             <div class='travel-slider-title'>Travel in {$destination}</div>
                             <div class='travel-slider-subtitle'>with <i class='fa-solid fa-plane-lock travel-slider-subtitle-logo'> private jet</i></div>
+                            <div class='swiper-lazy-preloader'></div>
                         </div>
                     </div>";
+                    // We don't need "<div class='swiper-lazy-preloader'></div>" this div when use a custom preloader. even if we use pirated version of swiper it not showing expectedly. So we hide this in css(swiper.css L16) //
                 }
                 ?>
             </div>

@@ -11,6 +11,12 @@
   display: block;
 }
 
+/* This is important to hide default preloader */
+/* see ".travel-slider-bg-image" on line 103~ for custom preloader */
+.swiper-lazy-preloader {
+  opacity: 0;
+}
+
 .swiper-vertical > .swiper-wrapper {
   flex-direction: column;
 }
