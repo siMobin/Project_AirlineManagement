@@ -239,6 +239,14 @@ sqlsrv_close($conn);
             </div>
         </div>
 
+        <div class="graph">
+            <div class="pi">
+                <div class="doughnut"><?php include './class_percent.php'; ?></div>
+                <div class="doughnut"><?php include './class_percent_cost.php'; ?></div>
+            </div>
+
+        </div>
+
         <div class="graph"><?php include './fpm.php'; ?></div>
 
         <div class="graph"><?php include './ppc.php'; ?></div>

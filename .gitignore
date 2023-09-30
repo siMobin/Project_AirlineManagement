@@ -7,7 +7,7 @@ package.json
 *lock.json
 #########################
 #########################
-action.php
+# action.php
 *.iss
 *.exe
 #########################
@@ -26,6 +26,7 @@ FAQ.*
 *.css.map
 !swiper.css
 !mobile.css
+!calender.css
 .vscode
 ticket.svg
 temp
