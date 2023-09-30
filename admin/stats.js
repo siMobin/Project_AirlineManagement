@@ -87,6 +87,19 @@ function fpm(labels, data) {
 
 //cpm//////////////////
 document.addEventListener("DOMContentLoaded", function () {
+  // Function to format cost without trailing zeroes
+  function format_cost(cost) {
+    if (cost >= 1000000000) {
+      return "$" + (cost / 1000000000).toFixed(2).replace(/\.?0+$/, "") + " B";
+    } else if (cost >= 1000000) {
+      return "$" + (cost / 1000000).toFixed(2).replace(/\.?0+$/, "") + " M";
+    } else if (cost >= 1000) {
+      return "$" + (cost / 1000).toFixed(2).replace(/\.?0+$/, "") + " K";
+    } else {
+      return "$" + cost.toFixed(2).replace(/\.?0+$/, "");
+    }
+  }
+
   var ctx = document.getElementById("cpm").getContext("2d");
   var myChart = new Chart(ctx, {
     type: "bar",
@@ -106,6 +119,11 @@ document.addEventListener("DOMContentLoaded", function () {
       scales: {
         y: {
           beginAtZero: true,
+          ticks: {
+            callback: function (value, index, values) {
+              return format_cost(value); // Use the format_cost function to format the labels
+            },
+          },
           title: {
             display: true,
             text: "$ Dollar",
