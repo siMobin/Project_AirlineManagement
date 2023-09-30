@@ -54,6 +54,13 @@ html {
     font-size: 16px;
     color: $blue_white;
     background-color: $blue;
+    transition: all 0.2s linear;
+
+    &:hover {
+      color: $blue;
+      background-color: $blue_white;
+      // border: 1px solid $blue_white;
+    }
   }
 
   input {
