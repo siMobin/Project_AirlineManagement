@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var myChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: chartData.labels,
+      labels: chartLabels,
       datasets: [
         {
           label: "Total Earnings",

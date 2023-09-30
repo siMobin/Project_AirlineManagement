@@ -1,11 +1,13 @@
 <?php require('./conn.php'); ?>
 <?php
-//round trip validation
-$sql = "SELECT YEAR(date) AS year, MONTH(date) AS month, SUM(CASE WHEN trip = 'round-trip' THEN cost/2 ELSE cost END) AS total
-FROM bookings
-WHERE date >= DATEADD(month, -12, GETDATE())
-GROUP BY YEAR(date), MONTH(date)
-ORDER BY YEAR(date), MONTH(date);";
+$sql = "SELECT month_year, SUM(CASE WHEN trip = 'round-trip' THEN cost/2 ELSE cost END) AS total
+FROM (
+    SELECT FORMAT(date, 'MM-yyyy') AS month_year, date, trip, cost
+    FROM bookings
+    WHERE date >= DATEADD(month, -12, GETDATE())
+) AS subquery
+GROUP BY month_year
+ORDER BY SUBSTRING(month_year, 4, 4), SUBSTRING(month_year, 1, 2);";
 $stmt = sqlsrv_query($conn, $sql);
 
 if ($stmt === false) {
@@ -21,24 +23,14 @@ sqlsrv_free_stmt($stmt);
 sqlsrv_close($conn);
 ?>
 
-<!DOCTYPE html>
-<html>
+<canvas id="cpm"></canvas>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var chartLabels = <?php echo json_encode(array_column($data, 'month_year')); ?>;
 
-</head>
-
-<body>
-    <canvas id="cpm"></canvas>
-
-    <script>
-        var chartData = {
-            labels: <?php echo json_encode(array_column($data, 'month')); ?>,
-            data: <?php echo json_encode(array_column($data, 'total')); ?>
-        };
-    </script>
-</body>
-
-</html>
+    var chartData = {
+        labels: chartLabels,
+        data: <?php echo json_encode(array_column($data, 'total')); ?>
+    };
+</script>
