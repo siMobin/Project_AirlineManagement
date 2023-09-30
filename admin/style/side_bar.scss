@@ -79,7 +79,9 @@ $width: 230px; // for .sidebar & footer //
 
     .sub-menu {
       background: rgba($blue_dark, 0.3);
-      display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
 
       a {
         padding-left: 40px;

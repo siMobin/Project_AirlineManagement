@@ -1,85 +1,97 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   let isSidebarOpen = true; // Variable to track sidebar state
-  let originalSidebarWidth; // Variable to store the original sidebar width
   let originalFooterWidth; // Variable to store the original footer width
   let originalContentMargin; // Variable to store the original content margin
-  const magicIcon = $(".logo-hidden"); // Select the magic icon
+  const magicIcon = document.querySelector(".logo-hidden"); // Select the magic icon
 
   // Initially hide the magic icon
-  magicIcon.hide();
+  magicIcon.style.display = "none";
 
-  // Function to toggle the sidebar and content
+  // Function to toggle the sidebar and content with animation
   function toggleSidebar() {
-    const sidebar = $(".sidebar");
-    const footer = $(".footer");
-    const content = $("body");
+    const sidebar = document.querySelector(".sidebar");
+    const footer = document.querySelector(".footer");
+    const content = document.body;
 
     if (isSidebarOpen) {
-      originalSidebarWidth = sidebar.width(); // Store the original sidebar width
-      originalFooterWidth = footer.width(); // Store the original footer width
-      originalContentMargin = content.css("margin-left"); // Store the original content margin
+      originalSidebarWidth = getComputedStyle(sidebar).width; // Store the original sidebar width
+      originalFooterWidth = getComputedStyle(footer).width; // Store the original footer width
+      originalContentMargin = getComputedStyle(content).marginLeft; // Store the original content margin
 
-      sidebar.animate({
-        width: "0",
-      });
+      // Add transitions
+      sidebar.style.transition = "width 0.3s";
+      footer.style.transition = "width 0.2s";
+      content.style.transition = "margin-left 0.3s";
 
-      footer.animate(
-        {
-          width: "0",
-        },
-        function () {
-          // Animation complete callback
-          footer.css("width", "0").hide(); // Set width to 0 and hide the footer
-        }
-      );
+      sidebar.style.width = "0";
+      footer.style.width = "0";
+      content.style.marginLeft = "0";
 
-      content.css("margin-left", "0");
+      // Animation complete callback
+      setTimeout(function () {
+        footer.style.display = "none";
+        sidebar.style.transition = "";
+        footer.style.transition = "";
+        content.style.transition = "";
+      }, 300); // Set the timeout to match the transition duration
     } else {
-      sidebar.animate({
-        width: 230 + "px",
-      }); // Restore original width for sidebar
+      // Add transitions
+      sidebar.style.transition = "width 0.3s";
+      footer.style.transition = "width 0.2s";
+      content.style.transition = "margin-left 0.3s";
 
-      footer.show().animate(
-        {
-          width: originalFooterWidth + "px",
-        },
-        function () {
-          // Animation complete callback
-          footer.css("width", ""); // Restore original width for footer
-        }
-      );
+      sidebar.style.width = "230px"; // Restore original width for sidebar
+      footer.style.display = "flex"; // flex from css
+      footer.style.width = originalFooterWidth;
+      content.style.marginLeft = originalContentMargin;
 
-      content.css("margin-left", originalContentMargin); // Restore original margin
+      // Animation complete callback
+      setTimeout(function () {
+        sidebar.style.transition = "";
+        footer.style.transition = "";
+        content.style.transition = "";
+      }, 300); // Set the timeout to match the transition duration
     }
 
     isSidebarOpen = !isSidebarOpen; // Toggle the state
 
     // Show the magic icon when margin-left is 0, hide it otherwise
-    if (content.css("margin-left") === "0px") {
-      magicIcon.show();
+    if (getComputedStyle(content).marginLeft === "0px") {
+      magicIcon.style.display = "none";
     } else {
-      magicIcon.hide();
+      magicIcon.style.display = "block";
     }
   }
 
   // Toggle the sidebar when the burger icon is clicked
-  $("#burger").click(function () {
+  document.getElementById("burger").addEventListener("click", function () {
     toggleSidebar();
   });
 
   // toggle sub menus
-  $(".sub-btn").click(function () {
-    $(this).next(".sub-menu").slideToggle();
-    $(this).find(".dropdown").toggleClass("rotate");
+  const subBtns = document.querySelectorAll(".sub-btn");
+  subBtns.forEach(function (subBtn) {
+    subBtn.addEventListener("click", function () {
+      const subMenu = this.nextElementSibling;
+      const dropdownIcon = this.querySelector(".dropdown");
+
+      if (subMenu.style.maxHeight) {
+        subMenu.style.maxHeight = null;
+        dropdownIcon.classList.remove("rotate");
+      } else {
+        subMenu.style.maxHeight = subMenu.scrollHeight + "px";
+        dropdownIcon.classList.add("rotate");
+      }
+    });
   });
 
   // Function to adjust content margin
   function adjustContentMargin() {
-    const sidebar = $(".sidebar");
-    const content = $("body");
+    const sidebar = document.querySelector(".sidebar");
+    const content = document.body;
 
-    const sidebarWidth = sidebar.width();
-    content.css("margin-left", sidebarWidth + "px");
+    const sidebarWidth = getComputedStyle(sidebar).width;
+    content.style.marginLeft = sidebarWidth;
   }
 
   // Call the function when the page loads and when it's resized
