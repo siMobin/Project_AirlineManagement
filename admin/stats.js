@@ -2,7 +2,7 @@
 function ppm(labels, data) {
   var ctx = document.getElementById("ppm").getContext("2d");
   var myChart = new Chart(ctx, {
-    type: "line",
+    type: "bar",
     data: {
       labels: labels,
       datasets: [
