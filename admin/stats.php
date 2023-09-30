@@ -165,7 +165,80 @@ sqlsrv_close($conn);
         </div>
     </div>
 
+    <?php
+
+    require "./conn.php";
+    // Total number of pilots
+    $query = "SELECT COUNT(*) AS total_pilots FROM driver_info WHERE role = 'pilot'";
+    $result = sqlsrv_query($conn, $query);
+    $row = sqlsrv_fetch_array($result);
+    $totalPilots = $row['total_pilots'];
+
+    // Total number of hostesses
+    $query = "SELECT COUNT(*) AS total_hostesses FROM driver_info WHERE role = 'hostess'";
+    $result = sqlsrv_query($conn, $query);
+    $row = sqlsrv_fetch_array($result);
+    $totalHostesses = $row['total_hostesses'];
+
+    // Total number of flight assignments
+    $query = "SELECT COUNT(*) AS total_flight_assignments FROM flight_assign";
+    $result = sqlsrv_query($conn, $query);
+    $row = sqlsrv_fetch_array($result);
+    $totalFlightAssignments = $row['total_flight_assignments'];
+
+    // Total number of hotel assignments
+    $query = "SELECT COUNT(*) AS total_hotel_assignments FROM hotel_assign";
+    $result = sqlsrv_query($conn, $query);
+    $row = sqlsrv_fetch_array($result);
+    $totalHotelAssignments = $row['total_hotel_assignments'];
+
+    // Get today's date in the format YYYY-MM-DD
+    $todayDate = date('Y-m-d');
+
+    // Query to find the number of flights for today
+    $query = "SELECT COUNT(*) AS num_flights FROM bookings WHERE date = ?";
+    $params = array($todayDate);
+    $result = sqlsrv_query($conn, $query, $params);
+
+    // Check if there is a result
+    if ($result) {
+        // Fetch the count of flights for today
+        $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
+        $todaysF = $row['num_flights'];
+    }
+
+    // Close the database connection
+    sqlsrv_close($conn);
+    ?>
+
+
     <div class="chart">
+        <div class="graph">
+            <div class="multi_graph">
+
+                <div id="calendar" class="mini_graph"> <?php include './calender.php'; ?></div>
+
+                <div class="mini_graph mini_graph_block">
+                    <div class="block"><span>Flights for today</span>
+                        <div class="data"><?php echo $todaysF; ?></div>
+                    </div>
+                    <div class="block"><span>Total Pilots</span>
+                        <div class="data"><?php echo $totalPilots; ?></div>
+                    </div>
+                    <div class="block"><span>Total Hostesses</span>
+                        <div class="data"><?php echo $totalHostesses; ?></div>
+                    </div>
+                    <div class="block"><span>Total Flight Assignments</span>
+                        <div class="data"><?php echo $totalFlightAssignments; ?></div>
+                    </div>
+                    <div class="block"><span>Total Hotel Assignments</span>
+                        <div class="data"><?php echo $totalHotelAssignments; ?></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="graph"><?php include './fpm.php'; ?></div>
 
         <div class="graph"><?php include './ppc.php'; ?></div>
