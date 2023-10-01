@@ -19,7 +19,30 @@ if (isset($_POST['submit'])) {
     }
 
     // Redirect to a success page after successful form submission
-    header("Location: ./drivers.php");
+
+    /*
+
+    In the code below the 'header' drivers.php and the 'header' update_drivers.php conflicts with nav_marquee.php which returns an error when assigning a new pilot.
+    To fix this issue javascript is used to redirect the page properly so this conflict may be avoided.
+    
+    */
+    /*
+
+    // Use JavaScript to redirect the page
+    // header("Location: ./drivers.php");
+    // or
+    // header("Location: update_drivers.php?did=$did");
+
+    */
+
+    // Use PHP variable $did within JavaScript
+    echo "
+    <script>
+        var did = " . json_encode($did) . ";
+        window.location.href = 'update_drivers.php?did=' + did;
+    </script>
+    ";
+
     exit; // Make sure to exit to prevent further execution
 }
 
