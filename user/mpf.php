@@ -22,7 +22,7 @@ $selectedClass = isset($_POST['selected_class']) ? $_POST['selected_class'] : $d
 
 <form method="post">
     <label class="" for="class_select">Most Popular Flights</label>
-    <select name="selected_class" class="submit" id="class_select" onchange="this.form.submit()">
+    <select name="selected_class" class="submit" id="class_select">
         <?php
         foreach ($classesData['classes'] as $class) {
             $selected = ($class === $selectedClass) ? 'selected' : '';
@@ -32,38 +32,9 @@ $selectedClass = isset($_POST['selected_class']) ? $_POST['selected_class'] : $d
     </select>
 </form>
 
-<?php
+<div id="table-container">
+    <!-- Table data will be inserted here -->
+</div>
 
-//////////////////////////check////////////////////////////////
-/////// Handle form submission ////                          //
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {              //
-//     echo 'Selected Class is ' . $selectedClass;           //
-// } else {                                                  //
-//     echo 'Default Class is ' . $defaultClass;             //
-// }                                                         //
-// echo "<h2>Class: " . $selectedClass . "</h2>";            //
-///////////////////////////////////////////////////////////////
-
-// Query to get most popular flight for each class
-$sql = "SELECT TOP 5 [from],[to], COUNT(*) as count, AVG(cost/passengers) as average_cost FROM bookings WHERE class = ? GROUP BY [from],[to] ORDER BY count DESC";
-$params = array($selectedClass);
-$stmt = sqlsrv_query($conn, $sql, $params);
-
-echo "<table>";
-echo "<tr>
-<th>From</th>
-<th>To</th>
-<th>Average Cost</th>
-</tr>";
-
-while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    echo "<tr>";
-    echo "<td>" . $row['from'] . "</td>";
-    echo "<td>" . $row['to'] . "</td>";
-    echo "<td>" . number_format($row['average_cost'], 2) . "</td>";
-    echo "</tr>";
-}
-echo "</table>";
-
-sqlsrv_close($conn);
-?>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="./mpf.js"></script>
