@@ -41,6 +41,14 @@
             </div>
         </div> <!-- end of driver and airport -->
 
+        <div class="item"> <!-- users -->
+            <a class="sub-btn"><i class="fa-solid fa-user"></i>User<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="./users.php" <?php if (basename($_SERVER['PHP_SELF']) == 'users.php') echo 'class="active"'; ?>>Users</a>
+                <a href="./search_user.php" <?php if (basename($_SERVER['PHP_SELF']) == 'search_user.php') echo 'class="active"'; ?>>Search Info.</a>
+            </div>
+        </div> <!-- end of users -->
+
         <div class="item">
             <a href="./stats.php" <?php if (basename($_SERVER['PHP_SELF']) == 'stats.php') echo 'class="active"'; ?>><i class="fas fa-chart-bar"></i>Stats</a>
         </div>

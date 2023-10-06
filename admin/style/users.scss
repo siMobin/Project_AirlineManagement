@@ -1,0 +1,35 @@
+@import "./root";
+
+#users {
+  padding: 2em;
+  //   width: 100vw;
+  //   position: relative;
+
+  table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+    // max-width: calc(100% - 4em);
+    // min-width: calc(100% - 4em);
+
+    th {
+      background-color: $blue_dark;
+      color: $blue_white;
+    }
+
+    tr {
+      font-size: 14px;
+      padding: 0.5em 1em;
+
+      &:nth-child(odd) {
+        background-color: $blue_white;
+      }
+    }
+
+    th,
+    td {
+      padding: 0.5em 0.5em;
+      border: 1px solid $blue_light;
+    }
+  }
+}

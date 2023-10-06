@@ -1,0 +1,60 @@
+@import "./root";
+
+form,
+table {
+  margin: 0.5em;
+}
+
+form {
+  label {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  #search_term {
+    border: 1px solid $blue;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 12px;
+
+  th {
+    background-color: $blue_dark;
+    color: $blue_white;
+  }
+
+  tr {
+    font-size: 14px;
+    padding: 0.5em;
+
+    &:nth-child(odd) {
+      background-color: $blue_white;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.5em 0.2em;
+    border: 1px solid $blue_light;
+  }
+
+  .oneWay {
+    color: red;
+    font-size: 10px;
+    font-style: italic;
+  }
+
+  .not_confirmed,
+  .not_found {
+    @extend .oneWay;
+    background-color: rgba(255, 0, 0, 0.05);
+  }
+
+  .confirm {
+    color: green;
+    background-color: rgba(0, 128, 0, 0.2);
+  }
+}
