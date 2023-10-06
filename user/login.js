@@ -6,65 +6,79 @@
 
 var form = document.getElementById("form");
 var isDragging = false;
-var offsetX, offsetY; // page position
+var offsetX, offsetY;
+var initialX, initialY;
+var formWidth, formHeight;
 
-// touch event
-function getPointerPosition(event) {
-  if (event.type.startsWith("touch")) {
-    var touch = event.touches[0];
-    return { x: touch.clientX, y: touch.clientY };
-  } else {
-    return { x: event.clientX, y: event.clientY };
+// Function to start dragging
+function startDragging(event) {
+  if (event.target.tagName.toLowerCase() !== "input") {
+    isDragging = true;
+
+    if (event.type === "touchstart") {
+      var touch = event.touches[0];
+      var rect = form.getBoundingClientRect();
+      initialX = touch.clientX - rect.left;
+      initialY = touch.clientY - rect.top;
+    } else {
+      var rect = form.getBoundingClientRect();
+      initialX = event.clientX - rect.left;
+      initialY = event.clientY - rect.top;
+    }
+
+    var rect = form.getBoundingClientRect();
+    formWidth = rect.width;
+    formHeight = rect.height;
+
+    event.preventDefault();
+
+    // Set cursor style
+    form.style.cursor = "grabbing";
+
+    // Prevent text selection during dragging
+    document.body.style.userSelect = "none";
   }
 }
 
-form.addEventListener("mousedown", startDragging); // for desktop
-form.addEventListener("touchstart", startDragging); // for touch device
+// Event listener to start dragging when the form is clicked
+form.addEventListener("mousedown", startDragging);
+form.addEventListener("touchstart", startDragging);
 
-function startDragging(event) {
-  isDragging = true;
-
-  // Get the initial pointer position
-  var pointerPosition = getPointerPosition(event);
-  offsetX = pointerPosition.x - form.getBoundingClientRect().left;
-  offsetY = pointerPosition.y - form.getBoundingClientRect().top;
-
-  // Set cursor style
-  form.style.cursor = "grabbing";
-
-  // Prevent default behavior to avoid touch gestures interfering
-  event.preventDefault();
-}
-
-document.addEventListener("mousemove", moveDragging); // for desktop
-document.addEventListener("touchmove", moveDragging); // for touch device
-
+// Function to move dragging
 function moveDragging(event) {
   if (isDragging) {
-    // Get the current pointer position
-    var pointerPosition = getPointerPosition(event);
+    if (event.type === "touchmove") {
+      var touch = event.touches[0];
+      var x = touch.clientX - initialX;
+      var y = touch.clientY - initialY;
+    } else {
+      var x = event.clientX - initialX;
+      var y = event.clientY - initialY;
+    }
 
-    // Calculate the new position of the form
-    var newX = pointerPosition.x - offsetX;
-    var newY = pointerPosition.y - offsetY;
+    var maxX = window.innerWidth - formWidth;
+    var maxY = window.innerHeight - formHeight;
 
-    // Calculate the boundaries
-    var maxX = window.innerWidth - form.clientWidth;
-    var maxY = window.innerHeight - form.clientHeight;
+    // Ensure the form stays within the screen boundaries
+    x = Math.min(maxX, Math.max(0, x));
+    y = Math.min(maxY, Math.max(0, y));
 
-    // Ensure the form stays within the viewport
-    newX = Math.min(maxX, Math.max(0, newX));
-    newY = Math.min(maxY, Math.max(0, newY));
+    form.style.left = x + "px";
+    form.style.top = y + "px";
 
-    // Set the new position of the form
-    form.style.right = maxX - newX + "px";
-    form.style.bottom = maxY - newY + "px";
+    // Adjust the right and bottom properties to maintain corner movement
+    form.style.right = "auto";
+    form.style.bottom = "auto";
+
+    event.preventDefault();
   }
 }
 
-document.addEventListener("mouseup", stopDragging);
-document.addEventListener("touchend", stopDragging);
+// set the new position of the form
+document.addEventListener("mousemove", moveDragging);
+document.addEventListener("touchmove", moveDragging);
 
+// Function to stop dragging
 function stopDragging() {
   if (isDragging) {
     isDragging = false;
@@ -74,3 +88,7 @@ function stopDragging() {
     form.style.cursor = "grab";
   }
 }
+
+// Event listener to stop dragging
+document.addEventListener("mouseup", stopDragging);
+document.addEventListener("touchend", stopDragging);
