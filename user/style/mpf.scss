@@ -21,6 +21,18 @@ form {
     padding: 0.3em 0.5em;
     border: none;
   }
+
+  @include max-width(768px) {
+    & {
+      label {
+        font-size: 18px;
+      }
+
+      #class_select {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
 table {
@@ -53,6 +65,19 @@ table {
 
     &:last-child {
       text-align: right;
+    }
+  }
+
+  @include max-width(768px) {
+    & {
+      th {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      tr:has(:not(th)) {
+        font-size: 12px;
+      }
     }
   }
 }

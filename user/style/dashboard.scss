@@ -18,12 +18,19 @@
       display: none;
       margin-left: 100px;
     }
+
+    @include max-width(768px) {
+      &,
+      .panel {
+        margin-left: 1.5em;
+      }
+    }
   }
 }
 
 .tabs {
   position: absolute;
-  top: 3.5em;
+  top: 3em;
   left: 0;
   display: flex;
   flex-direction: column;
@@ -32,6 +39,14 @@
   border-right: 1px solid $blue;
   font-weight: 600;
   text-align: center;
+
+  @include max-width(768px) {
+    & {
+      max-width: min-content;
+      font-size: 12px;
+      top: 4em;
+    }
+  }
 
   .tab {
     flex: none;
@@ -67,4 +82,10 @@
 #radio1:checked ~ .panels #first-panel,
 #radio2:checked ~ .panels #second-panel {
   display: block;
+}
+
+@include max-width(768px) {
+  .tab-label {
+    padding: 0 0.5em;
+  }
 }

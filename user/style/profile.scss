@@ -2,6 +2,9 @@
 
 .container {
   margin: 2em;
+  @include max-width(768px) {
+    font-size: 80%;
+  }
 
   form {
     margin: 1em 0;
@@ -18,11 +21,20 @@
       border-radius: 5px;
       font-size: 14px;
       border: none;
+
+      @include max-width(768px) {
+        font-size: 90%;
+        padding: 0.3em;
+      }
     }
 
     .delete {
       background-color: rgba(255, 0, 0, 0.7);
       font-style: italic;
+
+      &:hover {
+        background-color: black;
+      }
     }
   }
 }

@@ -30,13 +30,21 @@ a {
   user-select: none; // Prevent text selection while dragging //
   cursor: grab;
 
-  // @include max-width(768px) {
-  //   display: flex;
-  //   flex-direction: column;
-  //   position: absolute;
-  //   right: 3em;
-  //   top: 5em;
-  // }
+  @include max-width(768px) {
+    & {
+      display: block;
+      max-width: 100%;
+      font-size: 70%;
+
+      hr:not(.center_hr) {
+        display: none;
+      }
+
+      .center_hr {
+        margin: 1em;
+      }
+    }
+  }
 
   h2,
   h6 {

@@ -34,7 +34,7 @@ $username = $_SESSION["username"] ?? "UserNotFound";
 
 <body>
   <nav>
-    <div class="logo"> <?php echo "<a href='./=$username'><i class='fa-solid fa-plane-lock'> private jet</i></a>"; ?></div>
+    <div class="logo"> <?php echo "<a href='./=$username'><i class='fa-solid fa-plane-lock'><span> </span></i></a>"; ?></div><!-- dynamically hide large logo when in mobile device -->
     <div class="link">
       <a href="#">About</a>
       <a href="#">Contact</a>
