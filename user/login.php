@@ -1,7 +1,7 @@
 <?php
 require_once('./conn.php');
 
-// variable for handel error
+// variables for error handling
 $report_empty_login_field = "";
 $report_email_taken = "";
 $report_user_name = "";
@@ -9,7 +9,8 @@ $report_user_name_taken = "";
 $report_password = "";
 $report_empty = "";
 
-session_start(); //check if the user is already logged in
+session_start(); // check if the user is already logged in
+
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
     // User is logged in, redirect to the home page
@@ -17,77 +18,90 @@ if (isset($_SESSION["username"])) {
     exit;
 }
 
-//check if the user submitted the login form
+// Check if the user submitted the login form
 if (isset($_POST["login"])) {
-    //get the username and password from the form
+    // Get the username, email/phone, and password from the form
     $username = $_POST["username"];
+    $emailOrPhone = $_POST["EmailOrPhone"];
     $password = $_POST["password"];
 
-    //validate the input
-    if (empty($username) || empty($password)) {
-        $report_empty_login_field = "<p class='report'>Please enter both username and password.</p>";
+    // Validate the input
+    if (empty($username) || empty($emailOrPhone) || empty($password)) {
+        $report_empty_login_field = "<p class='report'>Please enter username, email or phone, and password.</p>";
     } else {
-        //prepare and execute the sql query to check if the user exists in the database
-        $sql = "SELECT * FROM users WHERE username = ?";
-        $params = array($username);
+        // Check if the input is a valid email
+        if (filter_var($emailOrPhone, FILTER_VALIDATE_EMAIL)) {
+            // The input is an email, so you can handle it accordingly
+            // Prepare and execute the SQL query to check if the user exists in the database using the email
+            $sql = "SELECT * FROM users WHERE (username = ? OR email = ?)";
+            $params = array($username, $emailOrPhone);
+        } else {
+            // The input is not an email, so treat it as a phone number
+            // Prepare and execute the SQL query to check if the user exists in the database using the phone number
+            $sql = "SELECT * FROM users WHERE (username = ? OR phone = ?)";
+            $params = array($username, $emailOrPhone);
+        }
+
         $stmt = sqlsrv_query($conn, $sql, $params);
         if ($stmt === false) {
             die(print_r(sqlsrv_errors(), true));
         }
 
-        //fetch the result
+        // Fetch the result
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
         if ($row) {
-            //verify the password
+            // Verify the password
             if (password_verify($password, $row["password"])) {
-                //set the session variable and redirect to the home page
-                $_SESSION["username"] = $username;
-                header("Location: ./=$username");
+                // Set the session variable and redirect to the home page
+                $_SESSION["username"] = $row["username"];
+                header("Location: ./?username={$row['username']}");
                 exit;
             } else {
                 $report_password = "<p class='report'>Incorrect password.</p>";
             }
         } else {
-            $report_user_name = "<p class='report'>User not found</p>";
+            $report_password = "<p class='report'>Incorrect username, email, phone, or password.</p>";
         }
     }
 }
 
-//check if the user submitted the registration form
+
+
+
+// check if the user submitted the registration form
 if (isset($_POST["register"])) {
-    //get the username, email and password from the form
+    // get the username, email, phone, and password from the form
     $username = $_POST["username"];
     $email = $_POST["email"];
+    $phone = $_POST["phone"];
     $password = $_POST["password"];
 
-    //validate the input
-    if (empty($username) || empty($email) || empty($password)) {
-        $report_empty = "<p class='report'>Please enter email, username and password.</p>";
+    // validate the input
+    if (empty($username) || empty($email) || empty($phone) || empty($password)) {
+        $report_empty = "<p class='report'>Please enter email, username, phone, and password.</p>";
     } else {
-        //prepare and execute the sql query to check if the username or email already exists in the database
-        $sql = "SELECT * FROM users WHERE username = ? OR email = ?";
-        $params = array($username, $email);
+        // Generate a 5-digit random "u_id"
+        $u_id = mt_rand(10000, 99999);
+
+        // Prepare and execute the SQL query to check if the username, email, or phone already exists in the database
+        $sql = "SELECT * FROM users WHERE username = ? OR email = ? OR phone = ?";
+        $params = array($username, $email, $phone);
         $stmt = sqlsrv_query($conn, $sql, $params);
         if ($stmt === false) {
             die(print_r(sqlsrv_errors(), true));
         }
 
-        //fetch the result
+        // Fetch the result
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
         if ($row) {
-            //check which field is already taken
-            if ($row["username"] == $username) {
-                $report_user_name_taken = "<p class='report'>Username already taken.</p>";
-            } else {
-                $report_email_taken = "<p class='report'>Email already taken.</p>";
-            }
+            $report_empty = "<p class='report'>Username, email, or phone already taken.</p>";
         } else {
-            //hash the password
+            // Hash the password
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            //prepare and execute the sql query to insert the new user into the database
-            $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-            $params = array($username, $email, $hashed_password);
+            // Prepare and execute the SQL query to insert the new user into the database with the generated "u_id"
+            $sql = "INSERT INTO users (u_id, username, email, phone, password) VALUES (?, ?, ?, ?, ?)";
+            $params = array($u_id, $username, $email, $phone, $hashed_password);
             $stmt = sqlsrv_query($conn, $sql, $params);
             if ($stmt === false) {
                 die(print_r(sqlsrv_errors(), true));
@@ -102,6 +116,7 @@ if (isset($_POST["register"])) {
 }
 ?>
 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -110,42 +125,52 @@ if (isset($_POST["register"])) {
 </head>
 
 <body>
-    <a href="./=?"><i class="fa-solid fa-plane-lock"> private jet</i></a>
-    <div id="form">
+    <a href="./"><i class="fa-solid fa-plane-lock"> private jet</i></a>
+    <div id="form" title="Drag Me">
+
+        <!-- Login form -->
         <div class="login">
             <h2>Login</h2>
             <hr>
-            <form method="post" action="login.php">
-                <h6>Username:</h6>
-                <input type="text" name="username" required placeholder="User Name">
-                <?php echo $report_user_name; ?>
-                <h6>Password:</h6>
-                <input type="password" name="password" required placeholder="password">
-                <?php echo $report_password; ?>
+            <form method="post" action="login.php" title="">
+                <h6>Username</h6>
+                <input type="text" name="username" required placeholder="Username">
                 <?php echo $report_empty_login_field; ?>
+                <h6>Email or Phone</h6>
+                <input type="text" name="EmailOrPhone" required placeholder="Email or Phone"> <!-- Fix the field name here -->
+                <?php echo $report_empty_login_field; ?>
+                <h6>Password</h6>
+                <input type="password" name="password" required placeholder="Password">
+                <?php echo $report_password; ?>
                 <br>
                 <input class="submit" type="submit" name="login" value="Login">
             </form>
         </div>
+
         <hr class="center_hr">
+
+        <!-- Registration form -->
         <div class="reg">
             <h2>Register</h2>
             <hr>
-            <form method="post" action="login.php">
-                <h6>Username:</h6>
-                <input type="text" name="username" placeholder="User Name">
-                <?php echo $report_user_name_taken; ?>
-                <h6> Email:</h6>
-                <input type="email" name="email" placeholder="you@gmail.com"><br />
-                <?php echo $report_email_taken; ?>
-                <h6>Password:</h6>
-                <input type="password" name="password" placeholder="password">
+            <form method="post" action="login.php" title="">
+                <h6>Username</h6>
+                <input type="text" name="username" required placeholder="Username">
+                <h6>Email</h6>
+                <input type="email" name="email" required placeholder="you@gmail.com">
+                <h6>Phone</h6>
+                <input type="text" name="phone" required placeholder="Phone">
+                <h6>Password</h6>
+                <input type="password" name="password" required placeholder="Password">
                 <?php echo $report_empty; ?>
                 <br>
                 <input class="submit" type="submit" name="register" value="Register">
             </form>
         </div>
     </div>
+
+    <script src="./login.js"></script>
+
 </body>
 
 </html>

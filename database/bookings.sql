@@ -2,8 +2,10 @@ use PrivetJet;
 
 -- user login info
 create table users(
-username varchar(50) primary key not null,
+U_ID int primary key not null,
+username varchar(50) not null,
 email varchar(50) not null,
+phone varchar(16) not null,
 password char(60) not null
 );
 
