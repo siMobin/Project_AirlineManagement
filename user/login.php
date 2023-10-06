@@ -117,12 +117,16 @@ if (isset($_POST["register"])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./icon.ico">
     <link rel="stylesheet" href="./style/login.css">
     <title>Login/Registration Form</title>
 </head>
+
 
 <body>
     <a href="./"><i class="fa-solid fa-plane-lock"> private jet</i></a>
