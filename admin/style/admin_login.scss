@@ -10,10 +10,10 @@ body {
   max-width: 100vw;
   max-height: 100vh;
   overflow: hidden;
-  background-image: url(./login_bg.png);
-  background-position: center;
+  background-image: url(./login_bg.webp);
+  background-position: top;
   background-size: cover;
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(8px);
 }
 
 form {
