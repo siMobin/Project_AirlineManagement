@@ -6,6 +6,12 @@ $blue_dark: #385a63;
 $blue_light: #b4d4d8;
 $bg: #105274;
 
+@mixin max_width($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+} //responsive
+
 //////////////scrollbar//////////
 // width
 ::-webkit-scrollbar {

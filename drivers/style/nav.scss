@@ -1,0 +1,122 @@
+@import "./root";
+@mixin active {
+  font-weight: 600;
+  text-decoration: underline;
+  background-color: $blue_white;
+  color: $blue;
+  padding: 0.2em 0.5em;
+  border-radius: 5px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $blue;
+  padding: 0.5em 1em;
+
+  .logo {
+    color: $blue_white;
+    font-size: 20px;
+    position: relative;
+
+    span {
+      // dynamically hide large logo
+      position: relative;
+      width: 100%;
+      &::before {
+        content: "Private Jet/Driver";
+        font-family: "Font Awesome 6 Free";
+        white-space: nowrap;
+        position: absolute;
+        left: 5px;
+        // top: 0;
+
+        @include max-width(768px) {
+          content: "";
+        }
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+
+      &:hover {
+        .dropdown-content {
+          display: block;
+        }
+      }
+
+      .dropdown-content {
+        .active {
+          background-color: $blue_white;
+          color: $blue;
+        }
+
+        padding-top: 1em;
+        display: none;
+        position: absolute;
+        background-color: $blue;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+
+        a {
+          padding: 0.5em 1em;
+          font-size: 14px;
+          text-decoration: none;
+          display: block;
+
+          &:hover {
+            background-color: rgba($blue_white, 0.8);
+            color: $blue;
+          }
+
+          i {
+            margin: 0 15px;
+          }
+        }
+      }
+    }
+
+    li {
+      list-style-type: none;
+
+      a {
+        text-align: center;
+        text-decoration: none;
+        color: $blue_white;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .active {
+        @include active;
+      }
+    }
+
+    .logout {
+      border: 1px solid $blue_white;
+      padding: 0.2em 0.5em;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $blue_white;
+        a {
+          text-decoration: none;
+          color: $blue;
+        }
+      }
+    }
+  }
+}

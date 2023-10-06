@@ -1,8 +1,9 @@
 <?php
 session_start(); // Start the session
 if (isset($_SESSION["driver_id"])) {
+    $did_s = $_SESSION["driver_id"];
     // driver is logged in, redirect to the home page
-    header("Location: ./profile.php?");
+    header("Location: ./profile.php?did=$did_s");
     exit;
 }
 require('./conn.php');
@@ -102,10 +103,13 @@ sqlsrv_close($conn);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Driver Login and Registration</title>
+    <link rel="icon" type="image/x-icon" href="./icon.ico">
     <link rel="stylesheet" href="./style/driver_login.css">
 </head>
 

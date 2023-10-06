@@ -1,0 +1,76 @@
+@import "./root";
+
+.vw {
+  margin: 1em;
+
+  .hello {
+    margin: 1em 0em;
+    position: relative;
+    width: max-content;
+
+    @mixin bottomLine($bg: $blue, $width: 100%, $left: 0, $bottom: 0) {
+      content: "";
+      position: absolute;
+      bottom: $bottom;
+      left: $left;
+      width: $width;
+      height: 2px;
+      background-color: $bg;
+    }
+
+    &::before {
+      @include bottomLine;
+    }
+
+    .driver_name {
+      font-style: italic;
+      color: $blue;
+      position: relative;
+
+      &::before {
+        @include bottomLine($bottom: 2px);
+      }
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+
+    th {
+      background-color: $blue_dark;
+      color: $blue_white;
+      white-space: nowrap;
+    }
+
+    tr {
+      text-align: center;
+      font-size: 15px;
+
+      &:nth-child(odd) {
+        background-color: $blue_white;
+      }
+
+      td {
+        .null {
+          font-style: italic;
+          font-size: 80%;
+          color: red;
+        }
+      }
+    }
+
+    th,
+    td {
+      padding: 0.3em 0.5em;
+      border: 1px solid $blue_light;
+    }
+  }
+
+  .not_found {
+    color: red;
+    font-style: italic;
+    margin: 0.5em 1em 2em 1em;
+  }
+}
