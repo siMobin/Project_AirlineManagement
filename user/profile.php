@@ -3,7 +3,7 @@ require_once('./conn.php');
 
 // Retrieve user information from the database
 $userInfo = array();
-$sql = "SELECT username, email FROM users WHERE username = ?";
+$sql = "SELECT U_ID, username, email, phone FROM users WHERE username = ?";
 $params = array($_SESSION['username']);
 $result = sqlsrv_query($conn, $sql, $params);
 
@@ -39,6 +39,30 @@ if (isset($_POST['updatePassword'])) {
     sqlsrv_query($conn, $sql, $params);
 }
 
+// Check if update email form was submitted
+if (isset($_POST['updateEmail'])) {
+    // Get new email from form
+    $newEmail = $_POST['newEmail'];
+
+    // Update users table with new email
+    $sql = "UPDATE users SET email = ? WHERE username = ?";
+    $params = array($newEmail, $_SESSION['username']);
+    sqlsrv_query($conn, $sql, $params);
+    $userInfo['email'] = $newEmail; // Update displayed email
+}
+
+// Check if update phone form was submitted
+if (isset($_POST['updatePhone'])) {
+    // Get new phone from form
+    $newPhone = $_POST['newPhone'];
+
+    // Update users table with new phone
+    $sql = "UPDATE users SET phone = ? WHERE username = ?";
+    $params = array($newPhone, $_SESSION['username']);
+    sqlsrv_query($conn, $sql, $params);
+    $userInfo['phone'] = $newPhone; // Update displayed phone number
+}
+
 // Check if delete button was clicked
 if (isset($_POST['delete'])) {
     // Delete user record from users table
@@ -71,14 +95,32 @@ if (isset($_POST['delete'])) {
             <h1>Your Profile</h1>
 
             <!-- Display user information -->
-            <p><strong>Username:</strong> <?php echo $userInfo['username']; ?></p>
+            <p><strong>User ID:</strong> <?php echo $userInfo['U_ID']; ?></p>
+            <p><strong>User name:</strong> <?php echo $userInfo['username']; ?></p>
             <p><strong>Email:</strong> <?php echo $userInfo['email']; ?></p>
+            <p><strong>Phone:</strong> <?php echo $userInfo['phone']; ?></p>
 
             <!-- Update username form -->
             <form action="" method="post">
                 <label for="newUsername">New Username:</label>
                 <input type="text" id="newUsername" name="newUsername" required placeholder="Name">
                 <button class="submit" type="submit" name="updateUsername">Change</button>
+            </form>
+
+
+
+            <!-- Update email form -->
+            <form action="" method="post">
+                <label for="newEmail">New Email:</label>
+                <input type="email" id="newEmail" name="newEmail" required placeholder="Email">
+                <button class="submit" type="submit" name="updateEmail">Change</button>
+            </form>
+
+            <!-- Update phone form -->
+            <form action="" method="post">
+                <label for="newPhone">New Phone:</label>
+                <input type="text" id="newPhone" name="newPhone" required placeholder="Phone">
+                <button class="submit" type="submit" name="updatePhone">Change</button>
             </form>
 
             <!-- Update password form -->
