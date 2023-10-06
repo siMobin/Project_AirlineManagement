@@ -153,7 +153,10 @@
         if ($stmt === false) {
             die(print_r(sqlsrv_errors(), true));
         } else {
-            header("Location: validation.php"); // control resubmission
+            // header("Location: validation.php"); // control resubmission
+            echo "<script>
+            window.location.href = './validation.php';
+            </script>";
             exit();
         }
     }
@@ -167,7 +170,10 @@
         if ($stmt === false) {
             die(print_r(sqlsrv_errors(), true));
         } else {
-            header("Location: validation.php"); // control resubmission
+            // header("Location: ./validation.php"); // control resubmission
+            echo "<script>
+            window.location.href = './validation.php';
+            </script>";
             exit();
         }
     }

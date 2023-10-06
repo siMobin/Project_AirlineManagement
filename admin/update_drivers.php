@@ -25,7 +25,11 @@ if (isset($_GET['did'])) {
     }
     // Handle the case where the DID is not found
 } else {
-    header("Location: ./drivers.php");
+    // header("Location: ./drivers.php");
+    echo "<script>
+    window.location.href = './drivers.php';
+    alert('Success!');
+    </script>";
 }
 
 // Check if the update form is submitted
@@ -35,7 +39,6 @@ if (isset($_POST['update'])) {
     $phone = $_POST['phone'];
     $did = $_POST['did']; // DID is fixed and unchangeable
     $role = $_POST['role'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
 
     // Check if the driver already exists in the driver table
     $sql_check = "SELECT COUNT(*) as count FROM driver WHERE DID = ?";
@@ -69,7 +72,11 @@ if (isset($_POST['update'])) {
     }
 
     // Redirect back to the driver list page after a successful update
-    header("Location: ./drivers.php");
+    // header("Location: ./drivers.php");
+    echo "<script>
+    window.location.href = './drivers.php';
+    alert('Success!');
+    </script>";
     exit;
 }
 

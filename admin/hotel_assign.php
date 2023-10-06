@@ -78,7 +78,11 @@
                 }
             }
             // Redirect back to the form page with a success message
-            header("Location: hotel_assign.php?success=!");
+            // header("Location: hotel_assign.php?success=!");
+            echo "<script>
+            window.location.href = './hotel_assign.php';
+            alert('Success!');
+            </script>";
             exit();
         }
 
@@ -171,33 +175,50 @@
                 continue;
             }
 
+            // Check if the 'hostess', 'co_hostess', and 'co_hostess_secondary' columns have a value of 0
+            $sql_check_zero_values = "SELECT hostess, co_hostess, co_hostess_secondary FROM flight_assign WHERE id = ?";
+            $params_check_zero_values = array($id);
+            $stmt_check_zero_values = sqlsrv_query($conn, $sql_check_zero_values, $params_check_zero_values);
+            if ($stmt_check_zero_values === false) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+
+            // Fetch the result
+            $zeroValuesRow = sqlsrv_fetch_array($stmt_check_zero_values, SQLSRV_FETCH_ASSOC);
+
+            // Generate and display the input boxes conditionally
             $hotel_name = getHotelForBooking($id, $conn);
             $to_location = getToLocation($id, $conn);
             echo "<div class='wrap'>";
             echo "<h2>Booking ID: $id</h2>
-                  <form method='POST'>
-                    <p>Airport Location: $to_location</p>
-                    <p>Check-in Date: {$booking['date']}</p>";
+          <form method='POST'>
+            <p>Airport Location: $to_location</p>
+            <p>Check-in Date: {$booking['date']}</p>";
 
             // hotel name
             echo "<div class='box'>
-                    <label for='hotel_name_$id'>Hotel Name:</label>
-                    <input type='text' name='hotel_name_$id' value='$hotel_name' required>
-            </div>";
+            <label for='hotel_name_$id'>Hotel Name:</label>
+            <input type='text' name='hotel_name_$id' value='$hotel_name' required>
+    </div>";
 
             // checkout date
             echo "<div class='box'>
-                    <label for='checkout_date_$id'>Checkout Date:</label>
-                    <input type='date' name='checkout_date_$id' required>
-            </div>";
+            <label for='checkout_date_$id'>Checkout Date:</label>
+            <input type='date' name='checkout_date_$id' required>
+    </div>";
 
             // room number
             $roles = array("pilot", "co_pilot", "hostess", "co_hostess", "co_hostess_secondary");
             foreach ($roles as $role) {
+                // Check if the current role is 'hostess', 'co_hostess', or 'co_hostess_secondary' and if its corresponding value is 0
+                if (($role === 'hostess' || $role === 'co_hostess' || $role === 'co_hostess_secondary') && $zeroValuesRow[$role] === 0) {
+                    continue; // Skip this input field if the value is 0
+                }
+
                 echo "<div class='box'>
-                        <label for='{$role}_room_$id'>Room Number for $role:</label>
-                        <input type='text' name='{$role}_room_$id' placeholder='room no. for $role'>
-                </div>";
+                <label for='{$role}_room_$id'>Room Number for $role:</label>
+                <input type='text' name='{$role}_room_$id' placeholder='room no. for $role'>
+        </div>";
             }
 
             // submit button

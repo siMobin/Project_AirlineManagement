@@ -196,9 +196,19 @@ if ($conn === false) {
 
     <?php
     if ($inserted) {
-        header("Location: ./flight_assign.php");
+        // header("Location: ./flight_assign.php");
+        echo "<script>
+        window.location.href = './flight_assign.php';
+        alert('Success!');
+        </script>";
+        exit;
     } elseif ($error) {
-        echo "<p>Error inserting flight assignment. Please try again later.</p>";
+        // echo "<p>Error inserting flight assignment. Please try again later.</p>";
+        echo "<script>
+        window.location.href = './flight_assign.php';
+        alert('Error inserting flight assignment. Please try again later.');
+        </script>";
+        exit;
     }
 
     // Display the generated forms

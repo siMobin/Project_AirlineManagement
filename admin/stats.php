@@ -80,10 +80,18 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 }
 
 // Query to get most popular airport
-$sql = "SELECT TOP 1 [from], COUNT(*) as count FROM bookings GROUP BY [from] ORDER BY count DESC";
+$sql = "SELECT TOP 1 airport, COUNT(*) as count
+FROM (
+    SELECT [from] as airport FROM bookings
+    UNION ALL
+    SELECT [to] as airport FROM bookings
+) AS combined
+GROUP BY airport
+ORDER BY count DESC;";
+
 $stmt = sqlsrv_query($conn, $sql);
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    $MostPopularAirport = $row["from"];
+    $MostPopularAirport = $row["airport"];
 }
 
 sqlsrv_close($conn);

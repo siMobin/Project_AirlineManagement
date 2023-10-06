@@ -35,3 +35,22 @@
     sqlsrv_free_stmt($stmt);
     ?>
 </marquee>
+
+<!-- 
+
+
+This bit of code creates an error when redirecting somewhere using a header function. To fix this issue we used JS which then can be translated to the entirety of the admin site.
+
+-- error:
+Warning: Cannot modify header information - headers already sent by (output started at X:\AirManagement\admin\nav_marquee.php:31) in X:\AirManagement\admin\xxx.php on line x
+
+
+-- fix:
+     echo "<script>
+            window.location.href = './xxx.php';
+            alert('Success!');
+            </script>";
+    
+    
+
+ -->
