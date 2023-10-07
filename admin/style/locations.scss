@@ -71,12 +71,37 @@ table {
 form {
   display: flex;
   text-align: center;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
-  gap: 0.5em;
+  // gap: 0.5em;
+  margin: 1em;
 
-  label {
-    margin-left: 2em;
+  .airport {
+    margin-right: 1em;
+  }
+
+  .extra_info {
+    margin-left: 1em;
+  }
+
+  .airport,
+  .extra_info {
+    display: flex;
+    flex-direction: column;
+    // align-items: baseline;
+    justify-content: space-between;
+    gap: 1em;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      justify-content: space-between;
+
+      label {
+        font-weight: 500;
+      }
+    }
   }
 
   input {
@@ -86,7 +111,7 @@ form {
   }
 
   .submit {
-    width: 150px;
+    // width: 150px;
     border-radius: 20px;
   }
 }

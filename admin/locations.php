@@ -11,9 +11,9 @@ if (isset($_POST['submit'])) {
     $hotel = $_POST['hotel'];
     $hotline = $_POST['hotline'];
 
-    $tsql = "INSERT INTO locations (destination, latitude, longitude,hotel,hotline) VALUES (?, ?, ?,?,?)";
-    $params = array($destination, $latitude, $longitude,$hotel,$hotline);
-    $stmt = sqlsrv_query($conn, $tsql, $params);
+    $sql = "INSERT INTO locations (destination, latitude, longitude,hotel,hotline) VALUES (?, ?, ?,?,?)";
+    $params = array($destination, $latitude, $longitude, $hotel, $hotline);
+    $stmt = sqlsrv_query($conn, $sql, $params);
 
     if ($stmt === false) {
         die(print_r(sqlsrv_errors(), true));
@@ -24,9 +24,9 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
 
-    $tsql = "DELETE FROM locations WHERE id = ?";
+    $sql = "DELETE FROM locations WHERE id = ?";
     $params = array($id);
-    $stmt = sqlsrv_query($conn, $tsql, $params);
+    $stmt = sqlsrv_query($conn, $sql, $params);
 
     if ($stmt === false) {
         die(print_r(sqlsrv_errors(), true));
@@ -34,8 +34,8 @@ if (isset($_POST['delete'])) {
 }
 
 // Show all destinations from the table locations sorted by their primary key "id" before the form
-$tsql = "SELECT * FROM locations ORDER BY destination";
-$stmt = sqlsrv_query($conn, $tsql);
+$sql = "SELECT * FROM locations ORDER BY destination";
+$stmt = sqlsrv_query($conn, $sql);
 
 if ($stmt === false) {
     die(print_r(sqlsrv_errors(), true));
@@ -74,17 +74,35 @@ echo "</div>";
 <body>
     <h1>Add new airport</h1>
     <form method="post">
-        <label for="destination">Destination:</label>
-        <input type="text" id="destination" name="destination" required placeholder="airport name">
-        <label for="latitude">Latitude:</label>
-        <input type="text" id="latitude" name="latitude" required placeholder="d(N,S) + (m/60) + (s/3600)">
-        <label for="longitude">Longitude:</label>
-        <input type="text" id="longitude" name="longitude" required placeholder="d(E,W) + (m/60) + (s/3600)">
-        <label for="hotel">Hotel Name:</label>
-        <input type="text" id="hotel" name="hotel" required placeholder="hotel name">
-        <label for="hotline">Phone number:</label>
-        <input type="text" id="hotline" name="hotline" required placeholder="phone number">
-        <input class="submit" type="submit" name="submit" value="Submit">
+        <div class="airport">
+            <div class="box">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" name="destination" required placeholder="airport name">
+            </div>
+            <div class="box">
+                <label for="latitude">Latitude</label>
+                <input type="text" id="latitude" name="latitude" required placeholder="d(N,S) + (m/60) + (s/3600)">
+            </div>
+            <div class="box">
+                <label for="longitude">Longitude</label>
+                <input type="text" id="longitude" name="longitude" required placeholder="d(E,W) + (m/60) + (s/3600)">
+            </div>
+        </div>
+
+        <div class="extra_info">
+            <div class="box">
+                <label for="hotel">Hotel Name</label>
+                <input type="text" id="hotel" name="hotel" required placeholder="hotel name">
+            </div>
+            <div class="box">
+                <label for="hotline">Hotline</label>
+                <input type="text" id="hotline" name="hotline" required placeholder="phone number">
+            </div>
+            <div class="box">
+                <label class="empty">&nbsp;&nbsp;</label><!-- empty label for space -->
+                <input class="submit" type="submit" name="submit" value="Submit">
+            </div>
+        </div>
     </form>
     <?php include './map.php'; ?>
 </body>
