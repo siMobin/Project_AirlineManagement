@@ -5,11 +5,6 @@ if (!isset($_SESSION['driver_id'])) {
     // The admin is not logged in, redirect to the login page
     header("Location: ./login=?");
     exit;
-} else {
-    $excluded_pages = array('profile.php'); //add all page to redirect profile!!!
-    if (!in_array(basename($_SERVER['PHP_SELF']), $excluded_pages)) {
-        header("Location: ./profile.php");
-    }
 }
 
 // Check if the logout link was clicked
@@ -46,7 +41,7 @@ function logout()
         <!-- The navigation links -->
         <ul>
             <li><a href="./profile.php" <?php if (basename($_SERVER['PHP_SELF']) == 'profile.php') echo 'class="active"'; ?>>Home</a></li>
-            <li><a href="./#.php" <?php if (basename($_SERVER['PHP_SELF']) == '#.php') echo 'class="active"'; ?>>Info</a></li>
+            <li><a href="./info.php" <?php if (basename($_SERVER['PHP_SELF']) == 'info.php') echo 'class="active"'; ?>>Info</a></li>
 
             <!-- logout -->
             <li class="logout"> <a method="GET" href="?action=logout">Logout</a></li>

@@ -1,0 +1,90 @@
+@import "./root";
+
+.info {
+  margin: 1em;
+  width: max-content;
+
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // gap: 0.5em;
+    border-bottom: 1px solid $blue;
+    margin-bottom: 0.5em;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+h1 {
+  margin-left: 0.5em;
+  font-size: 24px;
+}
+
+form {
+  margin: 1em;
+  width: max-content;
+  white-space: nowrap;
+
+  .box {
+    margin-bottom: 1em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+      background-color: rgba($blue_light, 0.5);
+      outline: none;
+      border: none;
+      padding: 0.5em;
+      border-radius: 5px;
+    }
+
+    label {
+      font-weight: 500;
+    }
+
+    .submit {
+      background-color: $blue;
+      padding: 0.2em 0.5em;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: $blue;
+        background-color: $blue_white;
+        outline: 1px solid $blue;
+      }
+
+      @include max-width(768px) {
+        font-size: 90%;
+        padding: 0.3em;
+      }
+    }
+  }
+}
+
+.logout:has(i) {
+  background-color: rgba(255, 0, 0, 0.658);
+  color: white;
+  padding: 0.5em 0.5em;
+  margin-left: 1em;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  transition: background-color 0.2s linear;
+
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    outline: 1px solid red;
+    color: red;
+  }
+}
