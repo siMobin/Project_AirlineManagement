@@ -36,6 +36,7 @@ $username = $_SESSION["username"] ?? "UserNotFound";
   <nav>
     <div class="logo"> <?php echo "<a href='./=$username'><i class='fa-solid fa-plane-lock'><span> </span></i></a>"; ?></div><!-- dynamically hide large logo when in mobile device -->
     <div class="link">
+      <a href="#" class="pop_location">Available Airport</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
 
@@ -54,6 +55,32 @@ $username = $_SESSION["username"] ?? "UserNotFound";
       <?php endif; ?>
     </div>
   </nav>
+
+  <div class="cover">
+    <!-- <i class="fa-solid fa-xmark close"></i> -->
+    <div class="contents">
+      <!-- close button //* move anywhere-->
+      <i class="fa-solid fa-xmark close"></i>
+
+      <h1>Available Airport</h1>
+      <?php
+      require("./conn.php");
+      $sql = "SELECT destination FROM locations order by destination";
+      $result = sqlsrv_query($conn, $sql);
+
+      $locations = array();
+      while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
+        $locations = $row['destination'];
+        echo "<li>" . $locations . "</li>" . "<br>";
+      }
+      ?>
+
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./pop_location.js">
+  </script>
 </body>
 
 </html>
