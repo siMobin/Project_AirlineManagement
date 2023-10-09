@@ -4,10 +4,36 @@ $blue_white: #d4e9f0;
 $blue: #1d92ccd1;
 $blue_dark: #385a63;
 $blue_light: #b4d4d8;
-// $blue:;
-// $blue:;
-// $blue:;
 $bg: #105274;
+
+//////////////scrollbar//////////
+html {
+  // width
+  ::-webkit-scrollbar {
+    width: 5px;
+    transition-property: width;
+    transition-duration: 3s;
+
+    &:hover {
+      width: 10px;
+    }
+  }
+
+  // Track
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $blue;
+  }
+
+  //  Handle
+  ::-webkit-scrollbar-thumb {
+    background: $blue;
+    border-radius: 10px;
+
+    &:hover {
+      background: $blue_dark;
+    }
+  }
+}
 
 @mixin max_width($breakpoint) {
   @media screen and (max-width: $breakpoint) {
@@ -46,5 +72,9 @@ $bg: #105274;
 
   &::placeholder {
     font-style: italic;
+  }
+
+  th {
+    white-space: nowrap;
   }
 }
