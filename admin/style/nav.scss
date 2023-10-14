@@ -4,7 +4,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $blue;
+  @include themed-bg-side;
   padding: 0.5em 1em;
 
   .icon {
@@ -15,6 +15,10 @@ nav {
     white-space: nowrap;
     font-size: 20px;
     color: $blue_white;
+
+    .logo {
+      @include logo-color;
+    }
 
     .burger {
       padding: 0 0.5em;
@@ -47,6 +51,9 @@ nav {
 
     &:hover {
       color: $blue;
+      @media (prefers-color-scheme: dark) {
+        color: $d_bg_dark; // Change the color for dark mode
+      }
       background-color: $blue_white;
 
       a {

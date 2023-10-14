@@ -13,6 +13,7 @@ form {
 
   #search_term {
     border: 1px solid $blue;
+    @include themed-bg-side(0.3);
   }
 }
 
@@ -31,7 +32,7 @@ table {
     padding: 0.5em;
 
     &:nth-child(odd) {
-      @include themed-bg(1);
+      @include themed-bg;
     }
   }
 

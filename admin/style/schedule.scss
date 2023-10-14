@@ -14,7 +14,7 @@ table {
 
     &:nth-child(odd) {
       background-color: $blue_white;
-      @include themed-bg(0.8);
+      @include themed-bg;
     }
   }
 
