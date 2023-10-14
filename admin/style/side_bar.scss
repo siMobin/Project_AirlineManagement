@@ -42,6 +42,13 @@ $width: 230px; // for .sidebar & footer //
       &:hover {
         color: $blue_white;
       }
+
+      // fix color issue on dark mode
+      &:not(:hover) {
+        i {
+          color: $blue;
+        }
+      }
     }
 
     a {

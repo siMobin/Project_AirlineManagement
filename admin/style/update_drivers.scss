@@ -32,7 +32,7 @@ form {
     }
 
     input:not(.submit) {
-      background-color: $blue_light;
+      @include themed-bg(1);
       border-radius: 5px;
       margin-right: 2em;
       padding-right: 3em;
@@ -55,7 +55,7 @@ table {
     font-size: 15px;
 
     &:nth-child(odd) {
-      background-color: $blue_white;
+      @include themed-bg(1);
     }
 
     td {

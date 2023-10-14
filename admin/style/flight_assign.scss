@@ -9,7 +9,7 @@ h2 {
 form {
   border: 1px solid $blue_light;
   border-radius: 10px;
-  background-color: rgba($blue_light, 0.3);
+  @include themed-bg;
   display: flex;
   margin: 1em;
   justify-content: space-around;
@@ -20,7 +20,8 @@ form {
 
   &:has(:not(.info))select {
     border: 1px solid $blue_light;
-    background-color: rgba($blue_light, 0.3);
+    // background-color: rgba($blue_light, 0.3);
+    @include themed-bg;
     padding: 0.3em;
     border-radius: 5px;
     font-style: italic;
@@ -34,7 +35,7 @@ form {
     align-self: center;
 
     input {
-      background-color: rgba($blue_light, 0.015);
+      background-color: transparent;
       // hide calender
       &[type="date"]::-webkit-calendar-picker-indicator {
         display: none;

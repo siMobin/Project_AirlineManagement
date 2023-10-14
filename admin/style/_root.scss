@@ -6,6 +6,38 @@ $blue_dark: #385a63;
 $blue_light: #b4d4d8;
 $bg: #105274;
 
+// default mode = light
+// color for dark mode
+$d_bg: #1f1f1f;
+$d_text: rgb(222, 222, 222); // text color---white
+
+// /*
+// Detect if a user has requested light or dark color themes. A user indicates their preference through an operating system setting (e.g. light or dark mode) or a user agent setting.
+// */
+body {
+  // also overwrite browser default BG color. it helps when use neumorphism
+  background-color: rgba($blue_white, 0.4) !important;
+
+  @media (prefers-color-scheme: dark) {
+    color: $d_text; // not important, because it can be overwrite...
+    background-color: $d_bg !important; // Switch to dark mode background in dark mode
+
+    * {
+      // recheck
+      color: $d_text; // don't use !important, so that it can be overwrite...
+    }
+  }
+}
+
+@mixin themed-bg($opacity: 0.3) {
+  // default mode is light
+  background-color: rgba($blue_light, $opacity); // Default BG color for light mode
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba($blue_dark, $opacity); // Change the BG color for dark mode
+  }
+}
+
 //////////////scrollbar//////////
 html {
   // width
@@ -67,6 +99,17 @@ html {
     padding: 0.5em;
     border: none;
     outline: none;
+  }
+
+  select {
+    @include themed-bg;
+  }
+
+  option {
+    @include themed-bg; // we keep our style sheet flexible. so it sometimes not work. because of :root style of the browser...
+    // overwrite the style
+    color: black !important; // overwrite L19 or L23
+    background-color: rgba(0, 0, 0, 0) !important;
   }
 
   &::placeholder {

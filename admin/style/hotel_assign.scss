@@ -10,20 +10,22 @@
     padding: 1em;
     border-radius: 20px;
     border: 1px dotted $blue;
-    background-color: rgba($blue_white, 0.5);
+    @include themed-bg;
 
     form {
       p {
         font-style: italic;
         font-weight: 600;
       }
+
       label {
         font-weight: 500;
       }
 
       input {
-        background-color: $blue_light;
+        @include themed-bg(0.5);
       }
+
       .box {
         display: flex;
         justify-content: space-between;

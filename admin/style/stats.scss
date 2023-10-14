@@ -1,13 +1,20 @@
 @import "./root";
 
-body {
-  background-color: rgba($blue_white, 0.4);
-}
+// body {
+//   background-color: rgba($blue_white, 0.4);
+// }
 
 @mixin newMorph($radius: 10px, $border_size: 1px) {
-  box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.1) inset, -5px 5px 10px rgb(255, 255, 255) inset;
   border-radius: $radius;
-  border: $border_size solid rgba($blue_white, 1);
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4) inset, -5px 5px 10px rgba(104, 104, 104, 0.1) inset; // Dark mode shadow color
+  }
+
+  @media (prefers-color-scheme: light) {
+    border: $border_size solid rgba($blue_white, 1);
+    box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.1) inset, -5px 5px 10px rgb(255, 255, 255) inset; // Light mode shadow color
+  }
 }
 
 .blocks_wrapper {
@@ -31,7 +38,7 @@ body {
 
     i {
       @include newMorph($radius: 50%);
-      box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), inset 5px -5px 10px rgb(255, 255, 255), inset 2px -2px 10px rgba(0, 0, 0, 0.15);
+      // box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), inset 5px -5px 10px rgb(255, 255, 255), inset 2px -2px 10px rgba(0, 0, 0, 0.15);
       height: 40px;
       aspect-ratio: 1;
       position: absolute;
@@ -71,6 +78,10 @@ body {
     // background-color: $blue_white;
     border-radius: 10px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2), 0px 0px 100px rgba($blue_light, 0.2) inset, -2px 2px 10px rgba(0, 0, 0, 0.1), inset 5px -5px 10px rgb(255, 255, 255), inset 2px -2px 10px rgba(0, 0, 0, 0.15);
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2), 0px 0px 100px rgba($blue_light, 0.05) inset, -2px 2px 10px rgba(0, 0, 0, 0.1), inset 5px -5px 10px rgba(0, 0, 0, 0.3), inset 2px -2px 10px rgba(0, 0, 0, 0.1);
+    }
     // display: flex;
 
     .pi {

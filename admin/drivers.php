@@ -77,6 +77,7 @@ if ($stmtHostesses === false) {
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- style from locations -->
 
 <head>
     <meta charset="UTF-8">
@@ -87,7 +88,7 @@ if ($stmtHostesses === false) {
 
 <body>
     <h1>Add new driver</h1>
-    <form method="post">
+    <form class="insert_driver" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required placeholder="Full Name">
         <label for="email">Email:</label>
