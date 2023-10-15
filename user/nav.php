@@ -30,6 +30,9 @@ $username = $_SESSION["username"] ?? "UserNotFound";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="./icon.ico">
   <title>Privet Jet</title>
+  <style>
+
+  </style>
 </head>
 
 <body>
@@ -54,6 +57,32 @@ $username = $_SESSION["username"] ?? "UserNotFound";
         </div>
       <?php endif; ?>
     </div>
+
+    <!-- /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+    <!-- side-bar for mobile device -->
+    <a class="openbtn" onclick="openNav()"><i class="fa-solid fa-bars"></i></a>
+
+    <div id="sidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+      <div class="side_link">
+        <a href="#" class="pop_location">Available Airport</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a class="logout" method="GET" href="?action=logout">Logout</a>
+
+        <?php if (isLoggedIn()) : ?>
+          <div class="profile">
+            <?php echo "<a href='./dashboard.php?=$username'><i class='fa-sharp fa-solid fa-user-secret'></i></a>"; ?>
+          </div>
+        <?php else : ?>
+          <div>
+            <a class="login" href="./login.php">Login</a>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div>
+    <!-- /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
   </nav>
 
   <div class="cover">
@@ -79,8 +108,8 @@ $username = $_SESSION["username"] ?? "UserNotFound";
   </div>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="./pop_location.js">
-  </script>
+  <script src="./pop_location.js"></script>
+  <script src="./nav.js"></script>
 </body>
 
 </html>
