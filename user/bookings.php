@@ -1,7 +1,7 @@
 <?php
 require_once('./conn.php');
 
-if (isLoggedIn()) {
+if (isset($_SESSION['username'])) {
     $username = $_SESSION["username"]; // Assuming you store username in the session
     // First, fetch the email based on the username
     $getEmailSql = "SELECT email FROM users WHERE username = ?";
