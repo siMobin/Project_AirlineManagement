@@ -1,0 +1,25 @@
+.airport_info {
+  font-size: 12px;
+  font-style: italic;
+}
+
+#map {
+  height: 80vh;
+  width: 100%;
+}
+
+/* dark mode! */
+@media (prefers-color-scheme: dark) {
+  #map {
+    background-color: #2e2e2e;
+  }
+
+  .leaflet-layer,
+/* .leaflet-interactive, */
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out,
+  .leaflet-control-attribution {
+    /* filter: invert(100%) hue-rotate(180deg) brightness(100%); */
+    filter: grayscale(50%) invert(90%) contrast(110%);
+  }
+}

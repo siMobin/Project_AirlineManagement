@@ -29,18 +29,8 @@ sqlsrv_close($conn);
 
 <head>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="./style/map.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <style>
-        .airport_info {
-            font-size: 12px;
-            font-style: italic;
-        }
-
-        #map {
-            height: 80vh;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
