@@ -11,12 +11,12 @@ password char(60) not null
 
 --create bookings table!
 CREATE TABLE bookings (
-    id INT,
-    [from] NVARCHAR(255),
-    [to] NVARCHAR(255),
+    id INT primary key not null,
+    [from] VARCHAR(255),
+    [to] VARCHAR(255),
     date DATE,
     return_date DATE,
-    class NVARCHAR(255),
+    class VARCHAR(255),
     passengers INT,
     email VARCHAR(255),
     phone VARCHAR(255),

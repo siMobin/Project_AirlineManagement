@@ -5,12 +5,12 @@ use PrivetJet;
 -- Create the admin_login table
 CREATE TABLE admin_login (
     id INT PRIMARY KEY IDENTITY(1,1),
-    admin_name NVARCHAR(255) NOT NULL,
-    password NVARCHAR(255) NOT NULL
+    admin_name VARCHAR(255) NOT NULL,
+    password char(60) NOT NULL
 );
 
 -- Insert a row with the default admin_name and password
-INSERT INTO admin_login (username, password)
+INSERT INTO admin_login (admin_name, password)
 VALUES ('ADMIN', 'airAdmin');
 
 --//////////////////////////////////////////////////////////////////////////--
@@ -24,18 +24,3 @@ CREATE TABLE locations (
     hotel varchar(255),
     hotline varchar(255)
 );
-
------temp value of locations(only for test!!!)
--- INSERT INTO locations (destination)
--- VALUES
--- ('USA - Hartsfield�Jackson Atlanta International Airport'),
--- ('China - Beijing Capital International Airport'),
--- ('UAE - Dubai International Airport'),
--- ('USA - Los Angeles International Airport'),
--- ('Japan - Tokyo Haneda Airport'),
--- ('Bangladesh - Hazrat Shahjalal International Airport'),
--- ('UK - London Heathrow Airport'),
--- ('Hong Kong - Hong Kong International Airport'),
--- ('China - Shanghai Pudong International Airport'),
--- ('France - Paris-Charles de Gaulle Airport');
--- add more locations as needed
