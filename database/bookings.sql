@@ -24,3 +24,19 @@ CREATE TABLE bookings (
     cost FLOAT,
     confirm int
 );
+
+--Feedback table!
+CREATE TABLE feedback (
+    id INT PRIMARY KEY IDENTITY(1,1),
+	submission_time DATETIME,
+    category VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    ticket_number INT,
+    journey_date DATE,
+    ticket_file VARBINARY(MAX),
+);
