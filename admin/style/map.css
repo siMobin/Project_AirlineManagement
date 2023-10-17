@@ -14,11 +14,10 @@
     background-color: #2e2e2e;
   }
 
-  .leaflet-layer,
+  .leaflet-control-layers-toggle,
 /* .leaflet-interactive, */
   .leaflet-control-zoom-in,
-  .leaflet-control-zoom-out,
-  .leaflet-control-attribution {
+  .leaflet-control-zoom-out {
     /* filter: invert(100%) hue-rotate(180deg) brightness(100%); */
     filter: grayscale(50%) invert(90%) contrast(110%);
   }

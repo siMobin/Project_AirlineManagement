@@ -9,12 +9,6 @@ var map = L.map("map", {
   maxBounds: bounds, // Set the maximum boundaries for the map
 }).setView([0, 0], 0);
 
-// Add a tile layer to the map with noWrap option set to true
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: '© <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-  noWrap: true, // Prevent map tiling repeat
-}).addTo(map);
-
 // Define the custom icon URL
 var iconUrl = "./image/plane_icon.webp";
 var shadowUrl = "./image/plane_icon_shadow.webp";
@@ -62,6 +56,35 @@ for (var i = 0; i < locations.length; i++) {
     }).addTo(map);
   }
 }
+
+// Define tile layers for normal view and satellite view
+var normalViewLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '© <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+  noWrap: true, // Prevent map tiling repeat
+});
+
+var satelliteViewLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+  attribution: '© <a href="https://www.esri.com/">Esri</a>',
+  maxZoom: 18, // You can adjust the max zoom level as needed
+});
+
+// Add the normal view layer by default
+normalViewLayer.addTo(map);
+
+// Define a control to toggle between normal view and satellite view
+L.control.layers({ "Normal View": normalViewLayer, "Satellite View": satelliteViewLayer }).addTo(map);
+
+// Create a button to toggle between views
+var toggleButton = L.easyButton("fa-globe", function () {
+  // Toggle between normal and satellite views
+  if (map.hasLayer(normalViewLayer)) {
+    map.removeLayer(normalViewLayer);
+    map.addLayer(satelliteViewLayer);
+  } else {
+    map.removeLayer(satelliteViewLayer);
+    map.addLayer(normalViewLayer);
+  }
+}).addTo(map);
 
 // Fit the map to the bounds of the markers and the lines
 var group = new L.featureGroup(markers);
