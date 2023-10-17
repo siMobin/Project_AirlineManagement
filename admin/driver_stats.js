@@ -25,8 +25,8 @@ var pilotChart = new Chart(pilotCtx, {
       {
         label: "Assignment Count",
         data: pilotAssignmentCounts,
-        backgroundColor: "rgba(30, 40, 40, 0.1)",
-        borderColor: "rgba(30, 40, 41,0.5)",
+        backgroundColor: "rgba(0, 137, 142, 0.1)",
+        borderColor: "rgba(0, 137, 142, 0.5)",
         borderWidth: borWidth,
       },
       {
@@ -97,8 +97,8 @@ var hostessChart = new Chart(hostessCtx, {
       {
         label: "Assignment Count",
         data: hostessAssignmentCounts,
-        backgroundColor: "rgba(30, 40, 40, 0.1)",
-        borderColor: "rgba(30, 40, 41,0.5)",
+        backgroundColor: "rgba(0, 137, 142, 0.1)",
+        borderColor: "rgba(0, 137, 142, 0.5)",
         borderWidth: borWidth,
       },
       {
