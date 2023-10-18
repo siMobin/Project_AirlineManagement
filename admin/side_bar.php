@@ -46,6 +46,7 @@
             <div class="sub-menu">
                 <a href="./users.php" <?php if (basename($_SERVER['PHP_SELF']) == 'users.php') echo 'class="active"'; ?>>Users</a>
                 <a href="./search_user.php" <?php if (basename($_SERVER['PHP_SELF']) == 'search_user.php') echo 'class="active"'; ?>>Search Info.</a>
+                <a href="./feedback_user.php" <?php if (basename($_SERVER['PHP_SELF']) == 'feedback_user.php') echo 'class="active"'; ?>>Feedback</a>
             </div>
         </div> <!-- end of users -->
 

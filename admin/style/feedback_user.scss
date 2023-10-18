@@ -1,0 +1,43 @@
+@import "./root";
+
+h1 {
+  margin-left: 0.5em;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0.5em;
+
+  th {
+    font-size: 14px;
+    color: $blue_white;
+    background-color: $blue_dark;
+  }
+
+  td,
+  th {
+    padding: 0.1em 0.2em;
+    border: 1px solid rgba($blue_light, 0.5);
+  }
+
+  tr {
+    text-align: center;
+
+    &:nth-child(odd) {
+      @include themed-bg;
+    }
+
+    td {
+      font-size: 14px;
+
+      img {
+        max-height: 50px;
+      }
+
+      .not-found {
+        color: red;
+        font-size: 10px;
+      }
+    }
+  }
+}
