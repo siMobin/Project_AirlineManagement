@@ -6,12 +6,25 @@ header {
   align-items: center;
   color: $blue_white;
   padding: 3em;
-  height: 30vh;
+  height: 40vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../image/feedback_bg.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: calc(-100px / 1.5);
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+  }
 
   div {
     display: flex;
@@ -32,6 +45,16 @@ header {
       }
     }
   }
+
+  @include max-width(768px) {
+    padding: 1em;
+    height: 200px !important;
+    font-size: 70%;
+
+    h1 {
+      font-weight: 500;
+    }
+  }
 }
 
 .feedback {
@@ -40,6 +63,14 @@ header {
   display: grid;
   gap: 1em;
   grid-template-columns: 1fr 1fr;
+  z-index: 9999;
+
+  @include max-width(768px) {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1em;
+  }
 
   .title {
     margin: 1em;
@@ -77,6 +108,7 @@ header {
 
     textarea {
       resize: vertical;
+      min-height: 4em; // reduce unexpected resizing
     }
 
     .bullet-options {
@@ -91,6 +123,15 @@ header {
 
     select {
       height: 2.7em !important;
+    }
+
+    @include max-width(768px) {
+      * {
+        margin: 0;
+        padding: 0.5em 0 0.5em 0.5em;
+        width: 100%;
+        font-size: 90% !important;
+      }
     }
   }
 
