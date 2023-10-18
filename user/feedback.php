@@ -105,7 +105,7 @@
             </span>
 
             <span class="box box-4">
-                <label class="required" for="email">Email:</label>
+                <label class="required" for="email">Email</label>
                 <input type="email" name="email" required placeholder="✉ Email address">
             </span>
 
@@ -155,13 +155,12 @@
 
             <span class="box box-9">
                 <label for="journey_date">Journey Date</label>
-                <input type="date" name="journey_date" value="<?php echo date('Y-m-d'); ?>">
+                <input type="text" id="journey_date" name="journey_date" placeholder="&#128467; <?php echo date('Y-m-d'); ?>">
             </span>
-
 
             <span class="box box-10">
                 <label for="ticket_file">Ticket (Image/PDF)</label>
-                <input type="file" name="ticket_file" accept=".jpg, .jpeg, .png, .pdf">
+                <input type="file" name="ticket_file" accept=".jpg, .jpeg, .png, .pdf, .webp">
             </span>
 
             <input class="submit" id="submit" type="submit" value="Submit Feedback">
@@ -180,6 +179,13 @@
         document.getElementById("resizableTextarea").addEventListener("input", function() {
             this.style.height = "auto";
             this.style.height = (this.scrollHeight) + "px";
+        });
+
+        // show current-date as a placeholder
+        document.getElementById('journey_date').addEventListener('focus', function() {
+            this.type = 'date'; // convert as date input
+            this.value = '<?php echo date('Y-m-d'); ?>' // set current date as default value
+            this.click();
         });
     </script>
 

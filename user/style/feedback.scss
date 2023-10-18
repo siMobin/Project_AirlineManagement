@@ -159,21 +159,5 @@ header {
     text-align: right;
     padding: 0.2em;
     color: green;
-    opacity: 0;
-    animation-name: successful;
-    animation-duration: 5s;
-  }
-
-  @keyframes successful {
-    0% {
-      opacity: 0;
-    }
-
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
   }
 }
