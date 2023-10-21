@@ -12,17 +12,18 @@ password char(60) not null
 --create bookings table!
 CREATE TABLE bookings (
     id INT primary key not null,
-    [from] VARCHAR(255),
-    [to] VARCHAR(255),
-    date DATE,
+    [from] VARCHAR(255) NOT NULL,
+    [to] VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
     return_date DATE,
-    class VARCHAR(255),
-    passengers INT,
+    class VARCHAR(255) NOT NULL,
+    passengers INT NOT NULL,
     email VARCHAR(255),
     phone VARCHAR(255),
-    trip VARCHAR(255),
-    cost FLOAT,
-    confirm int
+    trip VARCHAR(255) NOT NULL,
+    cost FLOAT NOT NULL,
+    confirm int,
+    printTime datetime2(3) NOT NULL
 );
 
 --Feedback table!
