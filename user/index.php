@@ -51,6 +51,9 @@ sqlsrv_close($conn);
             <p>With Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, odit? Velit sed cumque odit dolorum, quibusdam placeat debitis sint assumenda voluptas eos perferendis quos deleniti?</p>
         </div>
     </div>
+    <?php
+    include './discount.php';
+    ?>
     <div class="sliders" style="height: 600px;">
         <?php
         include './slider.php';

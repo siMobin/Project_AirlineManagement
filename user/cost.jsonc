@@ -1,0 +1,7 @@
+// cost configuration file
+{
+  "cost_per_kilometer": 0.001,
+  "discount": 5, // discount in %
+  "round_trip_multiplayer": 2,
+  "round_trip_discount": 15 // discount in %
+}

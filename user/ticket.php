@@ -21,6 +21,29 @@ function calculateDistance($lat1, $lon1, $lat2, $lon2)
     return $distance;
 }
 
+////////////////// cost configuration ////////////////////
+// Read the JSONC configuration file
+$configFile = './cost.jsonc';
+$jsonContent = file_get_contents($configFile);
+if ($jsonContent === false) {
+    die("Failed to read JSONC file.");
+}
+// Remove both single-line and multi-line comments from JSONC
+$jsonContent = preg_replace('/\s*(?:(?:\/\/[^\n]*)|(?:\/\*(?:(?!\*\/).)*\*\/))\s*/', '', $jsonContent); // ⚠️multi-line not removed!
+
+// Decode the JSON content
+$config = json_decode($jsonContent, true);
+if ($config === null) {
+    die("Error decoding JSON: " . json_last_error_msg());
+}
+
+// cost config //
+$cost_per_kilometer = $config['cost_per_kilometer'];
+$discount =  $config['discount'] / 100;
+$round_trip_multiplayer = $config['round_trip_multiplayer'];
+$round_trip_discount  = $config['round_trip_discount'] / 100;
+///////////////////////////////////////////////////////////////
+
 // Set the time zone to Asia/Dhaka
 date_default_timezone_set('Asia/Dhaka');
 // Get the current timestamp with milliseconds
@@ -74,10 +97,11 @@ if (isset($_POST['submit'])) {
             $distance = calculateDistance($fromLat, $fromLon, $toLat, $toLon);
 
             // Calculate the cost based on the distance
-            $cost = $distance * 0.001; // Assuming cost per kilometer is $0.001
+            $cost = $distance * $cost_per_kilometer;
 
             // Multiply cost by number of passengers
             $cost *= $passengers;
+            $cost *= (1 - $discount);
             $cost = round($cost); //convert cost to top
             // Check if round trip
             if ($trip == 'round-trip') {
@@ -90,10 +114,9 @@ if (isset($_POST['submit'])) {
                     echo "<script>alert('Please select a valid return date');</script>";
                 } else {
                     // Return date is valid
-                    // Double cost and subtract 10%
-                    // $discount=0;
-                    $cost *= 2;
-                    $cost *= 0.9; // $cost *= 0.9-$discount;
+                    $cost *= $round_trip_multiplayer;
+                    $cost *= (1 - $round_trip_discount);
+                    $cost = round($cost); //convert cost to top
 
                     // Query locations from database to get airport names
                     $sql = "SELECT id, destination FROM locations";
