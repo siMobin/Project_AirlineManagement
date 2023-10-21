@@ -51,6 +51,9 @@ sqlsrv_close($conn);
             <p>Our services are connect all over the world in various countries which are primarily focused on tourism and luxury experiences. With conacts with nearby luxury hotels and new airports joining our network every year we hope to bring you premium expereiences at an affordable cost.</p>
         </div>
     </div>
+    <?php
+    include './discount.php';
+    ?>
     <div class="sliders" style="height: 600px;">
         <?php
         include './slider.php';
