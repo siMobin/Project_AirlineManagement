@@ -21,17 +21,6 @@ function calculateDistance($lat1, $lon1, $lat2, $lon2)
     return $distance;
 }
 
-// Set the time zone to Asia/Dhaka
-date_default_timezone_set('Asia/Dhaka');
-// Get the current timestamp with milliseconds
-// Show this as ticket printing time
-$timestamp = microtime(true);
-// Split the timestamp into seconds and microseconds
-list($seconds, $microseconds) = explode('.', $timestamp);
-// Format the date and time
-$printTime = date("Y-m-d H:i:s", $seconds) . '.' . substr($microseconds, 0, 3); // Print the current date with milliseconds
-
-// handel ticket submission
 if (isset($_POST['submit'])) {
     $from = $_POST['from'];
     $to = $_POST['to'];
@@ -110,8 +99,8 @@ if (isset($_POST['submit'])) {
                     // Generate a random 8-digit ID
                     $id = mt_rand(10000000, 99999999);
                     // Insert into database with the generated ID
-                    $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, return_date, cost, printTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $returnDate->format('Y-m-d'), $cost, $printTime);
+                    $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, return_date, cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $returnDate->format('Y-m-d'), $cost);
                     $stmt = sqlsrv_query($conn, $sql, $params);
 
                     if ($stmt === false) {
@@ -119,9 +108,8 @@ if (isset($_POST['submit'])) {
                     } else {
                         // Generate PDF
                         require('./fpdf/fpdf.php');
-                        require('./fpdf/rotate.php');
 
-                        $pdf = new PDF('p', 'mm', 'A4');
+                        $pdf = new FPDF('p', 'mm', 'A4');
                         $pdf->AddPage();
                         // ticket background
                         $pdf->Image('./image/ticket.png', -10, -5, 230);
@@ -134,7 +122,7 @@ if (isset($_POST['submit'])) {
                         // Display ID
                         if (isset($id)) {
                             $pdf->Ln();
-                            $pdf->Cell(10, 10, 'FID: ');
+                            $pdf->Cell(10, 10, 'SID: ');
                             $pdf->SetFont('Arial', 'I', 12);
                             $pdf->Cell(140, 10, ' ' . $id);
                         }
@@ -195,19 +183,6 @@ if (isset($_POST['submit'])) {
                             $pdf->Cell(18, 10, ' $' . htmlspecialchars($cost), 0, 1, 'R');
                         }
 
-                        // validate
-                        $pdf->Rotate(12); // Rotate by 90 degrees
-                        $pdf->SetTextColor(140, 140, 140);
-                        $pdf->SetFont('Arial', 'I', 9);
-                        $pdf->Cell(160, 30, '   ' . htmlspecialchars($printTime), 0, 0, 'R');
-                        // RESET ELEMENT IF NEEDED
-                        // /* ///////////////////////////////////////////////////
-                        // $pdf->SetFont('Arial', 'B', 12); // Reset font ///////
-                        // $pdf->Rotate(0); // Reset rotation to 0 degrees //////
-                        // $pdf->SetTextColor(0, 0, 0); // Reset color //////////
-                        // $pdf->Cell(0, 0, ''); // Reset position //////////////
-                        // */ ///////////////////////////////////////////////////
-
                         // Output PDF
                         if (isset($pdf)) {
                             ob_end_clean();
@@ -237,8 +212,8 @@ if (isset($_POST['submit'])) {
                 // Generate a random 8-digit ID
                 $id = mt_rand(10000000, 99999999);
                 // Insert into database with the generated ID
-                $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, cost, printTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $cost, $printTime);
+                $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $cost);
                 $stmt = sqlsrv_query($conn, $sql, $params);
 
                 if ($stmt === false) {
@@ -246,11 +221,8 @@ if (isset($_POST['submit'])) {
                 } else {
                     // Generate PDF
                     require('./fpdf/fpdf.php');
-                    require('./fpdf/rotate.php');
-
-                    $pdf = new PDF('p', 'mm', 'A4');
+                    $pdf = new FPDF('p', 'mm', 'A4');
                     $pdf->AddPage();
-
                     // ticket background
                     $pdf->Image('./image/ticket.png', -10, -5, 230);
                     $pdf->SetFont('Arial', 'BU', 24);
@@ -263,7 +235,7 @@ if (isset($_POST['submit'])) {
                     // Display ID
                     if (isset($id)) {
                         $pdf->Ln();
-                        $pdf->Cell(10, 10, 'FID: ');
+                        $pdf->Cell(10, 10, 'SID: ');
                         $pdf->SetFont('Arial', 'I', 12);
                         $pdf->Cell(140, 10, ' ' . $id);
                         $pdf->Cell(40, 10, 'Travel Date: ' . htmlspecialchars($date->format('Y-m-d')));
@@ -319,19 +291,6 @@ if (isset($_POST['submit'])) {
                         $pdf->Cell(18, 10, ' $' . htmlspecialchars($cost), 0, 1, 'R');
                     }
 
-                    // validate
-                    $pdf->Rotate(12); // Rotate by 90 degrees
-                    $pdf->SetTextColor(140, 140, 140);
-                    $pdf->SetFont('Arial', 'I', 9);
-                    $pdf->Cell(160, 30, '   ' . htmlspecialchars($printTime), 0, 0, 'R');
-                    // RESET ELEMENT IF NEEDED
-                    // /* ///////////////////////////////////////////////////
-                    // $pdf->SetFont('Arial', 'B', 12); // Reset font ///////
-                    // $pdf->Rotate(0); // Reset rotation to 0 degrees //////
-                    // $pdf->SetTextColor(0, 0, 0); // Reset color //////////
-                    // $pdf->Cell(0, 0, ''); // Reset position //////////////
-                    // */ ///////////////////////////////////////////////////
-
                     // Output PDF
                     if (isset($pdf)) {
                         ob_end_clean();
@@ -350,26 +309,11 @@ if (isset($_POST['submit'])) {
 }
 
 // Query locations from database to populate the dropdowns
-$sql = "SELECT id, destination FROM locations Order by destination";
+$sql = "SELECT id, destination FROM locations";
 $stmt = sqlsrv_query($conn, $sql);
 $locations = [];
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $locations[$row['id']] = $row['destination'];
-}
-
-// Get the first two keys (IDs) from the locations array
-$firstTwoKeys = array_keys($locations);
-$from = $firstTwoKeys[0]; // Set the default value to the ID of the 1st element
-$to = $firstTwoKeys[1]; // Set the default value to the ID of the 2nd element
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $from = isset($_POST['from']) ? $_POST['from'] : $from;
-    $to = isset($_POST['to']) ? $_POST['to'] : $to;
-
-    if ($from === $to) {
-        // show error message
-        echo "<script>alert('From and To cannot be the same.');</script>";
-    }
 }
 ?>
 
@@ -386,8 +330,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div>
-            <h1>YOUR PRIVET AIRLINE!</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam culpa iste consectetur aliquid debitis esse asperiores inventore hic? Nam, veritatis!</p>
+            <h1>YOUR PRIVATE AIRLINE!</h1>
+            <p>Your trusted source for premium airline tickets at an affordable price! Our goal is to ensure you get the most comfortable flying expeirence all around the globe all while at the convenience of your own home devices. We also provide the service of rescheduling your flight to ensure your experience is the most optimal that we can provide.</p>
         </div>
     </header>
     <form method="post">
@@ -397,7 +341,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="from">From:</label>
                     <select id="from" name="from">
                         <?php foreach ($locations as $id => $destination) : ?>
-                            <option value="<?php echo htmlspecialchars($id); ?>" <?php if ($from == $id) echo 'selected'; ?>><?php echo htmlspecialchars($destination); ?></option>
+                            <option value="<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($destination); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -406,7 +350,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="to">To:</label>
                     <select id="to" name="to">
                         <?php foreach ($locations as $id => $destination) : ?>
-                            <option value="<?php echo htmlspecialchars($id); ?>" <?php if ($to == $id) echo 'selected'; ?>><?php echo htmlspecialchars($destination); ?></option>
+                            <option value="<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($destination); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -464,8 +408,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="box_2">
                     <label for="passengers">Passengers:</label>
-                    <!-- set 1 to 12 passengers -->
-                    <input type="number" id="passengers" name="passengers" required min="1" max="12" placeholder="Maximum 12 passenger per flight">
+                    <input type="number" id="passengers" name="passengers" required placeholder="maximum 12 passenger per flight">
                 </div>
 
                 <!-- Add email and phone inputs -->
