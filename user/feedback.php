@@ -39,7 +39,8 @@
         $journey_date = !empty($_POST['journey_date']) ? $_POST['journey_date'] : null;
 
 
-
+        // Set the time zone to Asia/Dhaka
+        date_default_timezone_set('Asia/Dhaka');
         // Capture the current timestamp
         $submission_time = date("Y-m-d H:i:s");
         $file_size = 8 * 1024 * 1024; // 8388608 = 8MB

@@ -21,6 +21,8 @@ function calculateDistance($lat1, $lon1, $lat2, $lon2)
     return $distance;
 }
 
+// Set the time zone to Asia/Dhaka
+date_default_timezone_set('Asia/Dhaka');
 // Get the current timestamp with milliseconds
 // Show this as ticket printing time
 $timestamp = microtime(true);
@@ -108,8 +110,8 @@ if (isset($_POST['submit'])) {
                     // Generate a random 8-digit ID
                     $id = mt_rand(10000000, 99999999);
                     // Insert into database with the generated ID
-                    $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, return_date, cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $returnDate->format('Y-m-d'), $cost);
+                    $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, return_date, cost, printTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $returnDate->format('Y-m-d'), $cost, $printTime);
                     $stmt = sqlsrv_query($conn, $sql, $params);
 
                     if ($stmt === false) {
@@ -132,7 +134,7 @@ if (isset($_POST['submit'])) {
                         // Display ID
                         if (isset($id)) {
                             $pdf->Ln();
-                            $pdf->Cell(10, 10, 'SID: ');
+                            $pdf->Cell(10, 10, 'FID: ');
                             $pdf->SetFont('Arial', 'I', 12);
                             $pdf->Cell(140, 10, ' ' . $id);
                         }
@@ -235,8 +237,8 @@ if (isset($_POST['submit'])) {
                 // Generate a random 8-digit ID
                 $id = mt_rand(10000000, 99999999);
                 // Insert into database with the generated ID
-                $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $cost);
+                $sql = "INSERT INTO bookings (id, [from], [to], date, class, passengers, email, phone, trip, cost, printTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $params = array($id, $fromName, $toName, $date->format('Y-m-d'), $class, $passengers, $email, $phone, $trip, $cost, $printTime);
                 $stmt = sqlsrv_query($conn, $sql, $params);
 
                 if ($stmt === false) {
@@ -261,7 +263,7 @@ if (isset($_POST['submit'])) {
                     // Display ID
                     if (isset($id)) {
                         $pdf->Ln();
-                        $pdf->Cell(10, 10, 'SID: ');
+                        $pdf->Cell(10, 10, 'FID: ');
                         $pdf->SetFont('Arial', 'I', 12);
                         $pdf->Cell(140, 10, ' ' . $id);
                         $pdf->Cell(40, 10, 'Travel Date: ' . htmlspecialchars($date->format('Y-m-d')));

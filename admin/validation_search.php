@@ -13,7 +13,7 @@
     <div class="search">
         <form method="post">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" placeholder="SID">
+            <input type="number" id="id" name="id" placeholder="FID">
             <input class="submit" type="submit" name="submit" value="Search">
         </form>
     </div>
@@ -34,7 +34,7 @@
             <h2>Flight</h2>
             <table>
                 <tr>
-                    <th>SID</th>
+                    <th>FID</th>
                     <th>From</th>
                     <th>To</th>
                     <th>Date</th>

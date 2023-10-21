@@ -6,7 +6,7 @@ $sql = "SELECT id, [from], [to], date, return_date, class, passengers, email, ph
 $stmt = sqlsrv_query($conn, $sql);
 
 echo "<table>";
-echo "<tr><th>SID</th><th>From</th><th>To</th><th>Date</th><th>Class</th><th>Passengers</th><th>Email</th><th>Phone</th><th>Trip</th><th>Cost</th></tr>";
+echo "<tr><th>FID</th><th>From</th><th>To</th><th>Date</th><th>Class</th><th>Passengers</th><th>Email</th><th>Phone</th><th>Trip</th><th>Cost</th></tr>";
 
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
      $date = $row['date'];
