@@ -21,8 +21,6 @@ function calculateDistance($lat1, $lon1, $lat2, $lon2)
     return $distance;
 }
 
-<<<<<<< HEAD
-=======
 ////////////////// cost configuration ////////////////////
 // Read the JSONC configuration file
 $configFile = './cost.jsonc';
@@ -57,7 +55,6 @@ list($seconds, $microseconds) = explode('.', $timestamp);
 $printTime = date("Y-m-d H:i:s", $seconds) . '.' . substr($microseconds, 0, 3); // Print the current date with milliseconds
 
 // handel ticket submission
->>>>>>> c901a4401dbebc19801b941ecd7a04adfe5c73b9
 if (isset($_POST['submit'])) {
     $from = $_POST['from'];
     $to = $_POST['to'];
