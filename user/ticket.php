@@ -21,6 +21,15 @@ function calculateDistance($lat1, $lon1, $lat2, $lon2)
     return $distance;
 }
 
+// Get the current timestamp with milliseconds
+// Show this as ticket printing time
+$timestamp = microtime(true);
+// Split the timestamp into seconds and microseconds
+list($seconds, $microseconds) = explode('.', $timestamp);
+// Format the date and time
+$printTime = date("Y-m-d H:i:s", $seconds) . '.' . substr($microseconds, 0, 3); // Print the current date with milliseconds
+
+// handel ticket submission
 if (isset($_POST['submit'])) {
     $from = $_POST['from'];
     $to = $_POST['to'];
@@ -108,8 +117,9 @@ if (isset($_POST['submit'])) {
                     } else {
                         // Generate PDF
                         require('./fpdf/fpdf.php');
+                        require('./fpdf/rotate.php');
 
-                        $pdf = new FPDF('p', 'mm', 'A4');
+                        $pdf = new PDF('p', 'mm', 'A4');
                         $pdf->AddPage();
                         // ticket background
                         $pdf->Image('./image/ticket.png', -10, -5, 230);
@@ -183,6 +193,19 @@ if (isset($_POST['submit'])) {
                             $pdf->Cell(18, 10, ' $' . htmlspecialchars($cost), 0, 1, 'R');
                         }
 
+                        // validate
+                        $pdf->Rotate(12); // Rotate by 90 degrees
+                        $pdf->SetTextColor(140, 140, 140);
+                        $pdf->SetFont('Arial', 'I', 9);
+                        $pdf->Cell(160, 30, '   ' . htmlspecialchars($printTime), 0, 0, 'R');
+                        // RESET ELEMENT IF NEEDED
+                        // /* ///////////////////////////////////////////////////
+                        // $pdf->SetFont('Arial', 'B', 12); // Reset font ///////
+                        // $pdf->Rotate(0); // Reset rotation to 0 degrees //////
+                        // $pdf->SetTextColor(0, 0, 0); // Reset color //////////
+                        // $pdf->Cell(0, 0, ''); // Reset position //////////////
+                        // */ ///////////////////////////////////////////////////
+
                         // Output PDF
                         if (isset($pdf)) {
                             ob_end_clean();
@@ -221,8 +244,11 @@ if (isset($_POST['submit'])) {
                 } else {
                     // Generate PDF
                     require('./fpdf/fpdf.php');
-                    $pdf = new FPDF('p', 'mm', 'A4');
+                    require('./fpdf/rotate.php');
+
+                    $pdf = new PDF('p', 'mm', 'A4');
                     $pdf->AddPage();
+
                     // ticket background
                     $pdf->Image('./image/ticket.png', -10, -5, 230);
                     $pdf->SetFont('Arial', 'BU', 24);
@@ -291,6 +317,19 @@ if (isset($_POST['submit'])) {
                         $pdf->Cell(18, 10, ' $' . htmlspecialchars($cost), 0, 1, 'R');
                     }
 
+                    // validate
+                    $pdf->Rotate(12); // Rotate by 90 degrees
+                    $pdf->SetTextColor(140, 140, 140);
+                    $pdf->SetFont('Arial', 'I', 9);
+                    $pdf->Cell(160, 30, '   ' . htmlspecialchars($printTime), 0, 0, 'R');
+                    // RESET ELEMENT IF NEEDED
+                    // /* ///////////////////////////////////////////////////
+                    // $pdf->SetFont('Arial', 'B', 12); // Reset font ///////
+                    // $pdf->Rotate(0); // Reset rotation to 0 degrees //////
+                    // $pdf->SetTextColor(0, 0, 0); // Reset color //////////
+                    // $pdf->Cell(0, 0, ''); // Reset position //////////////
+                    // */ ///////////////////////////////////////////////////
+
                     // Output PDF
                     if (isset($pdf)) {
                         ob_end_clean();
@@ -309,11 +348,26 @@ if (isset($_POST['submit'])) {
 }
 
 // Query locations from database to populate the dropdowns
-$sql = "SELECT id, destination FROM locations";
+$sql = "SELECT id, destination FROM locations Order by destination";
 $stmt = sqlsrv_query($conn, $sql);
 $locations = [];
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $locations[$row['id']] = $row['destination'];
+}
+
+// Get the first two keys (IDs) from the locations array
+$firstTwoKeys = array_keys($locations);
+$from = $firstTwoKeys[0]; // Set the default value to the ID of the 1st element
+$to = $firstTwoKeys[1]; // Set the default value to the ID of the 2nd element
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $from = isset($_POST['from']) ? $_POST['from'] : $from;
+    $to = isset($_POST['to']) ? $_POST['to'] : $to;
+
+    if ($from === $to) {
+        // show error message
+        echo "<script>alert('From and To cannot be the same.');</script>";
+    }
 }
 ?>
 
@@ -341,7 +395,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                     <label for="from">From:</label>
                     <select id="from" name="from">
                         <?php foreach ($locations as $id => $destination) : ?>
-                            <option value="<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($destination); ?></option>
+                            <option value="<?php echo htmlspecialchars($id); ?>" <?php if ($from == $id) echo 'selected'; ?>><?php echo htmlspecialchars($destination); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -350,7 +404,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                     <label for="to">To:</label>
                     <select id="to" name="to">
                         <?php foreach ($locations as $id => $destination) : ?>
-                            <option value="<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($destination); ?></option>
+                            <option value="<?php echo htmlspecialchars($id); ?>" <?php if ($to == $id) echo 'selected'; ?>><?php echo htmlspecialchars($destination); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -408,7 +462,8 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 
                 <div class="box_2">
                     <label for="passengers">Passengers:</label>
-                    <input type="number" id="passengers" name="passengers" required placeholder="maximum 12 passenger per flight">
+                    <!-- set 1 to 12 passengers -->
+                    <input type="number" id="passengers" name="passengers" required min="1" max="12" placeholder="Maximum 12 passenger per flight">
                 </div>
 
                 <!-- Add email and phone inputs -->
