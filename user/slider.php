@@ -54,7 +54,7 @@ sqlsrv_close($conn);
             <div class="swiper-wrapper">
                 <?php
                 // Array of image categories
-                $imageCategories = ["airport", "visiting place of", "beach of", "business in", "walk on"];
+                $imageCategories = ["Airport Terminal", "Tourist Attractions", "Famous Places", "Travel Destinations", "Scenic Views","Cultural Landmarks","Airport Control Tower","Airport Aerial View","Airport Building"];
 
                 foreach ($destinations as $destination) {
                     // Select a random image category from the array

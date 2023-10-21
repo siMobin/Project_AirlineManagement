@@ -12,11 +12,11 @@
 <body>
 
     <header>
-        <h1>Lorem, ipsum dolor. Feedback</h1>
+        <h1>Reach out to us at any time!</h1>
         <div>
             <a href="./">Home</a>
             <span>&bull;</span>
-            <a href="#">lorem</a>
+            <a href="./ticket.php">Book a ticket</a>
         </div>
     </header>
 

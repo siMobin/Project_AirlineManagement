@@ -27,8 +27,8 @@ sqlsrv_close($conn);
 
 <body>
     <header>
-        <h1>The Airline you know, reimagined for business...</h1>
-        <p>A platform for managing Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, minima!</p>
+        <h1>The Airline you know, reimagined for business</h1>
+        <p>Your trusted platform for luxury flights all over the globe from the convenience of your own home!</p>
         <a class=".submit" href="./ticket.php">Book Ticket</a>
     </header>
 
@@ -47,8 +47,8 @@ sqlsrv_close($conn);
 
         <div>
             <img src="./image/safety_2.jpg" alt="">
-            <h3>Setting <?php echo $TotalAirport; ?> airport in motion</h3>
-            <p>With Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, odit? Velit sed cumque odit dolorum, quibusdam placeat debitis sint assumenda voluptas eos perferendis quos deleniti?</p>
+            <h3>Setting <?php echo $TotalAirport; ?> airports in motion</h3>
+            <p>Our services are connect all over the world in various countries which are primarily focused on tourism and luxury experiences. With conacts with nearby luxury hotels and new airports joining our network every year we hope to bring you premium expereiences at an affordable cost.</p>
         </div>
     </div>
     <?php
