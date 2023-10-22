@@ -36,13 +36,22 @@
     position: relative;
     width: 120px;
     height: 130px;
-    background-color: #424242;
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 
     img {
       width: 100%;
       object-fit: cover;
+      background-image: url(../image/loading.svg), radial-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      transition: scale 60s linear;
+
+      &:hover {
+        scale: 3;
+        cursor: wait;
+      }
     }
 
     &:nth-child(1) {

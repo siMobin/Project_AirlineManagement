@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="./style/discount.css">
-
 <?php
 ////////////////// cost configuration ////////////////////
 // Read the JSONC configuration file
@@ -22,21 +20,43 @@ $discount =  $config['discount'];
 $round_trip_discount  = $config['round_trip_discount'];
 ///////////////////////////////////////////////////////////////
 
-$imageCategories = ["Airport Terminal", "Tourist Attractions", "Famous Places", "Travel Destinations", "Scenic Views", "Airport Aerial View", "Airport Building", "beach", "sea", "sea beach"];
+// Image keyword
+$imageCategories = ["resort", "hotel", "motel", "city", "Mountain", "lake", "Airport", "hill", "Travel", "Private Jet", "beach", "sea", "sea beach", "visiting spots"];
 ?>
+
+<link rel="stylesheet" href="./style/discount.css">
 <div class="discount">
   <div class="hexagon-gallery">
-    <?php for ($i = 1; $i <= 6; $i++) {
-      $randomCategory = $imageCategories[array_rand($imageCategories)];
-      $imageURL = "https://source.unsplash.com/600x300/?$randomCategory&category=visitingSpot&orientation=landscape";
+    <?php
+    $usedCategories = []; // Store used categories
+    for ($i = 1; $i <= 6; $i++) {
+      $randomCategory = getRandomCategory($imageCategories, $usedCategories);
+      array_push($usedCategories, $randomCategory); // Add the used category
+      $imageURL = "https://source.unsplash.com/900x900/?$randomCategory&category=visitingSpot&orientation=squre";
     ?>
+
       <div class="hex">
-        <img src="<?php echo $imageURL ?>" alt="Hexagon Image <?php echo $i; ?>">
+        <img src="<?php echo $imageURL; ?>" alt="<?php echo $i; ?>" loading="lazy">
       </div>
     <?php } ?>
+
   </div>
   <div class="text">
     <h1>Exclusive Offer <span><?php echo $discount . "%"; ?></span> Discount</h1>
     <h1>Round Trip Offer <span><?php echo $round_trip_discount . "%"; ?></span> Discount</h1>
   </div>
 </div>
+
+<!-- ensure that each image is unique -->
+<?php
+function getRandomCategory($categories, $usedCategories)
+{
+  $remainingCategories = array_diff($categories, $usedCategories);
+  if (empty($remainingCategories)) {
+    // If all categories are used, reset the used categories array
+    $usedCategories = [];
+    $remainingCategories = $categories;
+  }
+  return $remainingCategories[array_rand($remainingCategories)];
+}
+?>
