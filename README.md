@@ -3,8 +3,6 @@
 <!-- <h3 align=center>Airline Management System</h3> -->
 <h3 align=center>Airline Management System (A private jet hiring concept) – php, JS, scss, Microsoft SQL Server.</h3>
 
-DSA ii project by _two_ **CSE** students!
-
 ### _See_ 👀
 
 - User [README.md](./user/README.md)
@@ -26,13 +24,13 @@ _OR_
 
 <div align="center">
 
-|          Device | User                                                                         | Driver                                                                       | Admin                                                                          |
-| --------------: | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Windows _(x64)_ | [![User](https://img.shields.io/badge/coming%20soon-yellow)](#)              | [![Driver](https://img.shields.io/badge/coming%20soon-yellow)](#)            | [![Admin](https://img.shields.io/badge/coming%20soon-yellow)](#)               |
-|           Linux | [![Linux](https://img.shields.io/badge/no%20information%20available-red)](#) | [![Linux](https://img.shields.io/badge/no%20information%20available-red)](#) | [![Linux](https://img.shields.io/badge/coming%20soon-yellow)](#)               |
-|             Mac | [![Mac](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![Mac](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![Mac](https://img.shields.io/badge/coming%20soon-yellow)](#)                 |
-|         Android | [![Android](https://img.shields.io/badge/coming%20soon-yellow)](#)           | [![Android](https://img.shields.io/badge/coming%20soon-yellow)](#)           | [![Android](https://img.shields.io/badge/no%20information%20available-red)](#) |
-|             iOS | [![iOS](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![iOS](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![iOS](https://img.shields.io/badge/no%20information%20available-red)](#)     |
+|          Device | User                                                                         | Driver                                                                       | Admin                                                                                                                              |
+| --------------: | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Windows _(x64)_ | [![User](https://img.shields.io/badge/coming%20soon-yellow)](#)              | [![Driver](https://img.shields.io/badge/coming%20soon-yellow)](#)            | [![Admin](https://img.shields.io/badge/Latest-1.2.082-blue)](https://github.com/siMobin/Project_AirlineManagement/releases/latest) |
+|           Linux | [![Linux](https://img.shields.io/badge/no%20information%20available-red)](#) | [![Linux](https://img.shields.io/badge/no%20information%20available-red)](#) | [![Linux](https://img.shields.io/badge/coming%20soon-yellow)](#)                                                                   |
+|             Mac | [![Mac](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![Mac](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![Mac](https://img.shields.io/badge/coming%20soon-yellow)](#)                                                                     |
+|         Android | [![Android](https://img.shields.io/badge/coming%20soon-yellow)](#)           | [![Android](https://img.shields.io/badge/coming%20soon-yellow)](#)           | [![Android](https://img.shields.io/badge/no%20information%20available-red)](#)                                                     |
+|             iOS | [![iOS](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![iOS](https://img.shields.io/badge/coming%20soon-yellow)](#)               | [![iOS](https://img.shields.io/badge/no%20information%20available-red)](#)                                                         |
 
 </div>
 
@@ -100,6 +98,6 @@ _OR_
 </div>
 
 <div align="center">
-<hr style="width:50vw">
-  <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:50vw" align=center alt="special-partner">
+<hr style="width:350px">
+  <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner">
 </div>
