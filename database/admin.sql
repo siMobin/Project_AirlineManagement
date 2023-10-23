@@ -1,5 +1,6 @@
-create database PrivetJet;
-use PrivetJet;
+create database PrivateJet;
+use PrivateJet;
+use PrivateJet;
 
 -- admin login
 -- Create the admin_login table

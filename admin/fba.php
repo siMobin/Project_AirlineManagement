@@ -33,7 +33,9 @@ $flightCountsDestination = array();
 
 // Process all airports
 foreach ($allAirports as $airport) {
-    $airportNames[] = htmlspecialchars($airport);
+    $nameSize = 16;
+    $shortenedAirportName = strlen($airport) > $nameSize ? substr($airport, 0, $nameSize) . '...' : $airport; // show airport name under $limit...
+    $airportNames[] = htmlspecialchars($shortenedAirportName);
     $flightCountsStart[] = isset($flightDataStart[$airport]) ? $flightDataStart[$airport] : 0;
     $flightCountsDestination[] = isset($flightDataDestination[$airport]) ? $flightDataDestination[$airport] : 0;
 }

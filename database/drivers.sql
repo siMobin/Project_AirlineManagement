@@ -1,4 +1,4 @@
-use PrivetJet
+use PrivateJet
 
 
 CREATE TABLE driver_info (

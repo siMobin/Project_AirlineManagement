@@ -45,5 +45,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [First Patch]
 
 ```powershell
-npx nativefier --name "Admin-Privet Jet" -i "./icon.ico" --inject "./admin-context.js" --disable-dev-tools --build-version "0.0.073-beta" --app-version "0.07"  --show-menu-bar --bookmarks-menu "./admin_menu-Action.json" --min-width "1360" --min-height "768" --ignore-certificate --portable "http://localhost/admin/"
+npx nativefier --name "Admin-Private Jet" -i "./icon.ico" --inject "./admin-context.js" --disable-dev-tools --build-version "0.0.073-beta" --app-version "0.07"  --show-menu-bar --bookmarks-menu "./admin_menu-Action.json" --min-width "1360" --min-height "768" --ignore-certificate --portable "http://localhost/admin/"
 ```

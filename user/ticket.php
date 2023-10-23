@@ -150,7 +150,7 @@ if (isset($_POST['submit'])) {
                         $pdf->Image('./image/ticket.png', -10, -5, 230);
                         $pdf->SetFont('Arial', 'BU', 24);
                         $pdf->Cell(71, 10, '', 0, 0);
-                        $pdf->Cell(59, 5, 'Privet Jet!', 0, 0);
+                        $pdf->Cell(59, 5, 'Private Jet!', 0, 0);
                         $pdf->Cell(59, 10, '', 0, 0);
                         $pdf->SetFont('Arial', 'B', 12);
 
@@ -278,7 +278,7 @@ if (isset($_POST['submit'])) {
                     $pdf->Image('./image/ticket.png', -10, -5, 230);
                     $pdf->SetFont('Arial', 'BU', 24);
                     $pdf->Cell(71, 10, '', 0, 0);
-                    $pdf->Cell(59, 5, 'Privet Jet!', 0, 0);
+                    $pdf->Cell(59, 5, 'Private Jet!', 0, 0);
                     $pdf->Cell(59, 10, '', 0, 0);
                     $pdf->Ln();
                     $pdf->SetFont('Arial', 'B', 12);
@@ -409,7 +409,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div>
-        <h1>YOUR PRIVATE AIRLINE!</h1>
+            <h1>YOUR PRIVATE AIRLINE!</h1>
             <p>Your trusted source for premium airline tickets at an affordable price! Our goal is to ensure you get the most comfortable flying expeirence all around the globe all while at the convenience of your own home devices. We also provide the service of rescheduling your flight to ensure your experience is the most optimal that we can provide.</p>
         </div>
     </header>

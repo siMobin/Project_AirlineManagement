@@ -29,7 +29,7 @@ $username = $_SESSION["username"] ?? "UserNotFound";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="./icon.ico">
-  <title>Privet Jet</title>
+  <title>Private Jet</title>
   <style>
 
   </style>

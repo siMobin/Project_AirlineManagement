@@ -1,4 +1,4 @@
-use PrivetJet;
+use PrivateJet;
 
 -- user login info
 create table users(
