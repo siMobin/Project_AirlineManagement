@@ -37,6 +37,7 @@ form {
 
 table {
   border-collapse: collapse;
+  min-width: 70vw;
 
   tr {
     &:has(th) {

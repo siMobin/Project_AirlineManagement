@@ -7,6 +7,10 @@
   justify-content: center;
   gap: 2em;
 
+  @include max-width(768px) {
+    margin: 0.5em;
+  }
+
   div:has(h1) {
     span {
       width: max-content;
@@ -19,16 +23,33 @@
       padding: 0.5em;
       border-radius: 50%;
     }
+
+    h1:not(:last-child) {
+      margin-bottom: 1em;
+    }
+
+    @include max-width(768px) {
+      h1 {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
   }
 
   .hexagon-gallery {
-    margin-top: 50px;
+    margin: 2em 0;
     max-width: 600px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 100px;
     grid-gap: 0.5em;
-    padding-bottom: 1em;
+
+    @include max-width(768px) {
+      grid-gap: 0em;
+      grid-auto-rows: 40px;
+      margin: 0.5em 0;
+      padding-bottom: 0;
+    }
   }
 
   .hex {
@@ -38,6 +59,11 @@
     height: 130px;
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+    @include max-width(768px) {
+      width: 50px;
+      height: 55px;
+    }
 
     img {
       width: 100%;

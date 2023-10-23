@@ -410,7 +410,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <div>
             <h1>YOUR PRIVATE AIRLINE!</h1>
-            <p>Your trusted source for premium airline tickets at an affordable price! Our goal is to ensure you get the most comfortable flying expeirence all around the globe all while at the convenience of your own home devices. We also provide the service of rescheduling your flight to ensure your experience is the most optimal that we can provide.</p>
+            <p>Your trusted source for premium airline tickets at an affordable price! Our goal is to ensure you get the most comfortable flying experience all around the globe all while at the convenience of your own home devices. We also provide the service of rescheduling your flight to ensure your experience is the most optimal that we can provide.</p>
         </div>
     </header>
     <form method="post">

@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  min-height: 40vh;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,6 +14,10 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+
+  @include max-width(768px) {
+    height: 30vh;
+  }
 
   h1 {
     font-size: 30px;
@@ -60,7 +64,7 @@ header {
 // watch mpf line 60
 .mpf_wrapper {
   width: 100%;
-  padding: 3em 0 2em 0;
+  padding: 2em 0;
   display: flex;
   justify-content: center;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)), url(../image/mpf_bg.jpg);
