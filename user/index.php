@@ -48,7 +48,7 @@ sqlsrv_close($conn);
         <div>
             <img src="./image/safety_2.jpg" alt="">
             <h3>Setting <?php echo $TotalAirport; ?> airports in motion</h3>
-            <p>Our services are connect all over the world in various countries which are primarily focused on tourism and luxury experiences. With conacts with nearby luxury hotels and new airports joining our network every year we hope to bring you premium expereiences at an affordable cost.</p>
+            <p>Our services are connect all over the world in various countries which are primarily focused on tourism and luxury experiences. With connects with nearby luxury hotels and new airports joining our network every year we hope to bring you premium experiences at an affordable cost.</p>
         </div>
     </div>
     <?php
