@@ -73,7 +73,6 @@
                     echo "<form method='post'>
                     <input type='hidden' name='id' value='" . $row['id'] . "'>
                     <input class='button' type='submit' name='confirm' value='✅'></td> <td>
-                    <input class='cancel button' type='submit' name='cancel' value='❌'>
                     </form></td>";
                 } else {
                     // cancel
