@@ -5,7 +5,6 @@
 - [About](#about)
   - [Description](#description)
   - [Key Features](#key-features)
-  - [Getting Started](#getting-started)
   - [Platform](#platform)
   - [App Release](#app-release)
   - [Dependency](#dependency)
@@ -33,12 +32,6 @@ The Drivers Portal is a specialized web application designed exclusively for pil
 2. **Update Personal Information:**
    - Allow pilots and flight attendants to update their personal information, such as contact details and emergency contacts.
    - Ensure accurate and up-to-date information for communication and safety purposes.
-
-## Getting Started
-
-1. Clone the repository to your local environment.
-
-1. Clone the repository to your local environment.
 
 Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=SshHLm)** for more information.
 
