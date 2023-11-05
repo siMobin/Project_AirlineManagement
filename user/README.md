@@ -1,4 +1,8 @@
+<div align=center>
+
 ![MasterHead][head]
+
+</div>
 
 ### Table of content
 
@@ -23,7 +27,7 @@
 
 ## Description
 
-The Airline Ticket Booking System is a comprehensive platform that allows customers to seamlessly book airline tickets. It offers a user-friendly interface for booking flights using various criteria, such as source and destination places and preferred dates. This real-time system dynamically calculates ticket prices based on factors like distance, discounts, travel class, and the number of passengers. Users can create accounts, log in for future bookings, update their information, and delete their accounts as needed.
+_The Airline Ticket Booking System is a comprehensive platform that allows customers to seamlessly book airline tickets. It offers a user-friendly interface for booking flights using various criteria, such as source and destination places and preferred dates. This real-time system dynamically calculates ticket prices based on factors like distance, discounts, travel class, and the number of passengers. Users can create accounts, log in for future bookings, update their information, and delete their accounts as needed._
 
 ## Key Features
 
@@ -127,8 +131,8 @@ Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=Ssh
   <img src="https://avatars.githubusercontent.com/u/102217786?v=4" height="50" alt="siMobin" style="border-radius: 50%;" />
    <img src="https://avatars.githubusercontent.com/u/102604008?v=4" height="50" alt="Rahul"  style="border-radius: 50%;"/>
 
-<hr style="width:350px">
- <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner">
+<!-- <hr style="width:350px">
+ <img src="https://drive.google.com/uc?export=view&id=14Up1XvM1xxjHVX0gxdK5_58cOmNiD6QY" style="width:350px" align=center alt="special-partner"> -->
 </div>
 
 <div style="align:right; text-align:right; margin-top:100px; font-size:16px;" >
@@ -142,38 +146,40 @@ _**[⇦ Back](../)**_
 
 <!-- link -->
 
-[head]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/cf76c8d3-b8e3-4121-b737-1ca6c3864419
+[head]: https://drive.google.com/uc?export=view&id=1AdkV1nLLVOkxIDcTNyjrsSY6RtJ-pP7f
+
+<!-- https://drive.google.com/uc?export=view&id= -->
 
 <!--  -->
 
-[login]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/fb67586d-7362-4d73-a6ac-ee7383e6fa4a
+[login]: https://drive.google.com/uc?export=view&id=1sH7tLRrt07rV27k0tKoPvoIRSUQkI2fh
 
 <!--  -->
 
-[home]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/4db16507-122d-4148-a848-9d7428262c77
+[home]: https://drive.google.com/uc?export=view&id=1rtiV1D_SAULl2j3uKZDIdN1Mo3QjZWK-
 
 <!--  -->
 
-[ticket_page]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/e4e03375-637d-4a5f-8ec7-96813b01d530
+[ticket_page]: https://drive.google.com/uc?export=view&id=10UvrAhdrlLmy3DstEexXEH-8V7PjeMTe
 
 <!--  -->
 
-[ticket_one]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/450f417d-87e0-4969-9884-e29b4b1975c5
+[ticket_one]: https://drive.google.com/uc?export=view&id=1Fpi_SmYDiPi9gFcfHVKaN-t252M9gv5e
 
 <!--  -->
 
-[ticket_round]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/221f0d10-2c7f-4c08-8b39-64ee520e16fa
+[ticket_round]: https://drive.google.com/uc?export=view&id=18Fm0FPb-_2YDk3KOXu9w3-j-C8UkY5tp
 
 <!--  -->
 
-[feedback]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/9d1daaea-a327-4fa5-a357-bd987e04b670
+[feedback]: https://drive.google.com/uc?export=view&id=1OrrzEn2srZW7yqAiY6sOlXcVUenlhLlD
 
 <!--  -->
 
-[dash_1]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/a4ea21cc-1751-480a-bf61-b1f273407469
+[dash_1]: https://drive.google.com/uc?export=view&id=1YCODd0sCyp9FiDTB-x7G-3daqeUiL6bB
 
 <!--  -->
 
-[dash_2]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/66cae486-6136-4cd0-ba1e-7d7c76b14704
+[dash_2]: https://drive.google.com/uc?export=view&id=1JYh3T4ixZzCQgBLn720ietJSUEv0dvOk
 
 <!-- end link -->

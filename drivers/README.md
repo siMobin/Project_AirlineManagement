@@ -20,7 +20,7 @@
 
 ## Description
 
-The Drivers Portal is a specialized web application designed exclusively for pilots and flight attendants. This portal allows these personnel to access their flight schedules and update their personal information, ensuring efficient management of their responsibilities.
+_The Drivers Portal is a specialized web application designed exclusively for pilots and flight attendants. This portal allows these personnel to access their flight schedules and update their personal information, ensuring efficient management of their responsibilities._
 
 ## Key Features
 
@@ -97,8 +97,8 @@ Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=Ssh
   <img src="https://avatars.githubusercontent.com/u/102217786?v=4" height="50" alt="siMobin" style="border-radius: 50%;" />
    <img src="https://avatars.githubusercontent.com/u/102604008?v=4" height="50" alt="Rahul"  style="border-radius: 50%;"/>
 
-<hr style="width:350px">
- <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner">
+<!-- <hr style="width:350px">
+ <img src="https://drive.google.com/uc?export=view&id=14Up1XvM1xxjHVX0gxdK5_58cOmNiD6QY" style="width:350px" align=center alt="special-partner"> -->
 </div>
 
 <div style="align:right; text-align:right; margin-top:100px; font-size:16px;" >
@@ -112,19 +112,19 @@ _**[⇦ Back](../)**_
 
 <!-- link -->
 
-[head]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/75f6988a-00aa-4639-a764-106838c39f8d
+[head]: https://drive.google.com/uc?export=view&id=1zt_Rc5b7Lkw2DGVRdqFwAVmdbmMl_gb0
 
 <!--  -->
 
-[login]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/bbb48982-fa8c-4f29-9a66-0ef92435ceaa
+[login]: https://drive.google.com/uc?export=view&id=1PeJUFN48WxhOrKHTzlI6CQQOsr4jP_MO
 
 <!--  -->
 
-[dashboard]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/d8ab6a5f-254d-4d6d-87db-032a62504791
+[dashboard]: https://drive.google.com/uc?export=view&id=1j2ZSKtjFwg4GGwUSqZupetR-O6kti7KF
 
 <!--  -->
 
-[Info]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/c94d0f84-1e6a-49bf-bb97-bd3b05c9b3b3
+[Info]: https://drive.google.com/uc?export=view&id=1uYeTONqHOKkwerxaGVUb5oVoss7T9EWj
 
 <!--  -->
 

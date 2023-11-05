@@ -2,7 +2,7 @@
 
 ![masthead][head]
 
-## ER Diagram
+# ER Diagram
 
 ![ERD][erd]
 
@@ -42,8 +42,8 @@ Download _**[Database](https://1drv.ms/u/s!Anra9StYV1r-gwhtrFsmCCrN8fuF)**_ back
   <img src="https://avatars.githubusercontent.com/u/102217786?v=4" height="50" alt="siMobin" style="border-radius: 50%;" />
    <img src="https://avatars.githubusercontent.com/u/102604008?v=4" height="50" alt="Rahul"  style="border-radius: 50%;"/>
 
-<hr style="width:350px">
- <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner">
+<!-- <hr style="width:350px">
+ <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner"> -->
 </div>
 
 <div style="align:right; text-align:right; margin-top:100px; font-size:16px;" >
@@ -57,11 +57,11 @@ _**[⇦ Back](../)**_
 
 <!-- link -->
 
-[erd]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/7f8282ff-fd13-4cf8-8841-7d9ee3bd7bef
+[erd]: https://drive.google.com/uc?export=view&id=1t0Cov7MyneG9uBbvJrI-JcYRkN9qY1Tt
 
 <!--  -->
 
-[head]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/7899ff1e-e58b-45b1-938c-1fc1f819d8f0
+[head]: https://drive.google.com/uc?export=view&id=1itAsUfdkPFzUGhSpRYRzfU4TM_2ebGy3
 
 <!--  -->
 <!-- end of link -->

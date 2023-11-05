@@ -1,4 +1,4 @@
-![MasterHead](https://github.com/siMobin/Project_AirlineManagement/assets/102217786/36397d92-668c-4636-94ca-0997fe596bb0)
+![MasterHead](https://drive.google.com/uc?export=view&id=1rHg9ZzHpvty_muZF8Z_IaXjSNAYv4Q60)
 
 <!-- <h3 align=center>Airline Management System</h3> -->
 <h3 align=center>Airline Management System (A private jet hiring concept) – php, JS, scss, Microsoft SQL Server.</h3>
@@ -12,7 +12,7 @@
 
 _OR_
 
-👉 Download **[Report sheet](<[https://googrlDrivePDFLink](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=SshHLm)>)**
+👉 Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=SshHLm)**
 
 ###
 
@@ -53,9 +53,7 @@ _OR_
 <div align="center">
   <img src="https://avatars.githubusercontent.com/u/102217786?v=4" height="50" alt="siMobin" style="border-radius: 50%;" />
    <img src="https://avatars.githubusercontent.com/u/102604008?v=4" height="50" alt="Rahul"  style="border-radius: 50%;"/>
-</div>
 
-<div align="center">
-<hr style="width:350px">
-  <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner">
+<!-- <hr style="width:350px">
+  <img src="https://drive.google.com/uc?export=view&id=14Up1XvM1xxjHVX0gxdK5_58cOmNiD6QY" style="width:350px" align=center alt="special-partner"> -->
 </div>

@@ -30,7 +30,7 @@
 
 ## Description
 
-The admin portal is a crucial component of the Airline Ticket Booking System, designed to facilitate the efficient management of flight bookings, ticket inventory, user authentication, and account management. This portal provides administrators with the necessary tools to oversee and maintain the airline's booking operations, ensuring a seamless customer experience.
+_The admin portal is a crucial component of the Airline Ticket Booking System, designed to facilitate the efficient management of flight bookings, ticket inventory, user authentication, and account management. This portal provides administrators with the necessary tools to oversee and maintain the airline's booking operations, ensuring a seamless customer experience._
 
 ## Key Features
 
@@ -108,9 +108,9 @@ Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=Ssh
 
 ## Flight Assignment
 
-![Flight_Assignment_light][schedule_light]
+![Flight_Assignment_light][flight_assignment_light]
 
-![Flight_Assignment_dark][schedule_dark]
+![Flight_Assignment_dark][flight_assignment_dark]
 
 ## Hotel Assignment
 
@@ -128,7 +128,7 @@ Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=Ssh
 
 ![driver_info_light][driver_info_light]
 
-![drivers_info_dark][driver_info_dark]
+![Drivers_info_dark][drivers_info_dark]
 
 ## Airports
 
@@ -167,7 +167,7 @@ Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=Ssh
 
 > [!NOTE]
 > Default mode is **_light_**
-> & Its fetch from **_system_**!
+> & `mode` fetch from **_system_**!
 
 <!--  -->
 
@@ -178,9 +178,9 @@ Download **[Report sheet](https://1drv.ms/b/s!Anra9StYV1r-gw2xm8fBy5s8ZNbA?e=Ssh
 <div align="center">
   <img src="https://avatars.githubusercontent.com/u/102217786?v=4" height="50" alt="siMobin" style="border-radius: 50%;" />
    <img src="https://avatars.githubusercontent.com/u/102604008?v=4" height="50" alt="Rahul"  style="border-radius: 50%;"/>
-
+<!-- 
 <hr style="width:350px">
- <img src="https://github.com/siMobin/Project_AirlineManagement/assets/102217786/f677013e-c984-4f25-956b-5d73b30f9770" style="width:350px" align=center alt="special-partner">
+ <img src="https://drive.google.com/uc?export=view&id=14Up1XvM1xxjHVX0gxdK5_58cOmNiD6QY" style="width:350px" align=center alt="special-partner"> -->
 </div>
 
 <div style="align:right; text-align:right; margin-top:100px; font-size:16px;" >
@@ -194,61 +194,61 @@ _**[⇦ Back](../)**_
 
 <!-- link -->
 
-[head]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/4719d20c-fa74-463c-990a-b566a895cf50
+[head]: https://drive.google.com/uc?export=view&id=1FsZ9hnMmXymxa9fJzBMhNZxLVX_roQCq
 
 <!--  -->
 
-[login]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/1ec620c6-8a26-4557-9be5-92f14b630256
+[login]: https://drive.google.com/uc?export=view&id=1BfbmLHYPuS-qu_zYmWUtU9Gneg9enKdI
 
 <!--  -->
 
-[validation_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/ce445cc3-9c81-4b2e-934d-76116f9472cc
+[validation_dark]: https://drive.google.com/uc?export=view&id=1BZlL9ry_yZP9y6HUwrScieUihS4I62Gu
 
 <!--  -->
 
-[validation_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/3f430af2-b05d-46b2-9d4d-94d34d752eb1
+[validation_light]: https://drive.google.com/uc?export=view&id=1D5SD1Cc6WZyljfSvgRwdrJqgn7SXvhqD
 
 <!--  -->
 
-[schedule_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/922ae5de-0951-44aa-a9de-23ec964c42e0
-[schedule_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/437e0b48-97fb-4e11-91ab-8b47dbebda06
+[schedule_light]: https://drive.google.com/uc?export=view&id=1cw9Rl0iIYIDh-_Uy_VuQ0cXVA0fGJ9tn
+[schedule_dark]: https://drive.google.com/uc?export=view&id=1ZydgH0VtNDVhKWBcaIc5lap-87YxHSLk
 
 <!--  -->
 
-[Flight_Assignment_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/59b83c76-71ea-4087-9904-58fb58f526cf
-[Flight_Assignment_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/d5e48627-4978-4a22-ac14-5c95347d0b8e
+[flight_assignment_light]: https://drive.google.com/uc?export=view&id=14Gr5sGOmXaVj4ycUuBzFo-8zd4A18CPj
+[flight_assignment_dark]: https://drive.google.com/uc?export=view&id=1EOHYLYFjDOPIILKH88Ma_zwdVBWk2wds
 
 <!--  -->
 
-[hotel_assignment_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/c22afefb-44ae-4644-a8a7-fca49f3d4bcd
-[hotel_assignment_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/30cb317e-17e8-4725-af90-71b74d508e93
+[hotel_assignment_light]: https://drive.google.com/uc?export=view&id=1XroPjuoVEzWHencLZKN1gEwB37qXH2F7
+[hotel_assignment_dark]: https://drive.google.com/uc?export=view&id=1AYnq-EYN5MSUCVMnrDFPkPhjxnrRs0ND
 
 <!--  -->
 
-[drivers_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/9fcfbc41-e582-4f7e-91a2-e86d41b80558
-[drivers_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/b8319c9b-f18e-492d-bf9c-584101244cb5
+[drivers_light]: https://drive.google.com/uc?export=view&id=1INkW4Br4RIMJ7p2odBNlt9FI_avd0ZUB
+[drivers_dark]: https://drive.google.com/uc?export=view&id=1J_M0YJe78cvZaRqdvc7-FOTZxXURviNa
 
 <!--  -->
 
-[driver_info_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/4418abb8-9119-45c1-b1c4-295dba74bbfd
-[drivers_info_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/4e21752f-8838-46b1-8b79-598489952de9
+[driver_info_light]: https://drive.google.com/uc?export=view&id=1oalmCiQDpEw13BqWBS0Os1-TEWDJE8D7
+[drivers_info_dark]: https://drive.google.com/uc?export=view&id=1Z6zWnmKb2GCIt-42Ajbq90H8ZzrgwxIe
 
 <!--  -->
 
-[airport_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/d594b514-e407-4dc2-9af1-3ae7ba1227e5
-[airport_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/8dc3f848-5d9c-4895-94ce-6a079057550a
+[airport_light]: https://drive.google.com/uc?export=view&id=1YCkxu1td_hWRZtPFPsVw_EzO1ZAKOhXJ
+[airport_dark]: https://drive.google.com/uc?export=view&id=1i6Jqb079liKwIWCDyXvT4Z9CGo6hsHVm
 
 <!--  -->
 
-[user_info_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/b8648135-b7e0-42b9-be30-a93508e78362
-[user_search_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/b804e710-9f7b-483a-a835-b60168b71357
-[user_search_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/09f12ecc-a40e-45df-932f-11f8d3c2a63d
-[user_feedback_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/9f4871cb-7f93-46ec-ad35-9ab26cfd860c
-[user_feedback_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/cdb903be-0964-415e-a7a8-b53c96005149
+[user_info_light]: https://drive.google.com/uc?export=view&id=1rvrO3SHdUVPc7iWb6_1aUqOuE5bFATpR
+[user_search_light]: https://drive.google.com/uc?export=view&id=1xCPOw4rXeWa0Vu9nLqJL9llUdDtyKxyL
+[user_search_dark]: https://drive.google.com/uc?export=view&id=1yB2x5BHvFrURK_ZILHcGvw7q8Yh3AXCK
+[user_feedback_light]: https://drive.google.com/uc?export=view&id=1YtyZCS_9FnjR639wtLDuq-N7_l9KRp79
+[user_feedback_dark]: https://drive.google.com/uc?export=view&id=1pkcXuM-qw1M1HNRUvKZo1GNYW9azp6Jd
 
 <!--  -->
 
-[stats_light]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/34c92fb4-c72b-47b1-98f8-f82809994717
-[stats_dark]: https://github.com/siMobin/Project_AirlineManagement/assets/102217786/3b4ceaea-9940-4519-a61b-aa4265b640ca
+[stats_light]: https://drive.google.com/uc?export=view&id=1-TbNTW9EYuhlgJrjxQnS-pSqXTcCC1-s
+[stats_dark]: https://drive.google.com/uc?export=view&id=1dvXX007yRi3nGA2nS6As5vXmZwuU-rWx
 
 <!-- end link -->
