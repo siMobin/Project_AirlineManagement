@@ -141,7 +141,7 @@ if (isset($_POST['submit'])) {
                         die(print_r(sqlsrv_errors(), true));
                     } else {
                         // Generate PDF
-                        require('./fpdf/fpdf.php');
+                        require('../vendor/autoload.php');
                         require('./fpdf/rotate.php');
 
                         $pdf = new PDF('p', 'mm', 'A4');
@@ -268,7 +268,7 @@ if (isset($_POST['submit'])) {
                     die(print_r(sqlsrv_errors(), true));
                 } else {
                     // Generate PDF
-                    require('./fpdf/fpdf.php');
+                    require('../vendor/autoload.php');
                     require('./fpdf/rotate.php');
 
                     $pdf = new PDF('p', 'mm', 'A4');

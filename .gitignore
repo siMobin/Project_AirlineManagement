@@ -1,10 +1,12 @@
 ########### build #######
+vendor
 node
 node_modules
 *x64
 # icon.ico
-package.json
+# package.json
 *lock.json
+*.lock*
 #########################
 #########################
 # action.php
@@ -24,15 +26,16 @@ FAQ.*
 *.txt
 *.css
 *.css.map
+
+.vscode
+ticket.svg
+*temp*
+temp/
+
+
+# Not ignored
 !swiper.css
 !mobile.css
 !calender.css
 !map.css
-.vscode
-ticket.svg
-temp
-temp.*
-temp*.*
-*temp*
-temp/*
 !Project_Proposal.pdf

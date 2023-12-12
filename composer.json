@@ -1,0 +1,5 @@
+{
+    "require-dev": {
+        "setasign/fpdf": "^1.8"
+    }
+}
